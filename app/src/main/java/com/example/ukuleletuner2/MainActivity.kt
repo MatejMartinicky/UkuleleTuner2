@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -68,18 +69,18 @@ class MainActivity : ComponentActivity() {
         onClick: () -> Unit,
         modifier: Modifier = Modifier
     ) {
-        Box (
+        Box(
             contentAlignment = Alignment.Center,
             modifier = modifier
                 .size(64.dp)
                 .background(Color.Transparent)
                 .border(4.dp, color, CircleShape)
-                .clickable {  onClick() }
+                .clickable { onClick() }
         ) {
             Text(
                 text = letter,
                 fontSize = 32.sp,
-                fontWeight =  FontWeight.SemiBold,
+                fontWeight = FontWeight.SemiBold,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -130,13 +131,17 @@ class MainActivity : ComponentActivity() {
                 }
             )
 
+            val imageSizeDp = with(LocalDensity.current) {
+                IntSize(imageSize.width.toDp().value.toInt(), imageSize.height.toDp().value.toInt())
+            }
+
             NoteButton(
                 letter = "C",
                 color = Color(0xFF67999A),
                 onClick = { println("cat") },
                 modifier = Modifier.constrainAs(buttonC) {
-                    top.linkTo(image.top, margin = (imageSize.height * 0.2).dp)
-                    start.linkTo(image.start, margin = (imageSize.width * 0.2).dp)
+                    top.linkTo(image.top, margin = (imageSizeDp.height * 0.15f).dp)
+                    start.linkTo(image.start, margin = (imageSizeDp.width * 0f).dp)
                 }
             )
 
@@ -145,7 +150,7 @@ class MainActivity : ComponentActivity() {
                 color = Color(0xFF509073),
                 onClick = { println("cat") },
                 modifier = Modifier.constrainAs(buttonG) {
-                    top.linkTo(buttonC.bottom, margin = (imageSize.height * 0.2).dp)
+                    top.linkTo(buttonC.bottom, margin = (imageSizeDp.height * 0.06f).dp)
                     start.linkTo(buttonC.start)
                 }
             )
@@ -155,8 +160,8 @@ class MainActivity : ComponentActivity() {
                 color = Color(0xFFE78e22),
                 onClick = { println("cat") },
                 modifier = Modifier.constrainAs(buttonE) {
-                    top.linkTo(image.top, margin = (imageSize.height * 0.2).dp)
-                    end.linkTo(image.end, margin = (imageSize.width * 0.2).dp)
+                    top.linkTo(image.top, margin = (imageSizeDp.height * 0.15f).dp)
+                    end.linkTo(image.end, margin = (imageSizeDp.width * 0f).dp)
                 }
             )
 
@@ -165,12 +170,13 @@ class MainActivity : ComponentActivity() {
                 color = Color(0xFFE52625),
                 onClick = { println("cat") },
                 modifier = Modifier.constrainAs(buttonA) {
-                    top.linkTo(buttonE.bottom, margin = (imageSize.height * 0.2).dp)
-                    end.linkTo(buttonE.end)
+                    top.linkTo(buttonE.bottom, margin = (imageSizeDp.height * 0.06f).dp)
+                    end.linkTo(image.end, margin = (imageSizeDp.width * 0f).dp)
                 }
             )
         }
     }
+
     @Preview
     @Composable
     fun TunerScreen() {
