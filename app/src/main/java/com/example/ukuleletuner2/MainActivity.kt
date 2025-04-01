@@ -30,6 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -58,11 +59,11 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-            TunerScreen()
+            Navigation()
+            //TunerScreen()
         }
     }
 
-    //https://developer.android.com/develop/ui/compose/touch-input/user-interactions/handling-interactions
     @Composable
     fun NoteButton(
         letter: String,
@@ -76,10 +77,11 @@ class MainActivity : ComponentActivity() {
         Box(
             contentAlignment = Alignment.Center,
             modifier = modifier
-                .size(64.dp)
+                .size(54.dp)
                 .background(Color.Transparent, CircleShape)
                 .border(4.dp, if (isPressed) Color.Gray else color, CircleShape)
-                .fillMaxWidth()
+                .padding(5.dp)
+                .fillMaxSize()
                 .clickable(
                     interactionSource = interactionSource,
                     indication = null
@@ -103,6 +105,8 @@ class MainActivity : ComponentActivity() {
         contentDescription: String,
         modifier: Modifier = Modifier,
         onSizeChanged: (IntSize) -> Unit,
+        sizeX: Dp,
+        sizeY: Dp
     ) {
         Box(
             modifier = modifier,
@@ -113,20 +117,24 @@ class MainActivity : ComponentActivity() {
                 contentDescription = contentDescription,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
+                    .size(sizeX, sizeY)
                     .wrapContentWidth()
                     .onGloballyPositioned { layoutCoordinates ->
                         val size = layoutCoordinates.size
                         onSizeChanged(size)
-                }
+                    }
             )
         }
     }
 
     @Composable
-    fun InstrumentLayout() {
+    fun InstrumentLayout(
+        modifier: Modifier = Modifier
+    ) {
         var imageSize by remember { mutableStateOf(IntSize.Zero) }
 
         ConstraintLayout(
+            modifier = modifier
         ) {
             val (image, buttonC, buttonG, buttonE, buttonA) = createRefs()
 
@@ -141,6 +149,8 @@ class MainActivity : ComponentActivity() {
                 onSizeChanged = { size ->
                     imageSize = size
                 },
+                sizeX = 250.dp,
+                sizeY = 450.dp
             )
 
             val imageSizeDp = with(LocalDensity.current) {
@@ -216,25 +226,52 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        Column(
+        ConstraintLayout(
             modifier = Modifier
                 .fillMaxSize()
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .background(Color.White),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .background(Color.Transparent)
         ) {
-            Text("Ukulele Tuner", color = Color.White, style = MaterialTheme.typography.headlineLarge)
-            Spacer(modifier = Modifier.height(20.dp))
-            Text("Detected Frequency: ${"%.2f".format(detectedFrequency)} Hz", color = Color.Gray)
-            Text("Tuning: $tuningStatus", color = Color.Black, style = MaterialTheme.typography.headlineMedium)
-            Spacer(modifier = Modifier.height(20.dp))
-            Button(onClick = { isRecording = !isRecording }) {
+            val (instrumentLayout, frequency, currentTuning, startButton) = createRefs()
+
+            Text(
+                "Detected Frequency: ${"%.2f".format(detectedFrequency)} Hz",
+                color = Color.Gray,
+                modifier = Modifier.constrainAs(frequency) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            )
+
+            Text(
+                "Tuning: $tuningStatus",
+                color = Color.Black,
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.constrainAs(currentTuning) {
+                    top.linkTo(frequency.bottom, margin = 20.dp)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            )
+
+            Button(
+                onClick = { isRecording = !isRecording },
+                modifier = Modifier.constrainAs(startButton) {
+                    top.linkTo(currentTuning.bottom, margin = 16.dp)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            ) {
                 Text(if (isRecording) "Stop" else "Start Tuning")
             }
 
-            InstrumentLayout()
+            InstrumentLayout(
+                modifier = Modifier.constrainAs(instrumentLayout) {
+                    bottom.linkTo(parent.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            )
         }
     }
 
