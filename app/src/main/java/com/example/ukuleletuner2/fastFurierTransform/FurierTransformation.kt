@@ -14,7 +14,7 @@ class FourierTransform(private val sampleRate: Int, private val bufferSize: Int)
             imaginary[i] = 0.0
         }
 
-        // Perform FFT (naïve implementation, use a library like JTransforms for real use)
+        // Perform FFT (naive implementation, use a library like JTransforms for real use)
         fft(real, imaginary)
 
         // Calculate magnitude and find the dominant frequency
