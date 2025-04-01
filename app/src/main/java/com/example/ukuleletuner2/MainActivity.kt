@@ -17,16 +17,20 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import com.example.ukuleletuner2.fastFurierTransform.FourierTransform
 import com.example.ukuleletuner2.recorder.AndroidAudioRecorder
@@ -57,35 +61,18 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun InstrumentImage(
-        painter: Painter,
-        contentDescription: String,
-        modifier: Modifier = Modifier
-    ) {
-        Box(modifier = modifier,
-            contentAlignment = Alignment.Center
-        ) {
-
-            Image (
-                painter = painter,
-                contentDescription = contentDescription,
-                contentScale = ContentScale.Fit
-            )
-        }
-    }
-
-    @Composable
     fun NoteButton(
         letter: String,
         color: Color,
         contentPadding: PaddingValues = PaddingValues(0.dp),
-        onClick: () -> Unit
+        onClick: () -> Unit,
+        modifier: Modifier = Modifier
     ) {
         Box (
             contentAlignment = Alignment.Center,
-            modifier = Modifier
+            modifier = modifier
                 .size(64.dp)
-                .background(Color.White)
+                .background(Color.Transparent)
                 .border(4.dp, color, CircleShape)
                 .clickable {  onClick() }
         ) {
@@ -100,42 +87,96 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun InstrumentLayout(
+    fun InstrumentImage(
+        painter: Painter,
+        contentDescription: String,
+        modifier: Modifier = Modifier,
+        onSizeChanged: (IntSize) -> Unit
     ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        Box(
+            modifier = modifier,
+            contentAlignment = Alignment.Center
         ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.weight(1f)
-            ) {
-                NoteButton("C", Color(0xFF67999A), onClick = { println("cat")} )
-                NoteButton("G", Color(0xFF509073), onClick = { println("cat")} )
-
-            }
-            InstrumentImage(
-                painter = painterResource(id = R.drawable.ukulele_head),
-                contentDescription = "Ukulele head",
-                modifier = Modifier.weight(3.5f)
+            Image(
+                painter = painter,
+                contentDescription = contentDescription,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.onGloballyPositioned { layoutCoordinates ->
+                    onSizeChanged(layoutCoordinates.size)
+                }
             )
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.weight(1f)
-            ) {
-                NoteButton("E", Color(0xFFE78e22), onClick = { println("cat")} )
-                NoteButton("A", Color(0xFFE52625), onClick = { println("cat")} )
-            }
         }
     }
 
+    @Composable
+    fun InstrumentLayout() {
+        var imageSize by remember { mutableStateOf(IntSize.Zero) }
+
+        ConstraintLayout(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            val (image, buttonC, buttonG, buttonE, buttonA) = createRefs()
+
+            InstrumentImage(
+                painter = painterResource(id = R.drawable.ukulele_head),
+                contentDescription = "Ukulele head",
+                modifier = Modifier.constrainAs(image) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                },
+                onSizeChanged = { size ->
+                    imageSize = size
+                }
+            )
+
+            NoteButton(
+                letter = "C",
+                color = Color(0xFF67999A),
+                onClick = { println("cat") },
+                modifier = Modifier.constrainAs(buttonC) {
+                    top.linkTo(image.top, margin = (imageSize.height * 0.2).dp)
+                    start.linkTo(image.start, margin = (imageSize.width * 0.2).dp)
+                }
+            )
+
+            NoteButton(
+                letter = "G",
+                color = Color(0xFF509073),
+                onClick = { println("cat") },
+                modifier = Modifier.constrainAs(buttonG) {
+                    top.linkTo(buttonC.bottom, margin = (imageSize.height * 0.2).dp)
+                    start.linkTo(buttonC.start)
+                }
+            )
+
+            NoteButton(
+                letter = "E",
+                color = Color(0xFFE78e22),
+                onClick = { println("cat") },
+                modifier = Modifier.constrainAs(buttonE) {
+                    top.linkTo(image.top, margin = (imageSize.height * 0.2).dp)
+                    end.linkTo(image.end, margin = (imageSize.width * 0.2).dp)
+                }
+            )
+
+            NoteButton(
+                letter = "A",
+                color = Color(0xFFE52625),
+                onClick = { println("cat") },
+                modifier = Modifier.constrainAs(buttonA) {
+                    top.linkTo(buttonE.bottom, margin = (imageSize.height * 0.2).dp)
+                    end.linkTo(buttonE.end)
+                }
+            )
+        }
+    }
     @Preview
     @Composable
     fun TunerScreen() {
         var detectedFrequency by remember { mutableStateOf(0.0) }
         var tuningStatus by remember { mutableStateOf("Waiting...") }
-        //cat
+
         LaunchedEffect(isRecording) {
             if (isRecording) {
                 withContext(Dispatchers.IO) {
