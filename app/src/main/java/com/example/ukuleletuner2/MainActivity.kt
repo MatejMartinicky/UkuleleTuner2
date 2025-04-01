@@ -67,7 +67,6 @@ class MainActivity : ComponentActivity() {
     fun NoteButton(
         letter: String,
         color: Color,
-        contentPadding: PaddingValues = PaddingValues(0.dp),
         onClick: () -> Unit,
         modifier: Modifier = Modifier,
     ) {
@@ -80,6 +79,7 @@ class MainActivity : ComponentActivity() {
                 .size(64.dp)
                 .background(Color.Transparent, CircleShape)
                 .border(4.dp, if (isPressed) Color.Gray else color, CircleShape)
+                .fillMaxWidth()
                 .clickable(
                     interactionSource = interactionSource,
                     indication = null
@@ -103,7 +103,6 @@ class MainActivity : ComponentActivity() {
         contentDescription: String,
         modifier: Modifier = Modifier,
         onSizeChanged: (IntSize) -> Unit,
-        scale: Float = 1.0f
     ) {
         Box(
             modifier = modifier,
@@ -114,13 +113,10 @@ class MainActivity : ComponentActivity() {
                 contentDescription = contentDescription,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
-                    .graphicsLayer(scaleX = scale, scaleY = scale)
+                    .wrapContentWidth()
                     .onGloballyPositioned { layoutCoordinates ->
-                        val scaledSize = IntSize(
-                            (layoutCoordinates.size.width * scale).toInt(),
-                            (layoutCoordinates.size.height * scale).toInt()
-                        )
-                        onSizeChanged(scaledSize)
+                        val size = layoutCoordinates.size
+                        onSizeChanged(size)
                 }
             )
         }
@@ -131,23 +127,20 @@ class MainActivity : ComponentActivity() {
         var imageSize by remember { mutableStateOf(IntSize.Zero) }
 
         ConstraintLayout(
-            modifier = Modifier.fillMaxSize()
         ) {
             val (image, buttonC, buttonG, buttonE, buttonA) = createRefs()
-            val scale = 0.9f
 
             InstrumentImage(
                 painter = painterResource(id = R.drawable.ukulele_head),
                 contentDescription = "Ukulele head",
                 modifier = Modifier.constrainAs(image) {
-                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 },
                 onSizeChanged = { size ->
                     imageSize = size
                 },
-                scale = scale
             )
 
             val imageSizeDp = with(LocalDensity.current) {
@@ -161,6 +154,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.constrainAs(buttonC) {
                     top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
                     end.linkTo(image.start)
+                    start.linkTo(parent.start)
                 }
             )
 
@@ -171,6 +165,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.constrainAs(buttonG) {
                     top.linkTo(buttonC.bottom, margin = (imageSizeDp.height * 0.06f).dp)
                     end.linkTo(image.start)
+                    start.linkTo(parent.start)
                 }
             )
 
@@ -181,6 +176,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.constrainAs(buttonE) {
                     top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
                     start.linkTo(image.end)
+                    end.linkTo(parent.end)
                 }
             )
 
@@ -191,6 +187,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.constrainAs(buttonA) {
                     top.linkTo(buttonE.bottom, margin = (imageSizeDp.height * 0.06f).dp)
                     start.linkTo(image.end)
+                    end.linkTo(parent.end)
                 }
             )
         }
@@ -222,8 +219,9 @@ class MainActivity : ComponentActivity() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
-                .padding(16.dp),
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .background(Color.White),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
