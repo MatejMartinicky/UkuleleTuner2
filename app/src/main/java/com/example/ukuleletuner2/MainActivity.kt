@@ -135,7 +135,7 @@ class MainActivity : ComponentActivity() {
     fun TunerScreen() {
         var detectedFrequency by remember { mutableStateOf(0.0) }
         var tuningStatus by remember { mutableStateOf("Waiting...") }
-
+        //cat
         LaunchedEffect(isRecording) {
             if (isRecording) {
                 withContext(Dispatchers.IO) {
