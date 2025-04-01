@@ -14,18 +14,17 @@ import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -61,21 +60,30 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    //https://developer.android.com/develop/ui/compose/touch-input/user-interactions/handling-interactions
     @Composable
     fun NoteButton(
         letter: String,
         color: Color,
         contentPadding: PaddingValues = PaddingValues(0.dp),
         onClick: () -> Unit,
-        modifier: Modifier = Modifier
+        modifier: Modifier = Modifier,
     ) {
+        val interactionSource = remember { MutableInteractionSource() }
+        val isPressed: Boolean by interactionSource.collectIsPressedAsState()
+
         Box(
             contentAlignment = Alignment.Center,
             modifier = modifier
                 .size(64.dp)
-                .background(Color.Transparent)
-                .border(4.dp, color, CircleShape)
-                .clickable { onClick() }
+                .background(Color.Transparent, CircleShape)
+                .border(4.dp, if (isPressed) Color.Gray else color, CircleShape)
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = null
+                ) {
+                    onClick()
+                }
         ) {
             Text(
                 text = letter,
