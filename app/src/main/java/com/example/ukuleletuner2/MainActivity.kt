@@ -59,8 +59,8 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-            Navigation()
-            //TunerScreen()
+            //Navigation()
+            TunerScreen()
         }
     }
 
@@ -150,7 +150,7 @@ class MainActivity : ComponentActivity() {
                     imageSize = size
                 },
                 sizeX = 250.dp,
-                sizeY = 450.dp
+                sizeY = 400.dp
             )
 
             val imageSizeDp = with(LocalDensity.current) {
@@ -229,6 +229,8 @@ class MainActivity : ComponentActivity() {
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(horizontal = 16.dp) //android gullies standard padding
+                .padding(top = 24.dp) //they had some green thing that seemed bigger
                 .background(Color.Transparent)
         ) {
             val (instrumentLayout, frequency, currentTuning, startButton) = createRefs()
