@@ -19,7 +19,9 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -100,7 +102,8 @@ class MainActivity : ComponentActivity() {
         painter: Painter,
         contentDescription: String,
         modifier: Modifier = Modifier,
-        onSizeChanged: (IntSize) -> Unit
+        onSizeChanged: (IntSize) -> Unit,
+        scale: Float = 1.0f
     ) {
         Box(
             modifier = modifier,
@@ -110,8 +113,14 @@ class MainActivity : ComponentActivity() {
                 painter = painter,
                 contentDescription = contentDescription,
                 contentScale = ContentScale.Fit,
-                modifier = Modifier.onGloballyPositioned { layoutCoordinates ->
-                    onSizeChanged(layoutCoordinates.size)
+                modifier = Modifier
+                    .graphicsLayer(scaleX = scale, scaleY = scale)
+                    .onGloballyPositioned { layoutCoordinates ->
+                        val scaledSize = IntSize(
+                            (layoutCoordinates.size.width * scale).toInt(),
+                            (layoutCoordinates.size.height * scale).toInt()
+                        )
+                        onSizeChanged(scaledSize)
                 }
             )
         }
@@ -125,6 +134,7 @@ class MainActivity : ComponentActivity() {
             modifier = Modifier.fillMaxSize()
         ) {
             val (image, buttonC, buttonG, buttonE, buttonA) = createRefs()
+            val scale = 0.9f
 
             InstrumentImage(
                 painter = painterResource(id = R.drawable.ukulele_head),
@@ -136,7 +146,8 @@ class MainActivity : ComponentActivity() {
                 },
                 onSizeChanged = { size ->
                     imageSize = size
-                }
+                },
+                scale = scale
             )
 
             val imageSizeDp = with(LocalDensity.current) {
@@ -148,8 +159,8 @@ class MainActivity : ComponentActivity() {
                 color = Color(0xFF67999A),
                 onClick = { println("cat") },
                 modifier = Modifier.constrainAs(buttonC) {
-                    top.linkTo(image.top, margin = (imageSizeDp.height * 0.15f).dp)
-                    start.linkTo(image.start, margin = (imageSizeDp.width * 0f).dp)
+                    top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
+                    end.linkTo(image.start)
                 }
             )
 
@@ -159,7 +170,7 @@ class MainActivity : ComponentActivity() {
                 onClick = { println("cat") },
                 modifier = Modifier.constrainAs(buttonG) {
                     top.linkTo(buttonC.bottom, margin = (imageSizeDp.height * 0.06f).dp)
-                    start.linkTo(buttonC.start)
+                    end.linkTo(image.start)
                 }
             )
 
@@ -168,8 +179,8 @@ class MainActivity : ComponentActivity() {
                 color = Color(0xFFE78e22),
                 onClick = { println("cat") },
                 modifier = Modifier.constrainAs(buttonE) {
-                    top.linkTo(image.top, margin = (imageSizeDp.height * 0.15f).dp)
-                    end.linkTo(image.end, margin = (imageSizeDp.width * 0f).dp)
+                    top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
+                    start.linkTo(image.end)
                 }
             )
 
@@ -179,7 +190,7 @@ class MainActivity : ComponentActivity() {
                 onClick = { println("cat") },
                 modifier = Modifier.constrainAs(buttonA) {
                     top.linkTo(buttonE.bottom, margin = (imageSizeDp.height * 0.06f).dp)
-                    end.linkTo(image.end, margin = (imageSizeDp.width * 0f).dp)
+                    start.linkTo(image.end)
                 }
             )
         }
