@@ -1,16 +1,13 @@
 package com.example.ukuleletuner2
 
-sealed class Screen(val route: String) {
-    object MainScreen: Screen("main_screen")
-    object DetailScreen: Screen("detail_screen")
-    object TunerScreen: Screen("tuner_screen")
+import kotlinx.serialization.Serializable
 
-    fun withArgs(vararg args: String): String {
-        return buildString {
-            append(route)
-            args.forEach {
-                arg -> append("/$arg")
-            }
-        }
-    }
-}
+
+@Serializable
+object WelcomeScreen
+
+@Serializable
+object TunerScreen
+
+@Serializable
+object SettingsScreen

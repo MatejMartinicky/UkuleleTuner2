@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -15,22 +14,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
+fun SettingsScreen() {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(vertical = 16.dp)
+            .padding(top = 24.dp)
     ) {
-        Button(
-            onClick = onNavigateToTunerScreen,
-            modifier = Modifier
-        ) {
-            Text(
-                color = Color.White,
-                text = "Welcome!"
-            )
-        }
+        Text(text = "this will be settings", color = Color.Black)
     }
 }

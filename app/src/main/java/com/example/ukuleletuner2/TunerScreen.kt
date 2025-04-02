@@ -19,21 +19,18 @@ import kotlinx.coroutines.withContext
 import kotlin.math.abs
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.navigation.NavController
 import com.example.ukuleletuner2.fastFurierTransform.FourierTransform
 import com.example.ukuleletuner2.recorder.AndroidAudioRecorder
 import com.example.ukuleletuner2.recorder.AudioRecorder
 import kotlinx.coroutines.Dispatchers
 
 @Composable
-fun TunerScreen(navController: NavController) {
+fun TunerScreen(onNavigateToSettings: () -> Unit) {
     var isRecording =false
     val sampleRate = 44100
     val bufferSize = 2048
     val audioRecorder: AudioRecorder = AndroidAudioRecorder()
     val fourierTransform = FourierTransform(sampleRate, bufferSize)
-
-
 
     var detectedFrequency by remember { mutableStateOf(0.0) }
     var tuningStatus by remember { mutableStateOf("Waiting...") }
@@ -62,13 +59,26 @@ fun TunerScreen(navController: NavController) {
             .padding(top = 24.dp) //they had some green thing that seemed bigger
             .background(Color.Transparent)
     ) {
-        val (instrumentLayout, frequency, currentTuning, startButton) = createRefs()
+        val (instrumentLayout, frequency, currentTuning, startButton, settingButton) = createRefs()
+
+        Button(
+            onClick = onNavigateToSettings,
+            modifier = Modifier.constrainAs(settingButton) {
+                top.linkTo(parent.top)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            }
+            ) {
+                Text(
+                    text = "Settings"
+                    )
+            }
 
         Text(
             "Detected Frequency: ${"%.2f".format(detectedFrequency)} Hz",
             color = Color.Gray,
             modifier = Modifier.constrainAs(frequency) {
-                top.linkTo(parent.top)
+                top.linkTo(settingButton.bottom) //change when adding setting TODO
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
             }
@@ -123,3 +133,4 @@ private fun evaluateTuning(frequency: Double): String {
         else -> "In Tune (${closestNote.key})"
     }
 }
+
