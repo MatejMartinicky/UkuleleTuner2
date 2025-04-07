@@ -104,8 +104,6 @@ fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
                     )
                 }
             }
-
-         //
         }
     }
 }

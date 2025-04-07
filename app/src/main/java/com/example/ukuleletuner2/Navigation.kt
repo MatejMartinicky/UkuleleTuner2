@@ -19,12 +19,23 @@ fun Navigation() {
         navController = navController,
         startDestination = WelcomeScreen
     ) {
-        composable<WelcomeScreen> { WelcomeScreen( onNavigateToTunerScreen = { navController.navigate(route = TunerScreen) } ) }
+        composable<WelcomeScreen> { WelcomeScreen( onNavigateToTunerScreen = { navController.navigate(route = InstrumentChoiceScreen) } ) }
+
+        //todo route here has to be absolutely changed!!!
+        composable<InstrumentChoiceScreen> { InstrumentChoiceScreen( onNavigateToTunerScreen = { navController.navigate(route = TunerScreen) } ) }
         //TODO
-        composable<TunerScreen> { TunerScreen(onNavigateToSettings = {navController.navigate(route = SettingsScreen) }) } //change when settings done
+        composable<TunerScreen> { TunerScreen(onNavigateToSettings = {navController.navigate(route = SettingsScreen) },
+                                                onNavigateToChords = {navController.navigate(route = ChordsScreen) }) } //change when settings done
+
+
+        composable<ChordsScreen> { ChordsScreen() } //change when settings done
+
 
         composable<SettingsScreen> { SettingsScreen() } //these has to be here how I understand it is like this
         //composable<SettingsScreen> matches it as path where SettingsScreen is path defined in screen @Serializable
         //object SettingsScreen and this matches it to settings composable SettingsScreen() they don't even have to have same name
+
+
+
     }
 }

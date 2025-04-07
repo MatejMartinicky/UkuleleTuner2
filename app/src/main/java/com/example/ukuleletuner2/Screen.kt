@@ -11,3 +11,9 @@ object TunerScreen
 
 @Serializable
 object SettingsScreen
+
+@Serializable
+object InstrumentChoiceScreen
+
+@Serializable
+object ChordsScreen
