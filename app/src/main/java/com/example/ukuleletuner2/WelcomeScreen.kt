@@ -13,7 +13,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -22,7 +21,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.CacheDrawModifierNode
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -32,62 +39,73 @@ import androidx.compose.ui.res.painterResource
 fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
     Surface(modifier = Modifier
         .fillMaxSize(),
-        color = Color(0xFF7DE83A)
+        color = Color(0xFF66BB6A)
     ) {
-        Box(modifier = Modifier.fillMaxSize()
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.man_plaing_ukulele),
-                contentDescription = "Cool Image",
-                contentScale = ContentScale.Fit
-            )
-            Box(
+        Column{
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.5f)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.man_plaing_ukulele),
+                    contentDescription = "Cool Image",
+                    contentScale = ContentScale.Fit
+                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(
+                            brush = Brush.verticalGradient(
+                                colorStops = arrayOf(
+                                    0.0f to Color.Transparent,
+                                    0.95f to Color(0xFF66BB6A),
+                                    1.0f to Color(0xFF66BB6A)
+                                )
+                            )
+                        )
+                )
+                {
+                }
+            }
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = 5.dp)
-                    .graphicsLayer {
-                        shadowElevation = 1f
-                        shape = androidx.compose.ui.graphics.RectangleShape
-                        clip = true
-                    }
-                    .background(Color(0xFF7DE83A).copy(alpha = 0.4f)) //watch that youtube tutorial about adding images where it was
-            )
+                    .padding(16.dp)
+            ) {
 
-        }
-
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Bottom,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp)
-        ) {
-
-
-            Text(
-                text = "Welcome!",
-                style = TextStyle(
-                    color = Color.White,
-                    fontSize = 42.sp,
-                    fontWeight = FontWeight.Black
-                )
-            )
-
-            Button(
-                onClick = onNavigateToTunerScreen,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White
-                )
-                ) {
                 Text(
-                    color = Color(0xFF7DE83A),
-                    text = "Lets start! ➡",
-                    fontSize = 24.sp
+                    text = "Welcome!",
+                    style = TextStyle(
+                        color = Color.White,
+                        fontSize = 54.sp,
+                        fontWeight = FontWeight.Black
+                    )
                 )
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                Button(
+                    onClick = onNavigateToTunerScreen,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.White
+                    ),
+                    modifier = Modifier
+                        .size(77.dp)
+                        .clip(CircleShape)
+                ) {
+                    Text(
+                        color = Color(0xFF66BB6A),
+                        text = "➡",
+                        fontSize = 34.sp
+                    )
+                }
             }
+
+         //
         }
-
-
     }
-
 }
