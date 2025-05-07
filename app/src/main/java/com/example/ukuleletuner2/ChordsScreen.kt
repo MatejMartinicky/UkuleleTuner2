@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.compose.ui.res.stringResource
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -39,7 +40,7 @@ fun ChordsScreen() {
                     IconButton(onClick = { /* todo */ }) {
                         Icon(
                             Icons.Default.Menu,
-                            contentDescription = "Menu",
+                            contentDescription = stringResource(R.string.menu_content_description),
                             tint = Color.White
                         )
                     }
@@ -49,7 +50,7 @@ fun ChordsScreen() {
                     IconButton(onClick = { /*todo*/ }) {
                         Icon(
                             Icons.Filled.Settings,
-                            contentDescription = "Settings",
+                            contentDescription = stringResource(R.string.settings_content_description),
                             tint = Color.White
                         )
                     }
@@ -63,12 +64,10 @@ fun ChordsScreen() {
                     .background(Color.Transparent)
                     .padding(paddingValues)
             ) {
-
-
                 Column {
                     Image(
                         painter = painterResource(id = com.example.ukuleletuner2.R.drawable.basic_chords),
-                        contentDescription = "Instrument Button Image",
+                        contentDescription = stringResource(R.string.settings_content_description),
                         contentScale = ContentScale.Fit
                     )
 

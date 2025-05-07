@@ -49,7 +49,7 @@ fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.man_plaing_ukulele),
-                    contentDescription = "Cool Image",
+                    contentDescription = "image of a cool man playing ukulele",
                     contentScale = ContentScale.Fit
                 )
                 Box(

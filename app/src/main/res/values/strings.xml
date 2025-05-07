@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">UkuleleTuner2</string>
+
+    <string name="chords_screen_title">Chords</string>
+    <string name="menu_content_description">Menu</string>
+    <string name="settings_content_description">Settings</string>
+    <string name="chords_image_content_description">Ukulele Chord Chart</string>
 </resources>
