@@ -41,6 +41,8 @@ import com.example.ukuleletuner2.recorder.AudioRecorder
 import kotlinx.coroutines.Dispatchers
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
+import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,10 +50,12 @@ fun TunerScreen(
     onNavigateToSettings: () -> Unit,
     onNavigateToChords: () -> Unit
 ) {
+    val context = LocalContext.current
+
     var isRecording =false
     val sampleRate = 44100
     val bufferSize = 2048
-    val audioRecorder: AudioRecorder = AndroidAudioRecorder()
+    val audioRecorder: AudioRecorder = AndroidAudioRecorder(context)
     val fourierTransform = FourierTransform(sampleRate, bufferSize)
 
     var detectedFrequency by remember { mutableStateOf(0.0) }
@@ -61,7 +65,9 @@ fun TunerScreen(
         if (isRecording) {
             withContext(Dispatchers.IO) {
                 val buffer = ShortArray(bufferSize)
-                audioRecorder.start()
+                //remove this dummy file when implementation changes
+                val dummyFile = File(context.filesDir, "dummy_file.mp3")
+                audioRecorder.start(dummyFile) //changed for now code to  compile change back
                 while (isRecording) {
                     val read = audioRecorder.read(buffer)
                     if (read > 0) {

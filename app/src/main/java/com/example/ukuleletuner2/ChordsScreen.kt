@@ -25,15 +25,30 @@ import androidx.compose.ui.res.stringResource
 import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.chords.ChordCard
 import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.example.ukuleletuner2.audioplayer.AndroidAudioPlayer
+import com.example.ukuleletuner2.audioplayer.AudioPlayer
+import java.io.File
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChordsScreen() {
+    val context = LocalContext.current
+    val player = remember { AndroidAudioPlayer(context) }
+
     val chords = listOf(
-        Chord("C", R.drawable.ukulele_c_chord, "C.mp3")
+        Chord("C", R.drawable.ukulele_c_chord, R.raw.guitar_a_major) //change when required
     )
+
+    DisposableEffect(Unit) {
+        onDispose {
+            player.stop()
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -83,9 +98,20 @@ fun ChordsScreen() {
                                 painter = painterResource(id = chord.image),
                                 contentDescription = "${chord.name} chord",
                                 title = chord.name,
-                                chordName = chord.audioFileName,
+                                chordName = chord.name,
                                 OnPlayed = { chordAudioFile ->
-                                    println("playing like that cord!")
+                                    val tempFile = File(context.cacheDir, "chord_${chord.name}.wav")
+
+                                    try {
+                                        context.resources.openRawResource(chord.audioFileName).use { input ->
+                                            tempFile.outputStream().use { output ->
+                                                input.copyTo(output)
+                                            }
+                                        }
+                                        player.playFile(tempFile)
+                                    } catch (e: Exception) {
+                                        println("Error while palying: ${e.message}") //log
+                                    }
                                 }
                             )
                         }
