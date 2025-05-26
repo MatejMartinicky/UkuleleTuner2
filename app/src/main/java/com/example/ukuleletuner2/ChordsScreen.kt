@@ -1,12 +1,9 @@
 package com.example.ukuleletuner2
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
@@ -20,17 +17,21 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.chords.ChordCard
+import androidx.compose.foundation.lazy.items
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChordsScreen() {
+    val chords = listOf(
+        Chord("C", R.drawable.ukulele_c_chord, "C.mp3")
+    )
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -68,22 +69,20 @@ fun ChordsScreen() {
                     .background(Color.Transparent)
                     .padding(paddingValues)
             ) {
-                Column {
-                    val painter = painterResource(id = R.drawable.ukulele_c_chord);
-                    val description = "card with ukulele C chord"
-                    val title = "C"
-                    Box(modifier = Modifier
-                        .fillMaxWidth(0.5f)
-                        .padding(16.dp)
-                    ) {
-                        ChordCard(painter, description, title);
 
+                LazyColumn {
+                    items(items = chords) { chord ->
+                        ChordCard(
+                            painter = painterResource(id = chord.image),
+                            contentDescription = "${chord.name} chord",
+                            title = chord.name,
+                            chordName = chord.audioFileName,
+                            OnPlayed = { chordAudioFile ->
+                                println("playing like that cord!")
+                            }
+                        )
                     }
-
-
-
                 }
-
             }
         }
     )

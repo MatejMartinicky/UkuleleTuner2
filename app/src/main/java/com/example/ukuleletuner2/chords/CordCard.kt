@@ -1,6 +1,8 @@
 package com.example.ukuleletuner2.chords
 
+import android.R.attr.onClick
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,11 +29,14 @@ fun ChordCard(
     painter : Painter,
     contentDescription : String,
     title : String,
-    modifier: Modifier = Modifier
+    chordName: String,
+    modifier: Modifier = Modifier,
+    OnPlayed : (String) -> Unit = {}
 ) {
     Card(
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable{ OnPlayed(chordName) },
         shape = RoundedCornerShape(15.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
     ) {
