@@ -87,7 +87,6 @@ fun ChordsScreen() {
                                 OnPlayed = { chordAudioFile ->
                                     println("playing like that cord!")
                                 }
-
                             )
                         }
                     }
