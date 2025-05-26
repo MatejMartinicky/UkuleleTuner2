@@ -1,7 +1,9 @@
 package com.example.ukuleletuner2
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -23,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.chords.ChordCard
 import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.unit.dp
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -72,15 +75,21 @@ fun ChordsScreen() {
 
                 LazyColumn {
                     items(items = chords) { chord ->
-                        ChordCard(
-                            painter = painterResource(id = chord.image),
-                            contentDescription = "${chord.name} chord",
-                            title = chord.name,
-                            chordName = chord.audioFileName,
-                            OnPlayed = { chordAudioFile ->
-                                println("playing like that cord!")
-                            }
-                        )
+                        Box(modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .padding(16.dp)
+                        ) {
+                            ChordCard(
+                                painter = painterResource(id = chord.image),
+                                contentDescription = "${chord.name} chord",
+                                title = chord.name,
+                                chordName = chord.audioFileName,
+                                OnPlayed = { chordAudioFile ->
+                                    println("playing like that cord!")
+                                }
+
+                            )
+                        }
                     }
                 }
             }
