@@ -2,8 +2,10 @@ package com.example.ukuleletuner2
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -22,6 +24,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import com.example.ukuleletuner2.chords.ChordCard
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,11 +69,17 @@ fun ChordsScreen() {
                     .padding(paddingValues)
             ) {
                 Column {
-                    Image(
-                        painter = painterResource(id = com.example.ukuleletuner2.R.drawable.basic_chords),
-                        contentDescription = stringResource(R.string.settings_content_description),
-                        contentScale = ContentScale.Fit
-                    )
+                    val painter = painterResource(id = R.drawable.ukulele_c_chord);
+                    val description = "card with ukulele C chord"
+                    val title = "C"
+                    Box(modifier = Modifier
+                        .fillMaxWidth(0.5f)
+                        .padding(16.dp)
+                    ) {
+                        ChordCard(painter, description, title);
+
+                    }
+
 
 
                 }
