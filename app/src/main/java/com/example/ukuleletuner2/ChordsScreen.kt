@@ -1,11 +1,15 @@
 package com.example.ukuleletuner2
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Settings
@@ -30,7 +34,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.audioplayer.AndroidAudioPlayer
-import com.example.ukuleletuner2.audioplayer.AudioPlayer
 import java.io.File
 
 
@@ -41,7 +44,20 @@ fun ChordsScreen() {
     val player = remember { AndroidAudioPlayer(context) }
 
     val chords = listOf(
-        Chord("C", R.drawable.ukulele_c_chord, R.raw.guitar_a_major) //change when required
+        Chord(R.string.ukulele_c, R.drawable.ukulele_c, R.raw.guitar_a_major) ,
+        Chord(R.string.ukulele_f, R.drawable.ukulele_f, R.raw.guitar_a_major),
+        Chord(R.string.ukulele_g, R.drawable.ukulele_g, R.raw.guitar_a_major) ,
+        Chord(R.string.ukulele_e, R.drawable.ukulele_e, R.raw.guitar_a_major) ,
+        Chord(R.string.ukulele_a, R.drawable.ukulele_a, R.raw.guitar_a_major) ,
+        Chord(R.string.ukulele_b, R.drawable.ukulele_b, R.raw.guitar_a_major) ,
+        Chord(R.string.ukulele_am, R.drawable.ukulele_am, R.raw.guitar_a_major),
+        Chord(R.string.ukulele_em, R.drawable.ukulele_em, R.raw.guitar_a_major),
+        Chord(R.string.ukulele_bm, R.drawable.ukulele_bm, R.raw.guitar_a_major),
+        Chord(R.string.ukulele_dm, R.drawable.ukulele_dm, R.raw.guitar_a_major),
+        Chord(R.string.ukulele_c7, R.drawable.ukulele_c7, R.raw.guitar_a_major),
+        Chord(R.string.ukulele_e7, R.drawable.ukulele_e7, R.raw.guitar_a_major),
+        Chord(R.string.ukulele_a7, R.drawable.ukulele_a7, R.raw.guitar_a_major),
+        Chord(R.string.ukulele_d7, R.drawable.ukulele_d7, R.raw.guitar_a_major)
     )
 
     DisposableEffect(Unit) {
@@ -88,18 +104,26 @@ fun ChordsScreen() {
                     .padding(paddingValues)
             ) {
 
-                LazyColumn {
-                    items(items = chords) { chord ->
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    contentPadding = PaddingValues(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    items(chords.size) { index ->
+                        val chord = chords[index]
+
                         Box(modifier = Modifier
-                            .fillMaxWidth(0.5f)
-                            .padding(16.dp)
+                            .fillMaxWidth()
+                            .padding(8.dp)
                         ) {
+                            val chordName = stringResource(id = chord.name)
                             ChordCard(
                                 painter = painterResource(id = chord.image),
                                 contentDescription = "${chord.name} chord",
-                                title = chord.name,
-                                chordName = chord.name,
-                                OnPlayed = { chordAudioFile ->
+                                title = chordName,
+                                chordName = chordName,
+                                OnPlayed = {
                                     val tempFile = File(context.cacheDir, "chord_${chord.name}.wav")
 
                                     try {
@@ -110,7 +134,7 @@ fun ChordsScreen() {
                                         }
                                         player.playFile(tempFile)
                                     } catch (e: Exception) {
-                                        println("Error while palying: ${e.message}") //log
+                                        println("Error while playing: ${e.message}") //log
                                     }
                                 }
                             )
