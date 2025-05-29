@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.CacheDrawModifierNode
 import androidx.compose.ui.draw.clip
@@ -33,13 +34,14 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 
 
 @Composable
 fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
     Surface(modifier = Modifier
         .fillMaxSize(),
-        color = Color(0xFF66BB6A)
+        color = MaterialTheme.colorScheme.primaryContainer
     ) {
         Column{
 
@@ -59,8 +61,8 @@ fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
                             brush = Brush.verticalGradient(
                                 colorStops = arrayOf(
                                     0.0f to Color.Transparent,
-                                    0.95f to Color(0xFF66BB6A),
-                                    1.0f to Color(0xFF66BB6A)
+                                    0.95f to MaterialTheme.colorScheme.primaryContainer,
+                                    1.0f to MaterialTheme.colorScheme.primaryContainer
                                 )
                             )
                         )
@@ -78,9 +80,8 @@ fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
             ) {
 
                 Text(
-                    text = "Welcome!",
+                    text = stringResource(R.string.welcome),
                     style = TextStyle(
-                        color = Color.White,
                         fontSize = 54.sp,
                         fontWeight = FontWeight.Black
                     )
@@ -91,15 +92,15 @@ fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
                 Button(
                     onClick = onNavigateToTunerScreen,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.White
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary
                     ),
                     modifier = Modifier
                         .size(77.dp)
                         .clip(CircleShape)
                 ) {
                     Text(
-                        color = Color(0xFF66BB6A),
-                        text = "➡",
+                        text = stringResource(R.string.next_arrow),
                         fontSize = 34.sp
                     )
                 }

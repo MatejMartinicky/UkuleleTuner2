@@ -4,27 +4,46 @@ import android.content.Context
 import android.media.MediaPlayer
 import androidx.core.net.toUri
 import java.io.File
-import javax.security.auth.callback.Callback
 
 //https://www.youtube.com/watch?v=4MJFmhcONfI
 
 class AndroidAudioPlayer(private val context: Context) : AudioPlayer {
 
     private var player: MediaPlayer? = null
-    private var BeforeHook : (() -> Unit)? = null;
-    private var AfterHook : (() -> Unit)? = null;
+    private var beforeHook : (() -> Unit)? = null;
+    private var afterHook : (() -> Unit)? = null;
 
 
     fun setBeforeHook(hook: () -> Unit) {
-        BeforeHook = hook;
+        beforeHook = hook;
+    }
+    fun playResource(resourceId: Int) {
+        beforeHook?.invoke()
+
+        stop()
+
+        try {
+            player = MediaPlayer.create(context, resourceId)?.apply {
+                setOnCompletionListener {
+                    afterHook?.invoke()
+                    stop()
+                }
+                start()
+            }
+        } catch (e: Exception) {
+            afterHook?.invoke()
+        }
     }
 
+
     override fun playFile(file: File) {
-        BeforeHook?.invoke()
+        beforeHook?.invoke()
+
+        stop()
 
         MediaPlayer.create(context, file.toUri())?.apply {
             setOnCompletionListener {
-                AfterHook?.invoke()
+                afterHook?.invoke()
                 stop()
             }
 
@@ -38,7 +57,6 @@ class AndroidAudioPlayer(private val context: Context) : AudioPlayer {
     }
 
     fun setAfterHook(hook: () -> Unit) {
-        AfterHook = hook;
+        afterHook = hook;
     }
-
 }

@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -77,17 +78,19 @@ fun ChordsScreen() {
         topBar = {
             TopAppBar(
                 title = {
-                    Text("") //fix
+                    Text(stringResource(R.string.chords_screen_title))
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF66BB6A)
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 ),
                 navigationIcon = {
                     IconButton(onClick = { /* todo */ }) {
                         Icon(
                             Icons.Default.Menu,
-                            contentDescription = stringResource(R.string.menu_content_description),
-                            tint = Color.White
+                            contentDescription = stringResource(R.string.menu_content_description)
                         )
                     }
                 },
@@ -96,8 +99,7 @@ fun ChordsScreen() {
                     IconButton(onClick = { /*todo*/ }) {
                         Icon(
                             Icons.Filled.Settings,
-                            contentDescription = stringResource(R.string.settings_content_description),
-                            tint = Color.White
+                            contentDescription = stringResource(R.string.settings_content_description)
                         )
                     }
                 }
@@ -107,7 +109,6 @@ fun ChordsScreen() {
             ConstraintLayout(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.Transparent)
                     .padding(paddingValues)
             ) {
                 LazyVerticalGrid(
@@ -127,21 +128,13 @@ fun ChordsScreen() {
                             val chordName = stringResource(id = chord.name)
                             ChordCard(
                                 painter = painterResource(id = chord.image),
-                                contentDescription = "${chord.name} chord",
+                                contentDescription = stringResource(R.string.chord_card_content_description),
                                 title = chordName,
                                 isPlaying = playingChordId == chord.id,
                                 onPlayed = {
                                     playingChordId = chord.id
-                                    val tempFile = File(context.cacheDir, "chord_${chord.name}.wav")
                                     try {
-                                        context.resources.openRawResource(chord.audioFileName)
-                                            .use { input ->
-                                                tempFile.outputStream().use { output ->
-                                                    input.copyTo(output)
-                                                }
-                                            }
-
-                                        player.playFile(tempFile)
+                                        player.playResource(chord.audioFileName)
                                     } catch (e: Exception) {
                                         println("Error while playing: ${e.message}")
                                         playingChordId = -1

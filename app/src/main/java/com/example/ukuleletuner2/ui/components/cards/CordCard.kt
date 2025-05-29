@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -37,7 +39,9 @@ fun ChordCard(
     onPlayed: () -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
-    val shadowColor = Color(0xFF00FFFF)
+    val shadowColor = MaterialTheme.colorScheme.primary
+    val overlayColor = MaterialTheme.colorScheme.scrim
+    val onSurfaceColor = MaterialTheme.colorScheme.onSurface
 
     val glowLayers = 6
     val glowSpacing = 2.dp
@@ -93,11 +97,13 @@ fun ChordCard(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(contentPadding),
-                contentAlignment = Alignment.BottomStart
+                contentAlignment = Alignment.TopStart
             ) {
                 Text(
                     text = title,
-                    style = TextStyle(color = Color.White, fontSize = textSize)
+                    style = MaterialTheme.typography.titleMedium, //change
+                    color = onSurfaceColor,
+                    fontWeight = FontWeight.Bold
                 )
             }
         }
