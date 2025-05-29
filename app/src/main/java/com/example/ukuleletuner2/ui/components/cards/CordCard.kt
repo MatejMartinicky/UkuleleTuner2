@@ -39,9 +39,9 @@ fun ChordCard(
     onPlayed: () -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
-    val shadowColor = MaterialTheme.colorScheme.primary
+    val shadowColor = MaterialTheme.colorScheme.outline
     val overlayColor = MaterialTheme.colorScheme.scrim
-    val onSurfaceColor = MaterialTheme.colorScheme.onSurface
+    val onSurfaceColor = MaterialTheme.colorScheme.surfaceContainer
 
     val glowLayers = 6
     val glowSpacing = 2.dp

@@ -12,6 +12,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import com.example.ukuleletuner2.themeViewModel.ThemeViewModel
+import com.example.ukuleletuner2.ui.theme.outlineDarkHighContrast
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -259,33 +260,71 @@ enum class ColorThemes {
     Green
 }
 
+/*
+containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+ */
 fun getLightColorScheme(theme: ColorThemes) = when (theme) {
     ColorThemes.White -> lightColorScheme(
+        primaryContainer = Color(0xFFA5A5A5),
+        onPrimaryContainer = Color(0xFF31393C),
         primary = Color(0xFFFFFFFF),
-        onPrimary = Color.White,
+        onPrimary = Color(0xFF31393C),
+        outline = Color(0xFF31393C)
     )
     ColorThemes.Black -> lightColorScheme(
-        primary = Color(0xFF525752),
-        onPrimary = Color.White,
+        background = Color(0xFF394049),
+        surfaceContainer = Color(0xFF394049),
+        onBackground = Color(0xFFFFFFFF),
+        primaryContainer = Color(0xFF282E31),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF282E31),
+        onPrimary = Color(0xFFFFFFFF),
+        onSurfaceVariant = Color(0xFFFFFFFF),
+        outline = Color(0xFFFFFFFF)
     )
     ColorThemes.Green -> lightColorScheme(
-        primary = Color(0xFF8BC34A),
-        onPrimary = Color.White,
+        primaryContainer = Color(0xFF66BB6A),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFFFFFFFF),
+        onPrimary = Color(0xFF66BB6A),
+        outline = Color(0xFF18FFFF)
     )
 }
 
 fun getDarkColorScheme(theme: ColorThemes) = when (theme) {
     ColorThemes.White -> darkColorScheme(
-        primary = Color(0xFFFFFFFF),
-        onPrimary = Color.Black,
+        background = Color(0xFF9CA0A4),
+        surfaceContainer = Color(0xFF9CA0A4),
+        primaryContainer = Color(0xFF6B7178),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF9CA0A4),
+        onPrimary = Color(0xFFFFFFFF),
+        outline = Color(0xFFFFFFFF)
     )
     ColorThemes.Black -> darkColorScheme(
-        primary = Color(0xFF525752),
-        onPrimary = Color.Black,
+        background = Color(0xFF000000),
+        surfaceContainer = Color(0xFF000000),
+        onBackground = Color(0xFFFFFFFF),
+        primaryContainer = Color(0xFF000000),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF000000),
+        onPrimary = Color(0xFFFFFFFF),
+        onSurfaceVariant = Color(0xFFFFFFFF),
+        outline = Color(0xFFFFFFFF)
     )
     ColorThemes.Green -> darkColorScheme(
-        primary = Color(0xFF8BC34A),
-        onPrimary = Color.Black,
+        background = Color(0xFF4A4A4A),
+        surfaceContainer = Color(0xFF585858),
+        onBackground = Color(0xFFF8F8F8),
+        primaryContainer = Color(0xFF66BB6A),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF6A6A6A),
+        onPrimary = Color(0xFFFFFFFF),
+        onSurfaceVariant = Color(0xFFD8D8D8),
+        outline = Color(0xFF18FFFF)
     )
 }
 

@@ -31,6 +31,7 @@ import com.example.ukuleletuner2.ui.components.cards.ThemeCard
 @Composable
 fun SettingsScreen(themeViewModel: ThemeViewModel) {
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             TopAppBar(
                 title = {
@@ -71,7 +72,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.settings_general),
-                        color = MaterialTheme.colorScheme.primary,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,
                         style = MaterialTheme.typography.titleMedium
                     )
@@ -80,7 +81,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.settings_tuning),
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
                         text = stringResource(R.string.settings_tuning_value),
@@ -97,7 +98,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.settings_note_names),
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
                         text = stringResource(R.string.settings_note_names_value),
@@ -109,7 +110,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.settings_language),
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
                         text = stringResource(R.string.settings_language_value),
@@ -129,7 +130,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.settings_info),
-                        color = MaterialTheme.colorScheme.primary,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,
                         style = MaterialTheme.typography.titleMedium
                     )
@@ -137,7 +138,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.author),
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
                         text = stringResource(R.string.author_name),
@@ -148,7 +149,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.version),
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                     Text(
                         text = stringResource(R.string.version_version),
@@ -168,7 +169,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.contact),
-                        color = MaterialTheme.colorScheme.primary,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,
                         style = MaterialTheme.typography.titleMedium
 
@@ -177,7 +178,7 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Text(
                         text = stringResource(R.string.email),
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
                     Text(
