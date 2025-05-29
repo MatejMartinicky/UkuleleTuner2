@@ -26,6 +26,7 @@ import androidx.navigation.toRoute
 import com.example.ukuleletuner2.ui.theme.AppTheme
 import kotlinx.serialization.Serializable
 
+//comenting on main
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
