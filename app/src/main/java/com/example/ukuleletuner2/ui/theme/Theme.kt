@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.example.ukuleletuner2.themeViewModel.ThemeViewModel
+import com.example.ukuleletuner2.ui.theme.outlineDarkHighContrast
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -252,21 +254,91 @@ val unspecified_scheme = ColorFamily(
     Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
 )
 
+enum class ColorThemes {
+    White,
+    Black,
+    Green
+}
+
+/*
+containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+ */
+fun getLightColorScheme(theme: ColorThemes) = when (theme) {
+    ColorThemes.White -> lightColorScheme(
+        primaryContainer = Color(0xFFA5A5A5),
+        onPrimaryContainer = Color(0xFF31393C),
+        primary = Color(0xFFFFFFFF),
+        onPrimary = Color(0xFF31393C),
+        outline = Color(0xFF31393C)
+    )
+    ColorThemes.Black -> lightColorScheme(
+        background = Color(0xFF394049),
+        surfaceContainer = Color(0xFF394049),
+        onBackground = Color(0xFFFFFFFF),
+        primaryContainer = Color(0xFF282E31),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF282E31),
+        onPrimary = Color(0xFFFFFFFF),
+        onSurfaceVariant = Color(0xFFFFFFFF),
+        outline = Color(0xFFFFFFFF)
+    )
+    ColorThemes.Green -> lightColorScheme(
+        primaryContainer = Color(0xFF66BB6A),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFFFFFFFF),
+        onPrimary = Color(0xFF66BB6A),
+        outline = Color(0xFF18FFFF)
+    )
+}
+
+fun getDarkColorScheme(theme: ColorThemes) = when (theme) {
+    ColorThemes.White -> darkColorScheme(
+        background = Color(0xFF9CA0A4),
+        surfaceContainer = Color(0xFF9CA0A4),
+        primaryContainer = Color(0xFF6B7178),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF9CA0A4),
+        onPrimary = Color(0xFFFFFFFF),
+        outline = Color(0xFFFFFFFF)
+    )
+    ColorThemes.Black -> darkColorScheme(
+        background = Color(0xFF000000),
+        surfaceContainer = Color(0xFF000000),
+        onBackground = Color(0xFFFFFFFF),
+        primaryContainer = Color(0xFF000000),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF000000),
+        onPrimary = Color(0xFFFFFFFF),
+        onSurfaceVariant = Color(0xFFFFFFFF),
+        outline = Color(0xFFFFFFFF)
+    )
+    ColorThemes.Green -> darkColorScheme(
+        background = Color(0xFF4A4A4A),
+        surfaceContainer = Color(0xFF585858),
+        onBackground = Color(0xFFF8F8F8),
+        primaryContainer = Color(0xFF66BB6A),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF6A6A6A),
+        onPrimary = Color(0xFFFFFFFF),
+        onSurfaceVariant = Color(0xFFD8D8D8),
+        outline = Color(0xFF18FFFF)
+    )
+}
+
 @Composable
 fun AppTheme(
+    themeViewModel: ThemeViewModel,
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable() () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+    val currentTheme = themeViewModel.currentTheme
 
-        darkTheme -> darkScheme
-        else -> lightScheme
+    val colorScheme = when {
+        darkTheme -> getDarkColorScheme(currentTheme)
+        else -> getLightColorScheme(currentTheme)
     }
 
     MaterialTheme(
