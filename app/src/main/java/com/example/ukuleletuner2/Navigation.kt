@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.ukuleletuner2.themeViewModel.ThemeViewModel
 
 //new way of navigation not so good
 //https://www.youtube.com/watch?v=AIC_OFQ1r3k
@@ -13,7 +14,7 @@ import androidx.navigation.compose.rememberNavController
 //maybe next
 //https://www.youtube.com/watch?v=FIEnIBq7Ups
 @Composable
-fun Navigation() {
+fun Navigation(themeViewModel: ThemeViewModel) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
@@ -31,7 +32,7 @@ fun Navigation() {
         composable<ChordsScreen> { ChordsScreen() } //change when settings done
 
 
-        composable<SettingsScreen> { SettingsScreen() } //these has to be here how I understand it is like this
+        composable<SettingsScreen> { SettingsScreen(themeViewModel) } //these has to be here how I understand it is like this
         //composable<SettingsScreen> matches it as path where SettingsScreen is path defined in screen @Serializable
         //object SettingsScreen and this matches it to settings composable SettingsScreen() they don't even have to have same name
 

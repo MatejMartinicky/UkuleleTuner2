@@ -1,5 +1,6 @@
 package com.example.ukuleletuner2
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -42,6 +44,7 @@ import kotlinx.coroutines.Dispatchers
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,7 +62,7 @@ fun TunerScreen(
     val fourierTransform = FourierTransform(sampleRate, bufferSize)
 
     var detectedFrequency by remember { mutableStateOf(0.0) }
-    var tuningStatus by remember { mutableStateOf("Waiting...") }
+    var tuningStatus by remember { mutableStateOf(context.getString(R.string.tuning_waiting)) }
 
     LaunchedEffect(isRecording) {
         if (isRecording) {
@@ -72,7 +75,7 @@ fun TunerScreen(
                     val read = audioRecorder.read(buffer)
                     if (read > 0) {
                         detectedFrequency = fourierTransform.processFFT(buffer)
-                        tuningStatus = evaluateTuning(detectedFrequency)
+                        tuningStatus = evaluateTuning(detectedFrequency, context)
                     }
                 }
                 audioRecorder.stop()
@@ -87,17 +90,19 @@ fun TunerScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("") //fix
+                    Text(stringResource(R.string.tuner_screen_title))
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF66BB6A)
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 ),
                 navigationIcon = {
                     IconButton(onClick = { /* todo */ }) {
                         Icon(
                             Icons.Default.Menu,
-                            contentDescription = "Menu",
-                            tint = Color.White
+                            contentDescription = stringResource(R.string.menu_content_description)
                         )
                     }
                 },
@@ -110,18 +115,17 @@ fun TunerScreen(
                         Spacer(modifier = Modifier.weight(1f))
 
                         Text(
-                            text = "Chords",
-                            color = Color.White,
+                            text = stringResource(R.string.chords_navigation_text),
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier
-                                .clickable(onClick = { /* todo */ })
+                                .clickable(onClick = { onNavigateToChords } )
                         )
 
                         IconButton(onClick = { onNavigateToSettings() }) {
                             Icon(
                                 Icons.Filled.Settings,
-                                contentDescription = "Settings",
-                                tint = Color.White
+                                contentDescription = stringResource(R.string.settings_content_description),
                             )
                         }
                     }
@@ -134,14 +138,13 @@ fun TunerScreen(
                     .fillMaxSize()
                     .padding(horizontal = 16.dp)
                     .padding(top = 24.dp)
-                    .background(Color.Transparent)
                     .padding(paddingValues)
             ) {
                 val (instrumentLayout, frequency, currentTuning, startButton, settingButton) = createRefs()
 
                 Text(
-                    "Detected Frequency: ${"%.2f".format(detectedFrequency)} Hz",
-                    color = Color.Gray,
+                    stringResource(R.string.detected_frequency, "%.2f".format(detectedFrequency)),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.constrainAs(frequency) {
                         top.linkTo(settingButton.bottom)
                         start.linkTo(parent.start)
@@ -150,8 +153,8 @@ fun TunerScreen(
                 )
 
                 Text(
-                    "Tuning: $tuningStatus",
-                    color = Color.Black,
+                    stringResource(R.string.tuning_status, tuningStatus),
+                    color = MaterialTheme.colorScheme.onBackground,
                     style = MaterialTheme.typography.headlineMedium,
                     modifier = Modifier.constrainAs(currentTuning) {
                         top.linkTo(frequency.bottom, margin = 20.dp)
@@ -162,13 +165,22 @@ fun TunerScreen(
 
                 Button(
                     onClick = { onNavigateToChords() }, //todo just to screenshot change to start tooning
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary
+                    ),
                     modifier = Modifier.constrainAs(startButton) {
                         top.linkTo(currentTuning.bottom, margin = 16.dp)
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                     }
                 ) {
-                    Text(if (isRecording) "Stop" else "Start Tuning")
+                    Text(
+                        if (isRecording)
+                            stringResource(R.string.stop_tuning)
+                        else
+                            stringResource(R.string.start_tuning)
+                    )
                 }
 
                 InstrumentLayout(
@@ -183,21 +195,23 @@ fun TunerScreen(
     )
 }
 
-private fun evaluateTuning(frequency: Double): String {
+private fun evaluateTuning(frequency: Double,context: Context): String {
     val ukuleleNotes = mapOf(
-        "G4" to 392.00, "C4" to 261.63,
-        "E4" to 329.63, "A4" to 440.00
+        context.getString(R.string.g4) to 392.00,
+        context.getString(R.string.c4) to 261.63,
+        context.getString(R.string.e4) to 329.63,
+        context.getString(R.string.a4) to 440.00
     )
     val closestNote = ukuleleNotes.minByOrNull { (_, noteFreq) ->
         abs(noteFreq - frequency)
     }
-    if (closestNote == null) return "Unknown"
+    if (closestNote == null) return  context.getString(R.string.tuning_unknown)
     val difference = frequency - closestNote.value
 
     return when {
-        difference < -10 -> "Too Low (${closestNote.key})"
-        difference > 10 -> "Too High (${closestNote.key})"
-        else -> "In Tune (${closestNote.key})"
+        difference < -10 -> context.getString(R.string.tuning_too_low, closestNote.key)
+        difference > 10 -> context.getString(R.string.tuning_too_high, closestNote.key)
+        else -> context.getString(R.string.tuning_in_tune, closestNote.key)
     }
 }
 

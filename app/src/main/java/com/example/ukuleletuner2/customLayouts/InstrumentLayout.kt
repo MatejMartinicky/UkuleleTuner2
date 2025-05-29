@@ -13,8 +13,8 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.ukuleletuner2.R
-import com.example.ukuleletuner2.buttons.NoteButton
-import com.example.ukuleletuner2.images.InstrumentImage
+import com.example.ukuleletuner2.ui.components.buttons.NoteButton
+import com.example.ukuleletuner2.ui.components.images.InstrumentImage
 
 
 @Composable
