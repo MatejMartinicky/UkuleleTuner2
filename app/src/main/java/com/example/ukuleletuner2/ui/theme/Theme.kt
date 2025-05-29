@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.example.ukuleletuner2.themeViewModel.ThemeViewModel
 
 private val lightScheme = lightColorScheme(
     primary = primaryLight,
@@ -252,21 +253,53 @@ val unspecified_scheme = ColorFamily(
     Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
 )
 
+enum class ColorThemes {
+    White,
+    Black,
+    Green
+}
+
+fun getLightColorScheme(theme: ColorThemes) = when (theme) {
+    ColorThemes.White -> lightColorScheme(
+        primary = Color(0xFFFFFFFF),
+        onPrimary = Color.White,
+    )
+    ColorThemes.Black -> lightColorScheme(
+        primary = Color(0xFF525752),
+        onPrimary = Color.White,
+    )
+    ColorThemes.Green -> lightColorScheme(
+        primary = Color(0xFF8BC34A),
+        onPrimary = Color.White,
+    )
+}
+
+fun getDarkColorScheme(theme: ColorThemes) = when (theme) {
+    ColorThemes.White -> darkColorScheme(
+        primary = Color(0xFFFFFFFF),
+        onPrimary = Color.Black,
+    )
+    ColorThemes.Black -> darkColorScheme(
+        primary = Color(0xFF525752),
+        onPrimary = Color.Black,
+    )
+    ColorThemes.Green -> darkColorScheme(
+        primary = Color(0xFF8BC34A),
+        onPrimary = Color.Black,
+    )
+}
+
 @Composable
 fun AppTheme(
+    themeViewModel: ThemeViewModel,
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable() () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+    val currentTheme = themeViewModel.currentTheme
 
-        darkTheme -> darkScheme
-        else -> lightScheme
+    val colorScheme = when {
+        darkTheme -> getDarkColorScheme(currentTheme)
+        else -> getLightColorScheme(currentTheme)
     }
 
     MaterialTheme(
