@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.buttons
+package com.example.ukuleletuner2.ui.components.buttons
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.chords
+package com.example.ukuleletuner2.ui.components.cards
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

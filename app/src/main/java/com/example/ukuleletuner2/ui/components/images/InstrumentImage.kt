@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.images
+package com.example.ukuleletuner2.ui.components.images
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
