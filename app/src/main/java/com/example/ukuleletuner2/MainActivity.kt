@@ -34,6 +34,7 @@ import com.example.ukuleletuner2.recorder.AudioRecorder
 import kotlinx.coroutines.Dispatchers
 import kotlin.math.abs
 
+//comenting on branch main
 class MainActivity : ComponentActivity() {
     private var isRecording by mutableStateOf(false)
     private val sampleRate = 44100
