@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.themeViewModel
+package com.example.ukuleletuner2.viewModels.themeViewModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

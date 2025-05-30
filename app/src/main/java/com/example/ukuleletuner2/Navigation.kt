@@ -1,11 +1,10 @@
 package com.example.ukuleletuner2
 
-import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.ukuleletuner2.themeViewModel.ThemeViewModel
+import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 
 //new way of navigation not so good
 //https://www.youtube.com/watch?v=AIC_OFQ1r3k

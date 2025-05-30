@@ -23,7 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.ukuleletuner2.themeViewModel.ThemeViewModel
+import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 
 import com.example.ukuleletuner2.ui.components.cards.ThemeCard
 
