@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.utility.updateLocale
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 
@@ -18,20 +20,18 @@ import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 @Composable
 fun LanguageSelector(settingsViewModel: SettingsViewModel) {
     val context = LocalContext.current
-    val activity = context as Activity
 
     Column {
-        Text("Language")
+        Text(stringResource(R.string.settings_language))
         Row {
             Button(onClick = {
-                updateLocale(context, "en")
-                activity.recreate() //recreating activity not idela but Ireally dont have time
+                settingsViewModel.changeLanguageAndRestart(context, "en") //maybe to enum
             }) {}
 
             Spacer(modifier = Modifier.width(8.dp))
+
             Button(onClick = {
-                updateLocale(context, "sk")
-                activity.recreate()
+                settingsViewModel.changeLanguageAndRestart(context, "sk")
             }) {}
         }
     }
