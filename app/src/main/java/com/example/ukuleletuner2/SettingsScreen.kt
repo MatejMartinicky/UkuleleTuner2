@@ -23,13 +23,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.ukuleletuner2.ui.components.cards.LanguageSelector
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 
 import com.example.ukuleletuner2.ui.components.cards.ThemeCard
+import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SettingsScreen(themeViewModel: ThemeViewModel) {
+fun SettingsScreen(
+    themeViewModel: ThemeViewModel,
+    settingsViewModel: SettingsViewModel
+) {
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
@@ -107,6 +113,9 @@ fun SettingsScreen(themeViewModel: ThemeViewModel) {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+                    //lanuage
+
+                    LanguageSelector(settingsViewModel = settingsViewModel)
 
                     Text(
                         text = stringResource(R.string.settings_language),

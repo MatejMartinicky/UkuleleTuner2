@@ -341,6 +341,8 @@ fun getDarkColorScheme(theme: ColorThemes) = when (theme) {
         outline = Color(0xFF18FFFF)
     )
 }
+//THIS NEEDS TO BE IMPLEMENTED !!!
+//https://www.youtube.com/watch?v=S61mXlMQkLY
 
 @Composable
 fun AppTheme(
