@@ -257,7 +257,8 @@ val unspecified_scheme = ColorFamily(
 enum class ColorThemes {
     White,
     Black,
-    Green
+    Green,
+    Orange
 }
 
 /*
@@ -292,6 +293,13 @@ fun getLightColorScheme(theme: ColorThemes) = when (theme) {
         onPrimary = Color(0xFF66BB6A),
         outline = Color(0xFF18FFFF)
     )
+    ColorThemes.Orange -> lightColorScheme(
+        primaryContainer = Color(0xFFf68608),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFFFFFFFF),
+        onPrimary = Color(0xFFf68608),
+        outline = Color(0xFF18FFFF)
+        )
 }
 
 fun getDarkColorScheme(theme: ColorThemes) = when (theme) {
@@ -320,6 +328,17 @@ fun getDarkColorScheme(theme: ColorThemes) = when (theme) {
         surfaceContainer = Color(0xFF585858),
         onBackground = Color(0xFFF8F8F8),
         primaryContainer = Color(0xFF66BB6A),
+        onPrimaryContainer = Color(0xFFFFFFFF),
+        primary = Color(0xFF6A6A6A),
+        onPrimary = Color(0xFFFFFFFF),
+        onSurfaceVariant = Color(0xFFD8D8D8),
+        outline = Color(0xFF18FFFF)
+    )
+    ColorThemes.Orange -> lightColorScheme(
+        background = Color(0xFF4A4A4A),
+        surfaceContainer = Color(0xFF585858),
+        onBackground = Color(0xFFF8F8F8),
+        primaryContainer = Color(0xFFf68608),
         onPrimaryContainer = Color(0xFFFFFFFF),
         primary = Color(0xFF6A6A6A),
         onPrimary = Color(0xFFFFFFFF),

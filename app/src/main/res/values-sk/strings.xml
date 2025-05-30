@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Transleted by Claudie becaus of good language model -->
+<resources>
+    <string name="app_name">UkuleleTuner2</string>
+
+    <string name="chords_screen_title">Akordy</string>
+    <string name="menu_content_description">Menu</string>
+    <string name="settings_content_description">Nastavenia</string>
+    <string name="chords_image_content_description">Tabuľka akordov na ukulele</string>
+
+    <!-- ChordsScreen -->
+    <string name="chord_card_content_description">Karta akordu, ktorá prehrá akord po kliknutí</string>
+
+    <!-- InstrumentChoiceScreen -->
+    <string name="instrument_choice_continue_button">Pokračovať</string>
+    <string name="instrument_choice_welcome">Na čo hráš?</string>
+
+    <!-- WelcomeScreen -->
+    <string name="next_arrow">➡</string>
+    <string name="welcome">Vitaj!</string>
+
+    <!-- TunerScreen -->
+    <string name="tuner_screen_title">Ladička</string>
+    <string name="chords_navigation_text">Akordy</string>
+    <string name="detected_frequency">Zistená frekvencia: %1$s Hz</string>
+    <string name="tuning_status">Ladenie: %1$s</string>
+    <string name="start_tuning">Spustiť ladenie</string>
+    <string name="stop_tuning">Zastaviť</string>
+    <string name="tuning_waiting">Čaká sa…</string>
+    <string name="tuning_unknown">Neznáme</string>
+    <string name="tuning_too_low">Príliš nízke (%1$s)</string>
+    <string name="tuning_too_high">Príliš vysoké (%1$s)</string>
+    <string name="tuning_in_tune">Naladené (%1$s)</string>
+    <string name="g4">G4</string>
+    <string name="c4">C4</string>
+    <string name="e4">E4</string>
+    <string name="a4">A4</string>
+
+    <!-- SettingsScreen -->
+    <string name="settings_screen_title">Nastavenia</string>
+    <string name="settings_general">Všeobecné</string>
+    <string name="settings_tuning">Ladenie</string>
+    <string name="settings_tuning_value">G4-C4-E4-A4</string>
+    <string name="settings_theme">Téma</string>
+    <string name="settings_theme_value">Svetlá</string>
+    <string name="settings_note_names">Názvy nôt</string>
+    <string name="settings_note_names_value">C-D-E-F-G-A-H</string>
+    <string name="settings_language">Jazyk</string>
+    <string name="settings_language_value">Slovenčina</string>
+    <string name="settings_info">Informácie</string>
+    <string name="author">Autor</string>
+    <string name="author_name">Matej Martinický</string>
+    <string name="version">Verzia</string>
+    <string name="version_version">0.0.8 alfa</string>
+    <string name="contact">Kontakt</string>
+    <string name="email">e-mail</string>
+    <string name="email_address">martinicky3@stud.uniza.sk</string>
+
+    <!-- InstrumentButton -->
+    <string name="instrument_button_content_description">Tlačidlo na výber nástroja</string>
+
+    <!-- ukulele chords -->
+    <string name="ukulele_c">C</string>
+    <string name="ukulele_f">F</string>
+    <string name="ukulele_g">G</string>
+    <string name="ukulele_e">E</string>
+    <string name="ukulele_a">A</string>
+    <string name="ukulele_b">B</string>
+    <string name="ukulele_am">Am</string>
+    <string name="ukulele_em">Em</string>
+    <string name="ukulele_bm">Bm</string>
+    <string name="ukulele_dm">Dm</string>
+    <string name="ukulele_c7">C7</string>
+    <string name="ukulele_e7">E7</string>
+    <string name="ukulele_a7">A7</string>
+    <string name="ukulele_d7">D7</string>
+
+    <!-- ThemeCard -->
+    <string name="theme_color">Farba témy</string>
+    <string name="theme_white">Biela</string>
+    <string name="theme_black">Čierna</string>
+    <string name="theme_green">Zelená</string>
+    <string name="theme_orange">Oranžová</string>
+</resources>

@@ -19,8 +19,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.themeViewModel.ThemeViewModel
 import com.example.ukuleletuner2.ui.theme.ColorThemes
 
@@ -48,10 +50,11 @@ fun ThemeCard(themeViewModel: ThemeViewModel) {
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = when (themeViewModel.currentTheme) {
-                    ColorThemes.White -> "White"
-                    ColorThemes.Black -> "Black"
-                    ColorThemes.Green -> "Green"
-                },
+                    ColorThemes.White -> stringResource(R.string.theme_white)
+                    ColorThemes.Black -> stringResource(R.string.theme_black)
+                    ColorThemes.Green -> stringResource(R.string.theme_green)
+                    ColorThemes.Orange -> stringResource(R.string.theme_orange)
+                                                          },
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontWeight = FontWeight.Thin
             )
@@ -66,9 +69,10 @@ fun ThemeCard(themeViewModel: ThemeViewModel) {
                     text = {
                         Text(
                             when (theme) {
-                                ColorThemes.White -> "White"
-                                ColorThemes.Black -> "Black"
-                                ColorThemes.Green -> "Green"
+                                ColorThemes.White -> stringResource(R.string.theme_white)
+                                ColorThemes.Black -> stringResource(R.string.theme_black)
+                                ColorThemes.Green -> stringResource(R.string.theme_green)
+                                ColorThemes.Orange -> stringResource(R.string.theme_orange)
                             }
                         )
                     },

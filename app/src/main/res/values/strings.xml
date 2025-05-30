@@ -70,4 +70,11 @@
     <string name="ukulele_e7">E7</string>
     <string name="ukulele_a7">A7</string>
     <string name="ukulele_d7">D7</string>
+
+    <!-- ThemeCard-->
+    <string name="theme_color">Theme Color</string>
+    <string name="theme_white">White</string>
+    <string name="theme_black">Black</string>
+    <string name="theme_green">Green</string>
+    <string name="theme_orange">Orange</string>
 </resources>
