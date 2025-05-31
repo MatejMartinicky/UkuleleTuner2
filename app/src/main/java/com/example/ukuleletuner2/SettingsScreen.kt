@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ukuleletuner2.ui.components.cards.LanguageSelector
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 
@@ -49,7 +50,7 @@ fun SettingsScreen(
                     navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 ),
                 navigationIcon = {
-                    IconButton(onClick = { /* todo */ }) {
+                    IconButton(onClick = { settingsViewModel.onMenuClick() }) {
                         Icon(
                             Icons.Default.Menu,
                             contentDescription = stringResource(R.string.menu_content_description),
@@ -57,7 +58,7 @@ fun SettingsScreen(
                     }
                 },
 
-                actions = { /*todo*/}
+                actions = { /*todo*/ }
             )
         },
         content = { paddingValues ->
@@ -100,32 +101,9 @@ fun SettingsScreen(
                     ThemeCard(themeViewModel = themeViewModel)
 
                     Spacer(modifier = Modifier.height(16.dp))
-
-
-                    Text(
-                        text = stringResource(R.string.settings_note_names),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Text(
-                        text = stringResource(R.string.settings_note_names_value),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Thin)
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
                     //lanuage
 
                     LanguageSelector(settingsViewModel = settingsViewModel)
-
-                    Text(
-                        text = stringResource(R.string.settings_language),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Text(
-                        text = stringResource(R.string.settings_language_value),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Thin
-                    )
 
                     Spacer(modifier = Modifier.height(16.dp))
 
