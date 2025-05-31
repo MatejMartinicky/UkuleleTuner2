@@ -66,4 +66,7 @@ dependencies {
     implementation(libs.androidx.navigation.dynamic.features.fragment)
     androidTestImplementation(libs.androidx.navigation.testing)
     implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.androidx.glance)
+    implementation(libs.androidx.glance.appwidget)
 }
