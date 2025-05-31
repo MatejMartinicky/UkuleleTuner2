@@ -34,14 +34,6 @@ data class Language(
 @Composable
 fun LanguageSelector(settingsViewModel: SettingsViewModel) {
     val context = LocalContext.current
-    val selectedLanguage = settingsViewModel.language.value
-
-    val languages = listOf(
-        Language("en", R.drawable.flag_usa),
-        Language("sk", R.drawable.flag_slovak),
-        Language("de", R.drawable.flag_german),
-        Language("es", R.drawable.flag_spanish)
-        )
 
     Column {
         Text(stringResource(R.string.settings_language))
@@ -50,7 +42,7 @@ fun LanguageSelector(settingsViewModel: SettingsViewModel) {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.padding(vertical = 8.dp)
         ) {
-            items(languages) { language ->
+            items(settingsViewModel.languages) { language ->
                 FlagImage(
                     flagPainter = painterResource(id = language.flagResource),
                     size = 60.dp,

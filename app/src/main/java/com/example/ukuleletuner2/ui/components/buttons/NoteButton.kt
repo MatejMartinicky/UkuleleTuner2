@@ -30,8 +30,8 @@ fun NoteButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val interactionSource = remember { MutableInteractionSource() }
-    val isPressed: Boolean by interactionSource.collectIsPressedAsState()
+    val interactionSource = remember { MutableInteractionSource() } //to viewModel!!!
+    val isPressed: Boolean by interactionSource.collectIsPressedAsState() //to viewModel!!!
 
     Box(
         contentAlignment = Alignment.Center,
