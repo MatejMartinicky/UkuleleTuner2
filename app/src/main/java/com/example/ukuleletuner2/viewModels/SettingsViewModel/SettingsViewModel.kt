@@ -31,4 +31,14 @@ class SettingsViewModel : ViewModel() {
         val activity = context as Activity
         activity.recreate()
     }
+
+    fun onMenuClick() {
+        //TODO
+    }
+
+    fun onBackClick() {
+        //TODO
+    }
+
+
 }
