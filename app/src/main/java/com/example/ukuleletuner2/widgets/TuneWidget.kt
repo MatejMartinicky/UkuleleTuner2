@@ -1,26 +1,24 @@
 package com.example.ukuleletuner2.widgets
 
-import android.R
 import android.content.Context
-import androidx.glance.text.Text
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.glance.Button
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
+import androidx.glance.LocalContext
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import androidx.glance.appwidget.provideContent
 import androidx.glance.background
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Column
+import androidx.glance.layout.Row
 import androidx.glance.layout.fillMaxSize
-import androidx.glance.text.FontWeight
-import androidx.glance.text.TextStyle
-import androidx.glance.unit.ColorProvider
-import com.example.ukuleletuner2.widgets.TuneWidget
+import androidx.glance.layout.padding
+import com.example.ukuleletuner2.R
 
 //https://www.youtube.com/watch?v=bhrN7yFG0D4 (butt like really old version)
 
@@ -41,23 +39,63 @@ class TuneWidgetReceiver : GlanceAppWidgetReceiver() {
 //separate into separat file
 @Composable
 fun TuneWidgetContent() {
+    val context = LocalContext.current
+
+    // Separate out later
+    val ukuleleStrings = listOf(
+        context.getString(R.string.g4) to 392.00,
+        context.getString(R.string.c4) to 261.63,
+        context.getString(R.string.e4) to 329.63,
+        context.getString(R.string.a4) to 440.00
+    )
+
     Column(
         modifier = GlanceModifier
             .fillMaxSize()
-            .background(Color.DarkGray),
+            .background(Color.DarkGray)
+            .padding(16.dp),
         verticalAlignment = Alignment.Vertical.CenterVertically,
-        horizontalAlignment = Alignment.Horizontal.CenterHorizontally
-    )
-    {
-        Text(
-            text = "0",
-            style = TextStyle(
-                fontWeight = FontWeight.Medium,
-                fontSize = 26.sp
+        horizontalAlignment = Alignment.Horizontal.CenterHorizontally,
+      ) {
+
+        Row(
+            horizontalAlignment = Alignment.Horizontal.CenterHorizontally,
+        ) {
+            TuneButton(
+                tone = ukuleleStrings[0].first,
+                inTune = false,
+                onClick = {
+                    //TODO
+                }
             )
-        )
-        Button(text = "Tune",
-            onClick = {}
-        )
+
+            TuneButton(
+                tone = ukuleleStrings[1].first,
+                inTune = false,
+                onClick = {
+                    //TODO
+                }
+            )
+        }
+
+        Row(
+            horizontalAlignment = Alignment.Horizontal.CenterHorizontally,
+        ) {
+            TuneButton(
+                tone = ukuleleStrings[2].first,
+                inTune = false,
+                onClick = {
+                    //TODO
+                }
+            )
+
+            TuneButton(
+                tone = ukuleleStrings[3].first,
+                inTune = false,
+                onClick = {
+                    //TODO
+                }
+            )
+        }
     }
 }
