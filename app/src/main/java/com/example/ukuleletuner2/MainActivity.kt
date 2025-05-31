@@ -12,7 +12,8 @@ import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 import com.example.ukuleletuner2.ui.theme.AppTheme
 import com.example.ukuleletuner2.ui.theme.ColorThemes
 
-//language switching merge
+
+//comenting on development
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
