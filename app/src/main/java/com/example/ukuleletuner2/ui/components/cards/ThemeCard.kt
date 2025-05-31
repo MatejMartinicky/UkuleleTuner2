@@ -1,84 +1,53 @@
 package com.example.ukuleletuner2.ui.components.cards
 
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
+import com.example.ukuleletuner2.ui.components.images.ThemeImage
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 import com.example.ukuleletuner2.ui.theme.ColorThemes
+import androidx.compose.foundation.lazy.items
+
+fun getThemeImageResource(theme: ColorThemes): Int { //to view model
+    return when (theme) {
+        ColorThemes.White -> R.drawable.theme_white
+        ColorThemes.Orange -> R.drawable.theme_orange
+        ColorThemes.Green -> R.drawable.theme_green
+        ColorThemes.Black -> R.drawable.theme_black
+    }
+}
 
 @Composable
 fun ThemeCard(themeViewModel: ThemeViewModel) {
-    var expanded by remember { mutableStateOf(false) }
+    val themes = ColorThemes.entries
 
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { expanded = true },
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
-        ),
-        shape = RoundedCornerShape(12.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp)
-        ) {
-            Text(
-                text = "Theme Color",
-                color = MaterialTheme.colorScheme.onBackground,
-                fontWeight = FontWeight.Medium
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = when (themeViewModel.currentTheme) {
-                    ColorThemes.White -> stringResource(R.string.theme_white)
-                    ColorThemes.Black -> stringResource(R.string.theme_black)
-                    ColorThemes.Green -> stringResource(R.string.theme_green)
-                    ColorThemes.Orange -> stringResource(R.string.theme_orange)
-                                                          },
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontWeight = FontWeight.Thin
-            )
-        }
+    Column {
+        Text(
+            text = stringResource(R.string.theme_color),
+            color = MaterialTheme.colorScheme.onBackground,
+            fontWeight = FontWeight.Medium
+        )
 
-        DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false }
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.padding(vertical = 8.dp)
         ) {
-            ColorThemes.entries.forEach { theme ->
-                DropdownMenuItem(
-                    text = {
-                        Text(
-                            when (theme) {
-                                ColorThemes.White -> stringResource(R.string.theme_white)
-                                ColorThemes.Black -> stringResource(R.string.theme_black)
-                                ColorThemes.Green -> stringResource(R.string.theme_green)
-                                ColorThemes.Orange -> stringResource(R.string.theme_orange)
-                            }
-                        )
-                    },
+            items(themes) { theme ->
+                ThemeImage(
+                    themePainter = painterResource(id = getThemeImageResource(theme)),
+                    size = 60.dp,
                     onClick = {
                         themeViewModel.updateTheme(theme)
-                        expanded = false
                     }
                 )
             }
