@@ -14,14 +14,13 @@ import androidx.glance.layout.Row
 import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.padding
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.res.stringResource
-import androidx.glance.appwidget.cornerRadius
+import androidx.glance.Image
+import androidx.glance.ImageProvider
 import androidx.glance.layout.Box
-import androidx.glance.layout.Spacer
-import androidx.glance.layout.width
 import androidx.glance.text.Text
-import androidx.glance.action.clickable
 import androidx.glance.appwidget.action.actionRunCallback
+import androidx.glance.layout.ContentScale
+import androidx.glance.layout.size
 import com.example.ukuleletuner2.R
 
 @Composable
@@ -32,6 +31,11 @@ fun TuneWidgetContent(viewModel: TuningWidgetViewModel) {
     val isListening by viewModel.isListening.collectAsState()
     val frequency by viewModel.frequency.collectAsState()
 
+    val imageHeight = 200.dp
+    val stringSpacing = 8.dp
+    val buttonSize = 60.dp
+    val stringThickness = 3.dp
+
     LaunchedEffect(viewModel) {
         WidgetManager.setViewModel(viewModel)
     }
@@ -41,65 +45,52 @@ fun TuneWidgetContent(viewModel: TuningWidgetViewModel) {
         verticalAlignment = Alignment.Vertical.CenterVertically,
         horizontalAlignment = Alignment.Horizontal.CenterHorizontally,
     ) {
-        Row {
-            Box(
-                modifier = GlanceModifier
-                    .cornerRadius(16.dp)
-                    .background(if (isListening) Color.Gray else Color.Green)
-                    .clickable(actionRunCallback<StartTuningAction>())
-                    .padding(12.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(context.getString(R.string.widget_start))
-            }
-
-            Spacer(modifier = GlanceModifier.width(8.dp))
-
-            Box(
-                modifier = GlanceModifier
-                    .cornerRadius(16.dp)
-                    .background(if (!isListening) Color.Gray else Color.Red)
-                    .clickable(actionRunCallback<StopTuningAction>())
-                    .padding(12.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(context.getString(R.string.widget_stop))
-            }
-        }
+        PlayButton(
+            buttonSize,
+            isListening = isListening,
+            context = context,
+            onStart = actionRunCallback<StartTuningAction>(),
+            onStop = actionRunCallback<StopTuningAction>()
+        )
 
         Text(
             text = when {
-                frequency > 0 -> context.getString(R.string.widget_frequency, frequency.toInt().toString())
+                frequency > 0 -> context.getString(
+                    R.string.widget_frequency,
+                    frequency.toInt().toString()
+                )
+
                 isListening -> context.getString(R.string.widget_stop)
                 else -> context.getString(R.string.widget_start)
             },
             modifier = GlanceModifier.padding(8.dp)
         )
 
-        Row {
-            repeat(2) { i ->
-                TuneButton(
-                    tone = strings[i].getDisplayName(context),
-                    inTune = tuningStatus[strings[i]] ?: false,
-                    buttonSize = 60,
-                    buttonColor = strings[i].color,
-                    modifier = GlanceModifier.padding(4.dp),
-                    onClick = { }
-                )
-            }
-        }
+        Box(
+            contentAlignment = Alignment.Center
+        ) {
 
-        Row {
-            repeat(2) { i ->
-                val index = i + 2
-                TuneButton(
-                    tone = strings[index].getDisplayName(context),
-                    inTune = tuningStatus[strings[index]] ?: false,
-                    buttonSize = 60,
-                    buttonColor = strings[index].color,
-                    modifier = GlanceModifier.padding(4.dp),
-                    onClick = { }
-                )
+            Image(
+                provider = ImageProvider(R.drawable.ukulele_nack),
+                contentDescription = "Ukulele",
+                modifier = GlanceModifier
+                    .size(imageHeight),
+                contentScale = ContentScale.Fit
+            )
+
+            Row(
+                verticalAlignment = Alignment.Vertical.CenterVertically,
+                modifier = GlanceModifier.padding(16.dp)
+            ) {
+                repeat(4) { i ->
+                    StringIndicator(
+                        color = strings[i].color,
+                        inTune = tuningStatus[strings[i]] ?: false,
+                        size = imageHeight,
+                        stringThickness = stringThickness,
+                        modifier = GlanceModifier.padding(horizontal  = stringSpacing)
+                    )
+                }
             }
         }
     }
