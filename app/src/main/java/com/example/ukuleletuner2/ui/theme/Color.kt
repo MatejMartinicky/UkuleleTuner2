@@ -218,4 +218,8 @@ val surfaceContainerDarkHighContrast = Color(0xFF2B3133)
 val surfaceContainerHighDarkHighContrast = Color(0xFF363C3E)
 val surfaceContainerHighestDarkHighContrast = Color(0xFF424849)
 
-
+//node colors
+val ukuleleG4 =Color(0xFF59AB86)
+val ukuleleC4 = Color(0xFF659495)
+val ukuleleE4 = Color(0xFFF09222)
+val ukuleleA4 = Color(0xFFDD2625)

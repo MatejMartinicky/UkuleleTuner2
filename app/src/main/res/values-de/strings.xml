@@ -82,4 +82,10 @@
     <string name="theme_black">Schwarz</string>
     <string name="theme_green">Grün</string>
     <string name="theme_orange">Orange</string>
+
+    <!-- TuneWidget -->
+    <string name="widget_start">Start</string>
+    <string name="widget_stop">Stopp</string>
+    <string name="widget_frequency">%1$s Hz</string>
+
 </resources>
