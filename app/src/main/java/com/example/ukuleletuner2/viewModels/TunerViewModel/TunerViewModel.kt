@@ -12,13 +12,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class TunerViewModel(context: Context) : ViewModel() {
+
     private val recorder = TuningRecorder(context)
     private val detector = TuningDetector()
 
     val isRecording = MutableStateFlow(false)
     val frequency = MutableStateFlow(0.0)
-    val status = MutableStateFlow("")
+    val tuneStatus = MutableStateFlow(TuneStatus())
 
     fun toggle() {
         if (isRecording.value) {
@@ -39,12 +41,12 @@ class TunerViewModel(context: Context) : ViewModel() {
                     while (isRecording.value) {
                         if (recorder.read(buffer) > 0) {
                             frequency.value = detector.getDetectedFrequency(buffer)
-                            status.value = getStatus(detector.getStringTuningStatus(buffer))
+                            tuneStatus.value = getState(detector.getStringTuningStatus(buffer))
                         }
                         delay(100)
                     }
                 } catch (e: Exception) {
-                    status.value = "Error"
+                    tuneStatus.value = TuneStatus(TuningStatus.Error)
                 } finally {
                     recorder.stop()
                 }
@@ -52,8 +54,12 @@ class TunerViewModel(context: Context) : ViewModel() {
         }
     }
 
-    private fun getStatus(strings: Map<UkuleleString, Boolean>): String {
+    private fun getState(strings: Map<UkuleleString, Boolean>): TuneStatus {
         val inTune = strings.entries.find { it.value }?.key
-        return inTune?.name ?: "Tune"
+        return if (inTune != null) {
+            TuneStatus(TuningStatus.Tuned, inTune.name)
+        } else {
+            TuneStatus(TuningStatus.Not_Tuned)
+        }
     }
 }

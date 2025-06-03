@@ -27,7 +27,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.ukuleletuner2.viewModels.TunerViewModel.TuneStatus
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TunerViewModel
+import com.example.ukuleletuner2.viewModels.TunerViewModel.TuningStatus
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,13 +41,14 @@ fun TunerScreen(
     val viewModel: TunerViewModel = viewModel { TunerViewModel(context) }
     val isRecording by viewModel.isRecording.collectAsState()
     val frequency by viewModel.frequency.collectAsState()
-    val status by viewModel.status.collectAsState()
+    val tuneStatus by viewModel.tuneStatus.collectAsState()
 
-    val displayStatus = when (status) {
-        "Error" -> context.getString(R.string.tuning_error)
-        "Tune" -> context.getString(R.string.tuning_waiting)
-        "" -> context.getString(R.string.tuning_waiting)
-        else -> context.getString(R.string.tuning_in_tune, status)
+    val displayStatus = when (tuneStatus.status) {
+        TuningStatus.Error -> context.getString(R.string.tuning_error)
+        TuningStatus.Waiting -> context.getString(R.string.tuning_waiting)
+        TuningStatus.Not_Tuned -> context.getString(R.string.tuning_waiting)
+        TuningStatus.Tuned -> context.getString(R.string.tuning_in_tune, tuneStatus.note ?: "")
+        else -> {}
     }
 
     Scaffold(
