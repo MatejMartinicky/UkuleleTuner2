@@ -36,6 +36,8 @@
     <string name="c4">C4</string>
     <string name="e4">E4</string>
     <string name="a4">A4</string>
+    <string name="close_to">blízko %1$s</string>
+    <string name="tuning_error">chyba pri pokuse o ladenie</string>
 
     <!-- SettingsScreen -->
     <string name="settings_screen_title">Nastavenia</string>
@@ -87,5 +89,4 @@
     <string name="widget_start">Štart</string>
     <string name="widget_stop">Stop</string>
     <string name="widget_frequency">%1$s Hz</string>
-
 </resources>

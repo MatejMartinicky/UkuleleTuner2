@@ -31,6 +31,8 @@
     <string name="c4">C4</string>
     <string name="e4">E4</string>
     <string name="a4">A4</string>
+    <string name="close_to">close to %1$s</string>
+    <string name="tuning_error">error while trying to tune</string>
 
     <!-- SettingsScreen -->
     <string name="settings_screen_title">Settings</string>
