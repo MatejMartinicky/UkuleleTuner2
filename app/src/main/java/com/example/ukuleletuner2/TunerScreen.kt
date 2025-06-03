@@ -27,7 +27,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.ukuleletuner2.viewModels.TunerViewModel.TuneStatus
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TunerViewModel
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TuningStatus
 
@@ -44,10 +43,10 @@ fun TunerScreen(
     val tuneStatus by viewModel.tuneStatus.collectAsState()
 
     val displayStatus = when (tuneStatus.status) {
-        TuningStatus.Error -> context.getString(R.string.tuning_error)
-        TuningStatus.Waiting -> context.getString(R.string.tuning_waiting)
-        TuningStatus.Not_Tuned -> context.getString(R.string.tuning_waiting)
-        TuningStatus.Tuned -> context.getString(R.string.tuning_in_tune, tuneStatus.note ?: "")
+        TuningStatus.ERROR -> context.getString(R.string.tuning_error)
+        TuningStatus.WAITING -> context.getString(R.string.tuning_waiting)
+        TuningStatus.NOT_TUNED -> context.getString(R.string.tuning_waiting)
+        TuningStatus.TUNED -> context.getString(R.string.tuning_in_tune, tuneStatus.note ?: "")
         else -> {}
     }
 

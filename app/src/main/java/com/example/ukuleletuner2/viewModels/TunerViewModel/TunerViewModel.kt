@@ -46,7 +46,7 @@ class TunerViewModel(context: Context) : ViewModel() {
                         delay(100)
                     }
                 } catch (e: Exception) {
-                    tuneStatus.value = TuneStatus(TuningStatus.Error)
+                    tuneStatus.value = TuneStatus(TuningStatus.ERROR)
                 } finally {
                     recorder.stop()
                 }
@@ -57,9 +57,9 @@ class TunerViewModel(context: Context) : ViewModel() {
     private fun getState(strings: Map<UkuleleString, Boolean>): TuneStatus {
         val inTune = strings.entries.find { it.value }?.key
         return if (inTune != null) {
-            TuneStatus(TuningStatus.Tuned, inTune.name)
+            TuneStatus(TuningStatus.TUNED, inTune.name)
         } else {
-            TuneStatus(TuningStatus.Not_Tuned)
+            TuneStatus(TuningStatus.NOT_TUNED)
         }
     }
 }
