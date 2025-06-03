@@ -2,6 +2,8 @@ package com.example.ukuleletuner2.fastFurierTransform
 
 import kotlin.math.sqrt
 
+//PROBLABLY LIKE RECOMANDED BY THAT CODE ASISTENT IT CAME WITH IDK SOURCE!!!!
+//OR FROM SOME GITHUB IDK
 class FourierTransform(private val sampleRate: Int, private val bufferSize: Int) {
     fun processFFT(audioData: ShortArray): Double {
         val real = DoubleArray(bufferSize)
