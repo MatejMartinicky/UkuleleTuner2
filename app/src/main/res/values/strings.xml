@@ -1,4 +1,7 @@
 <resources>
+    <string name="web_client_id" translatable="false">802311192438-qridal2anah21o6st48athmint0ojcpl.apps.googleusercontent.com</string>
+
+    <!-- ============================================= -->
     <string name="app_name">UkuleleTuner2</string>
 
     <string name="chords_screen_title">Chords</string>
