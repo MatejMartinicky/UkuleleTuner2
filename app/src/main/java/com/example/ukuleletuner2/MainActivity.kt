@@ -1,6 +1,7 @@
 package com.example.ukuleletuner2
 
 import android.Manifest
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.example.ukuleletuner2.service.FirebaseMessagingService
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 import com.example.ukuleletuner2.ui.theme.AppTheme
 import com.example.ukuleletuner2.ui.theme.ColorThemes
+import com.example.ukuleletuner2.utility.LocaleHelper
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.firebase.messaging.FirebaseMessaging
 
@@ -30,8 +32,14 @@ class MainActivity : ComponentActivity() {
         )
     }
 
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase, LocaleHelper.getLanguage(newBase)))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        initializeFirebaseTopics()
 
         //NOTIFICATION work-------------------------
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -49,12 +57,11 @@ class MainActivity : ComponentActivity() {
             }
 
             val token = task.result
-            Log.d("FCM", "FCM Token: $token")
-            Toast.makeText(baseContext, "FCM Token: $token", Toast.LENGTH_SHORT).show()
+            Log.d("FCM", "FCM Token: $token") //for now
+            //Toast.makeText(baseContext, "FCM Token: $token", Toast.LENGTH_SHORT).show()
         }
 
         //MIC work----------------------------
-        //mic permission
         ActivityCompat.requestPermissions(
             this,
             arrayOf(Manifest.permission.RECORD_AUDIO),
@@ -75,5 +82,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun initializeFirebaseTopics() {
+        val currentLanguage = LocaleHelper.getLanguage(this)
+        FirebaseMessaging.getInstance().subscribeToTopic("news_$currentLanguage")
+        FirebaseMessaging.getInstance().subscribeToTopic("updates_$currentLanguage")
+        Log.d("FCM", "Subscribed to Firebase topics for language: $currentLanguage")
     }
 }

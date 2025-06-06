@@ -13,6 +13,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
 //https://www.youtube.com/watch?v=T_vnqMk2QxM (full)
+//https://www.youtube.com/watch?v=tSlE-OfCV40
 
 class FirebaseMessagingService : FirebaseMessagingService() {
 
@@ -35,7 +36,6 @@ class FirebaseMessagingService : FirebaseMessagingService() {
 
         Log.d(TAG, "Message received - Title: $title, Body: $body, Data: $data")
 
-        // Show simple notification
         showNotification(title, body)
     }
 
