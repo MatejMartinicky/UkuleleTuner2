@@ -92,7 +92,7 @@ fun SignIScreen(
             Spacer(modifier = Modifier.weight(0.1f))
 
             GoogleLogoButton(
-                text = "Sign in with you Google account",
+                text = stringResource(R.string.login_button),
                 onClick = onSignInClick)
         }
     }

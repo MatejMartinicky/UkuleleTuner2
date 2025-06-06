@@ -9,6 +9,8 @@ import java.util.Locale
 import androidx.core.content.edit
 
 //source
+//rename
+//pull old source from git history and add that too
 class LocaleHelper {
     companion object {
         private const val SELECTED_LANGUAGE = "selected_language"

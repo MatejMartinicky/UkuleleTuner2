@@ -50,17 +50,6 @@ class MainActivity : ComponentActivity() {
             )
         }
 
-        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
-                return@addOnCompleteListener
-            }
-
-            val token = task.result
-            Log.d("FCM", "FCM Token: $token") //for now
-            //Toast.makeText(baseContext, "FCM Token: $token", Toast.LENGTH_SHORT).show()
-        }
-
         //MIC work----------------------------
         ActivityCompat.requestPermissions(
             this,
