@@ -92,6 +92,7 @@
 
     <!-- SignInScreen -->
     <string name="sign_in_prompt">Iniciar sesión en la aplicación</string>
-    <string name="sign_in_disclamer">Al hacer clic en "Iniciar sesión", aceptas los Términos de servicio y la Política de usuario (por ahora no existen).</string>
+    <string name="sign_in_disclaimer">Al hacer clic en "Iniciar sesión", aceptas los Términos de servicio y la Política de usuario (por ahora no existen).</string>
+    <string name="loggin_button">Inicia sesión con tu cuenta de Google</string>
 
 </resources>

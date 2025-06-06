@@ -90,5 +90,6 @@
 
     <!-- SignInScreen -->
     <string name="sign_in_prompt">Login into app</string>
-    <string name="sign_in_disclamer">by clicking sing in you agree to Terms of service and User Policy (there are none for now)</string>
+    <string name="sign_in_disclaimer">by clicking sing in you agree to Terms of service and User Policy (there are none for now)</string>
+    <string name="loggin_button">Sign in with your Google account</string>
 </resources>

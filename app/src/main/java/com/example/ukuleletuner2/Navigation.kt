@@ -36,9 +36,12 @@ fun Navigation(
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = SignInScreen // for now//WelcomeScreen
+        startDestination = WelcomeScreen
     ) {
-        composable<WelcomeScreen> { WelcomeScreen( onNavigateToTunerScreen = { navController.navigate(route = InstrumentChoiceScreen) } ) }
+        composable<WelcomeScreen> { WelcomeScreen(
+            onNavigateToTunerScreen = { navController.navigate(route = InstrumentChoiceScreen) },
+            onNavigateToLoginScreen = { navController.navigate(route = SignInScreen) }
+        ) }
 
         //todo route here has to be absolutely changed!!!
         composable<InstrumentChoiceScreen> { InstrumentChoiceScreen( onNavigateToTunerScreen = { navController.navigate(route = TunerScreen) } ) }
@@ -79,11 +82,7 @@ fun Navigation(
 
             LaunchedEffect(key1 = state.isSignInSuccessful) {
                 if (state.isSignInSuccessful) {
-                    navController.navigate(WelcomeScreen) {
-                        popUpTo(SignInScreen) {
-                            inclusive = true
-                        }
-                    }
+                    navController.navigate(InstrumentChoiceScreen)
                     viewModel.resetState()
                 }
             }
