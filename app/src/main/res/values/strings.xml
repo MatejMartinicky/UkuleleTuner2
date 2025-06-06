@@ -87,4 +87,8 @@
     <string name="widget_start">Start</string>
     <string name="widget_stop">Stop</string>
     <string name="widget_frequency">%1$s Hz</string>
+
+    <!-- SignInScreen -->
+    <string name="sign_in_prompt">Login into app</string>
+    <string name="sign_in_disclamer">by clicking sing in you agree to Terms of service and User Policy (there are none for now)</string>
 </resources>

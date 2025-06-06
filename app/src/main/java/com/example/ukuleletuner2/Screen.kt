@@ -17,3 +17,6 @@ object InstrumentChoiceScreen
 
 @Serializable
 object ChordsScreen
+
+@Serializable
+object SignInScreen

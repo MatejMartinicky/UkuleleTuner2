@@ -90,4 +90,8 @@
     <string name="widget_stop">Detener</string>
     <string name="widget_frequency">%1$s Hz</string>
 
+    <!-- SignInScreen -->
+    <string name="sign_in_prompt">Iniciar sesión en la aplicación</string>
+    <string name="sign_in_disclamer">Al hacer clic en "Iniciar sesión", aceptas los Términos de servicio y la Política de usuario (por ahora no existen).</string>
+
 </resources>
