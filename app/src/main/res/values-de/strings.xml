@@ -90,4 +90,8 @@
     <string name="widget_stop">Stopp</string>
     <string name="widget_frequency">%1$s Hz</string>
 
+    <!-- SignInScreen -->
+    <string name="sign_in_prompt">In die App einloggen</string>
+    <string name="sign_in_disclamer">Durch Klicken auf „Anmelden“ stimmen Sie den Nutzungsbedingungen und der Benutzerordnung zu (derzeit nicht vorhanden).</string>
+
 </resources>
