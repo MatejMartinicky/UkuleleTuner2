@@ -80,5 +80,13 @@ dependencies {
     implementation(libs.play.services.auth)
     implementation(libs.coil.compose)
 
+    implementation(libs.firebase.database)
+
+    implementation(libs.firebase.messaging)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.google.firebase.auth.ktx)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.messaging.ktx)
+
 
 }

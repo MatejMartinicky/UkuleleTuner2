@@ -93,5 +93,9 @@
     <!-- SignInScreen -->
     <string name="sign_in_prompt">In die App einloggen</string>
     <string name="sign_in_disclaimer">Durch Klicken auf „Anmelden“ stimmen Sie den Nutzungsbedingungen und der Benutzerordnung zu (derzeit nicht vorhanden).</string>
-    <string name="loggin_button">Melden Sie sich mit Ihrem Google-Konto an</string>
+    <string name="login_button">Melden Sie sich mit Ihrem Google-Konto an</string>
+
+    <!-- FirebaseMessagingService -->
+    <string name="default_notification_name">Neue Benachrichtigung</string>
+    <string name="default_notification_message">Neue Nachricht empfangen</string>
 </resources>

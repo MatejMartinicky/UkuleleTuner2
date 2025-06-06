@@ -6,11 +6,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.ui.components.cards.Language
-import com.example.ukuleletuner2.utility.updateLocale
+import com.example.ukuleletuner2.utility.LocaleHelper
 
 
 class SettingsViewModel : ViewModel() {
-    var language = mutableStateOf("en")
+    var language = mutableStateOf("en") //to enum
         private set
 
     val languages = listOf(
@@ -20,12 +20,20 @@ class SettingsViewModel : ViewModel() {
         Language("es", R.drawable.flag_spanish)
     )
 
+    fun initializeLanguage(context: Context) {
+        val currentLang = LocaleHelper.getLanguage(context)
+        language.value = currentLang
+    }
+
     fun setLanguage(lang: String) {
         language.value = lang
     }
 
     fun changeLanguageAndRestart(context: Context, languageCode: String) {
-        updateLocale(context, languageCode)
+        LocaleHelper.updateFirebaseTopics(context, languageCode)
+
+        LocaleHelper.setLocale(context, languageCode)
+
         setLanguage(languageCode)
 
         val activity = context as Activity
@@ -39,6 +47,4 @@ class SettingsViewModel : ViewModel() {
     fun onBackClick() {
         //TODO
     }
-
-
 }

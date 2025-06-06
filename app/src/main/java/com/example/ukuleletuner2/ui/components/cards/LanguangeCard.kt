@@ -19,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.ui.components.images.FlagImage
-import com.example.ukuleletuner2.utility.updateLocale
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 
 data class Language(

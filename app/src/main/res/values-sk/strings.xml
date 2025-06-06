@@ -93,6 +93,9 @@
     <!-- SignInScreen -->
     <string name="sign_in_prompt">>Prihláste sa do aplikácie</string>
     <string name="sign_in_disclaimer">Al hacer clic en "Iniciar sesión", aceptas los Términos de servicio y la Política de usuario (por ahora no existen).</string>
-    <string name="loggin_button">Prihláste sa pomocou svojho účtu Google</string>
+    <string name="login_button">Prihláste sa pomocou svojho účtu Google</string>
 
+    <!-- FirebaseMessagingService -->
+    <string name="default_notification_name">Nové upozornenie</string>
+    <string name="default_notification_message">Nová správa prijatá</string>
 </resources>
