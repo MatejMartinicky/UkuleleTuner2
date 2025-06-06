@@ -92,6 +92,6 @@
 
     <!-- SignInScreen -->
     <string name="sign_in_prompt">In die App einloggen</string>
-    <string name="sign_in_disclamer">Durch Klicken auf „Anmelden“ stimmen Sie den Nutzungsbedingungen und der Benutzerordnung zu (derzeit nicht vorhanden).</string>
-
+    <string name="sign_in_disclaimer">Durch Klicken auf „Anmelden“ stimmen Sie den Nutzungsbedingungen und der Benutzerordnung zu (derzeit nicht vorhanden).</string>
+    <string name="loggin_button">Melden Sie sich mit Ihrem Google-Konto an</string>
 </resources>

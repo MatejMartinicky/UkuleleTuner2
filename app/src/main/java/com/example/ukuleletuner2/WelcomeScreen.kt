@@ -38,7 +38,10 @@ import androidx.compose.ui.res.stringResource
 
 
 @Composable
-fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
+fun WelcomeScreen(
+    onNavigateToTunerScreen: () -> Unit,
+    onNavigateToLoginScreen: () -> Unit
+) {
     Surface(modifier = Modifier
         .fillMaxSize(),
         color = MaterialTheme.colorScheme.primaryContainer
@@ -90,7 +93,7 @@ fun WelcomeScreen(onNavigateToTunerScreen: () -> Unit) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Button(
-                    onClick = onNavigateToTunerScreen,
+                    onClick = onNavigateToLoginScreen,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary,
                         contentColor = MaterialTheme.colorScheme.onPrimary

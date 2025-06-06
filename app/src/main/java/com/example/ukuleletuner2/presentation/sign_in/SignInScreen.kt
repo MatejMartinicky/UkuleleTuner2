@@ -6,20 +6,15 @@ package com.example.ukuleletuner2.presentation.sign_in
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -87,7 +82,7 @@ fun SignIScreen(
             Spacer(modifier = Modifier.weight(0.3f))
 
             Text(
-                text = stringResource(R.string.sign_in_disclamer),
+                text = stringResource(R.string.sign_in_disclaimer),
                 style = MaterialTheme.typography.bodySmall,
                 fontWeight = FontWeight.Normal,
                 textAlign = TextAlign.Center,
@@ -97,7 +92,7 @@ fun SignIScreen(
             Spacer(modifier = Modifier.weight(0.1f))
 
             GoogleLogoButton(
-                text = "sign in",
+                text = "Sign in with you Google account",
                 onClick = onSignInClick)
         }
     }
