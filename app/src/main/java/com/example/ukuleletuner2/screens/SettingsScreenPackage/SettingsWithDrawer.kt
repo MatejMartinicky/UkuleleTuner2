@@ -10,7 +10,6 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import com.example.ukuleletuner2.screens.TunerScreenPackage.DrawerContent
-import com.example.ukuleletuner2.screens.TunerScreenPackage.TunerTopBar
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,8 +51,7 @@ internal fun SettingsWithDrawer(
                     }
                 )
             }
-        ) {
-            paddingValues ->
+        ) { paddingValues ->
             content(paddingValues)
         }
     }

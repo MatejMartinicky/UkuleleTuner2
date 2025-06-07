@@ -54,8 +54,10 @@ class FourierTransform(private val sampleRate: Int, private val bufferSize: Int)
         fft(oddReal, oddImag)
 
         for (k in 0 until n / 2) {
-            val tReal = oddReal[k] * kotlin.math.cos(2 * Math.PI * k / n) - oddImag[k] * kotlin.math.sin(2 * Math.PI * k / n)
-            val tImag = oddReal[k] * kotlin.math.sin(2 * Math.PI * k / n) + oddImag[k] * kotlin.math.cos(2 * Math.PI * k / n)
+            val tReal =
+                oddReal[k] * kotlin.math.cos(2 * Math.PI * k / n) - oddImag[k] * kotlin.math.sin(2 * Math.PI * k / n)
+            val tImag =
+                oddReal[k] * kotlin.math.sin(2 * Math.PI * k / n) + oddImag[k] * kotlin.math.cos(2 * Math.PI * k / n)
 
             real[k] = evenReal[k] + tReal
             imaginary[k] = evenImag[k] + tImag

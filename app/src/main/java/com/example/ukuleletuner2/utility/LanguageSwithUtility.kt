@@ -2,11 +2,9 @@ package com.example.ukuleletuner2.utility
 
 import android.content.Context
 import android.content.res.Configuration
-import android.os.Build
-import android.util.Log
+import androidx.core.content.edit
 import com.google.firebase.messaging.FirebaseMessaging
 import java.util.Locale
-import androidx.core.content.edit
 
 //source
 //rename
@@ -28,7 +26,7 @@ class LocaleHelper {
 
         private fun persist(context: Context, language: String) {
             val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-            prefs.edit() { putString(SELECTED_LANGUAGE, language) }
+            prefs.edit { putString(SELECTED_LANGUAGE, language) }
         }
 
         private fun updateResources(context: Context, language: String): Context {

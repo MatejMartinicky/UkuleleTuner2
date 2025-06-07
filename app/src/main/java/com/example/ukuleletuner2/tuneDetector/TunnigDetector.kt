@@ -1,6 +1,5 @@
 package com.example.ukuleletuner2.tuneDetector
 
-import android.content.Context
 import com.example.ukuleletuner2.fastFurierTransform.FourierTransform
 import com.example.ukuleletuner2.widgets.UkuleleString
 

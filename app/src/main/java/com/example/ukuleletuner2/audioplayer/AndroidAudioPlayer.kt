@@ -10,13 +10,14 @@ import java.io.File
 class AndroidAudioPlayer(private val context: Context) : AudioPlayer {
 
     private var player: MediaPlayer? = null
-    private var beforeHook : (() -> Unit)? = null;
-    private var afterHook : (() -> Unit)? = null;
+    private var beforeHook: (() -> Unit)? = null
+    private var afterHook: (() -> Unit)? = null
 
 
     fun setBeforeHook(hook: () -> Unit) {
-        beforeHook = hook;
+        beforeHook = hook
     }
+
     fun playResource(resourceId: Int) {
         beforeHook?.invoke()
 
@@ -50,6 +51,7 @@ class AndroidAudioPlayer(private val context: Context) : AudioPlayer {
             start()
         }
     }
+
     override fun stop() {
         player?.stop()
         player?.release()
@@ -57,6 +59,6 @@ class AndroidAudioPlayer(private val context: Context) : AudioPlayer {
     }
 
     fun setAfterHook(hook: () -> Unit) {
-        afterHook = hook;
+        afterHook = hook
     }
 }

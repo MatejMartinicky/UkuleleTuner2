@@ -48,10 +48,12 @@ fun DrawerContent(
                     onNavigateToSettings()
                     onCloseDrawer()
                 }
+
                 is MenuItems.Home -> {
                     onNavigateToHome()
                     onCloseDrawer()
                 }
+
                 is MenuItems.Chords -> {
                     onNavigateToChords()
                     onCloseDrawer()

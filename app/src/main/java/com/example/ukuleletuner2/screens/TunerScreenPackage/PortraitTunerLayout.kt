@@ -23,7 +23,10 @@ internal fun PortraitTunerLayout(
     viewModel: TunerViewModel,
     isRecording: Boolean,
     frequency: Double,
-    displayStatus: String
+    displayStatus: String,
+    strings: List<UkuleleString>,
+    playingStringId: Int,
+    onStringPlayed: (UkuleleString) -> Unit
 ) {
     TunerWithDrawer(
         onNavigateToSettings = onNavigateToSettings,
@@ -62,14 +65,16 @@ internal fun PortraitTunerLayout(
                     centerHorizontallyTo(parent)
                 }
             )
-/*
             InstrumentLayout(
                 modifier = Modifier.constrainAs(inst) {
                     bottom.linkTo(parent.bottom)
                     centerHorizontallyTo(parent)
-                }
+                },
+                strings = strings,
+                playingStringId = playingStringId,
+                onStringPlayed = onStringPlayed
             )
-            */
+
         }
     }
 }

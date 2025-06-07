@@ -2,7 +2,6 @@ package com.example.ukuleletuner2.screens.ChordsScreenPackage
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import com.example.ukuleletuner2.chords.Chord
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -11,6 +10,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.audioplayer.AndroidAudioPlayer
+import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.windowInfo.WindowOrientation
 import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 
@@ -55,13 +55,13 @@ fun ChordsScreen(
         }
     }
 
-    when(windowInfo.screenOrientation) {
+    when (windowInfo.screenOrientation) {
         is WindowOrientation.Portrait -> {
             ChordsWithTopBar(
                 onNavigateToSettings = onNavigateToSettings,
                 onNavigateToChords = {},
                 onNavigateToHome = onNavigateToTunerScreen
-            ){ paddingValues ->
+            ) { paddingValues ->
                 ChordsGrid(
                     chords = chords,
                     playingChordId = playingChordId,
@@ -78,6 +78,7 @@ fun ChordsScreen(
                 )
             }
         }
+
         is WindowOrientation.Landscape -> {
             ChordsWithTopBar(
                 onNavigateToSettings = onNavigateToSettings,

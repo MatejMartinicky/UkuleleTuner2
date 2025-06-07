@@ -27,11 +27,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import com.example.ukuleletuner2.R
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.ui.components.buttons.GoogleLogoButton
 import com.example.ukuleletuner2.windowInfo.WindowOrientation
 import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
@@ -54,10 +54,11 @@ fun SignInScreen(
         }
     }
 
-    when(windowInfo.screenOrientation) {
+    when (windowInfo.screenOrientation) {
         is WindowOrientation.Portrait -> {
             PortraitSignInLayout(onSignInClick)
         }
+
         is WindowOrientation.Landscape -> {
             LandscapeSignInLayout(onSignInClick)
         }

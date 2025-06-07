@@ -8,7 +8,7 @@ import androidx.glance.appwidget.provideContent
 import com.example.ukuleletuner2.recorder.TuningRecorder
 
 //https://www.youtube.com/watch?v=bhrN7yFG0D4 (butt like really old version)
-object TuneWidget: GlanceAppWidget() {
+object TuneWidget : GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val tuningRecorder = TuningRecorder(context)
         val viewModel = TuningWidgetViewModel(tuningRecorder)

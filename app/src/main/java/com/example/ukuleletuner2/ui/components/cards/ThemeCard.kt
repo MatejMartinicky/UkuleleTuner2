@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,8 +16,6 @@ import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.ui.components.images.ThemeImage
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
-import com.example.ukuleletuner2.ui.theme.ColorThemes
-import androidx.compose.foundation.lazy.items
 
 @Composable
 fun ThemeCard(themeViewModel: ThemeViewModel) {
