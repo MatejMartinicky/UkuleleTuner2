@@ -33,7 +33,7 @@ internal fun LandscapeTunerLayout(
 ) {
     TunerWithDrawer(
         onNavigateToSettings = onNavigateToSettings,
-        onNavigateToChords = onNavigateToChords
+        onNavigateToChords = onNavigateToChords,
     ) { paddingValues ->
         Row(
             modifier = Modifier

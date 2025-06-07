@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.TunerScreenPackage
+package com.example.ukuleletuner2.ChordsScreenPackage
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.DrawerValue
@@ -9,14 +9,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import com.example.ukuleletuner2.TunerScreenPackage.DrawerContent
 import kotlinx.coroutines.launch
 
-//https://stackoverflow.com/questions/70209466/what-is-the-purpose-of-the-paddingvalues-parameter-in-a-scaffold
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun TunerWithDrawer(
+internal fun ChordsWithTopBar(
     onNavigateToSettings: () -> Unit,
     onNavigateToChords: () -> Unit,
+    onNavigateToHome: () -> Unit,
     content: @Composable (PaddingValues) -> Unit
 ) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -29,9 +30,11 @@ internal fun TunerWithDrawer(
                 DrawerContent(
                     onNavigateToSettings = onNavigateToSettings,
                     onNavigateToChords = onNavigateToChords,
-                    onNavigateToHome = { },
+                    onNavigateToHome = onNavigateToHome,
                     onCloseDrawer = {
-                        scope.launch { drawerState.close() }
+                        scope.launch {
+                            drawerState.close()
+                        }
                     }
                 )
             }
@@ -39,16 +42,14 @@ internal fun TunerWithDrawer(
     ) {
         Scaffold(
             topBar = {
-                TunerTopBar(
+                ChordsTopBar(
                     onNavigateToSettings = onNavigateToSettings,
-                    onNavigateToChords = onNavigateToChords,
                     onOpenDrawer = {
                         scope.launch { drawerState.open() }
                     }
                 )
-            }
-        ) { paddingValues ->
-            content(paddingValues)
-        }
+            },
+            content = content
+        )
     }
 }

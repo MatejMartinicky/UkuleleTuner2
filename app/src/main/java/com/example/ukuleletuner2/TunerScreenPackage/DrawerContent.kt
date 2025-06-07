@@ -17,6 +17,7 @@ import com.example.ukuleletuner2.navigationDrawer.MenuItems
 fun DrawerContent(
     onNavigateToSettings: () -> Unit,
     onNavigateToChords: () -> Unit,
+    onNavigateToHome: () -> Unit,
     onCloseDrawer: () -> Unit
 ) {
     DrawerHeader()
@@ -48,6 +49,7 @@ fun DrawerContent(
                     onCloseDrawer()
                 }
                 is MenuItems.Home -> {
+                    onNavigateToHome()
                     onCloseDrawer()
                 }
                 is MenuItems.Chords -> {

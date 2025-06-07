@@ -19,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.rememberCoroutineScope
+import com.example.ukuleletuner2.ChordsScreenPackage.ChordsScreen
 import com.example.ukuleletuner2.TunerScreenPackage.TunerScreen
 import com.example.ukuleletuner2.settigsScreen.SettingsScreen
 
@@ -73,6 +74,9 @@ fun Navigation(
             ChordsScreen(
                 onNavigateToSettings = {
                     navController.navigate(route = SettingsScreen)
+                },
+                onNavigateToTunerScreen = {
+                    navController.navigate(route = TunerScreen)
                 }
             )
         }
