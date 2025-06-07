@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.TunerScreenPackage
+package com.example.ukuleletuner2.screens.TunerScreenPackage
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.DrawerValue

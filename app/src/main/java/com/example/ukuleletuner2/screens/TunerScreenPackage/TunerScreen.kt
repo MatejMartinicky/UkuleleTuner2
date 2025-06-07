@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.TunerScreenPackage
+package com.example.ukuleletuner2.screens.TunerScreenPackage
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable

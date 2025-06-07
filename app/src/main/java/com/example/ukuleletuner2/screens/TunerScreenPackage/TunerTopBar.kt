@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.TunerScreenPackage
+package com.example.ukuleletuner2.screens.TunerScreenPackage
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding

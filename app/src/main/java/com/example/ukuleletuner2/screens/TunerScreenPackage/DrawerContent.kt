@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.TunerScreenPackage
+package com.example.ukuleletuner2.screens.TunerScreenPackage
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home

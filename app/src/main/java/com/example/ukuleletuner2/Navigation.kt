@@ -20,8 +20,10 @@ import androidx.compose.runtime.getValue
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.rememberCoroutineScope
 import com.example.ukuleletuner2.ChordsScreenPackage.ChordsScreen
-import com.example.ukuleletuner2.TunerScreenPackage.TunerScreen
-import com.example.ukuleletuner2.settigsScreen.SettingsScreen
+import com.example.ukuleletuner2.screens.InstrumentChoiceScreenPackage.InstrumentChoiceScreen
+import com.example.ukuleletuner2.screens.TunerScreenPackage.TunerScreen
+import com.example.ukuleletuner2.screens.SettingsScreenPackage.SettingsScreen
+import com.example.ukuleletuner2.screens.WelcomeScreenPackage.WelcomeScreen
 
 //new way of navigation not so good
 //https://www.youtube.com/watch?v=AIC_OFQ1r3k

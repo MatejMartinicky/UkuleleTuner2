@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.settigsScreen
+package com.example.ukuleletuner2.screens.SettingsScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
