@@ -72,7 +72,17 @@ fun TunerScreen(
                 viewModel = viewModel,
                 isRecording = isRecording,
                 frequency = frequency,
-                displayStatus = displayStatus as String
+                displayStatus = displayStatus as String,
+                strings = strings,
+                playingStringId = playingStringId,
+                onStringPlayed = { string ->
+                    playingStringId = string.id
+                    try {
+                        player.playResource(string.audioFileName)
+                    } catch (e: Exception) {
+                        playingStringId = -1
+                    }
+                }
             )
         }
 

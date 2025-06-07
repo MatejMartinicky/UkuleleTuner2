@@ -17,10 +17,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
-import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.customLayouts.InstrumentLayout
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TunerViewModel
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,7 +77,8 @@ internal fun LandscapeTunerLayout(
                 InstrumentLayout(
                     strings = strings,
                     playingStringId = playingStringId,
-                    onStringPlayed = onStringPlayed)
+                    onStringPlayed = onStringPlayed
+                )
             }
         }
     }
