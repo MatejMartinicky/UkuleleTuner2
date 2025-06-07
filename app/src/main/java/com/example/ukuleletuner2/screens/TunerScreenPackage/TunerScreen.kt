@@ -6,14 +6,12 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.audioplayer.AndroidAudioPlayer
-import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TunerViewModel
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TuningStatus
 import com.example.ukuleletuner2.windowInfo.WindowOrientation
@@ -52,7 +50,7 @@ fun TunerScreen(
             UkuleleString(2, R.string.G_button, R.raw.ukulele_string_g),
             UkuleleString(3, R.string.E_button, R.raw.ukulele_string_e),
             UkuleleString(4, R.string.A_button, R.raw.ukulele_string_a),
-            )
+        )
     }
 
     DisposableEffect(player) {

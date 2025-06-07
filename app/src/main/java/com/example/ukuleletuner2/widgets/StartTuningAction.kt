@@ -7,7 +7,11 @@ import androidx.glance.appwidget.action.ActionCallback
 
 ////https://www.youtube.com/watch?v=bhrN7yFG0D4
 class StartTuningAction : ActionCallback {
-    override suspend fun onAction(context: Context, glanceId: GlanceId, parameters: ActionParameters) {
+    override suspend fun onAction(
+        context: Context,
+        glanceId: GlanceId,
+        parameters: ActionParameters
+    ) {
         WidgetManager.startTuning()
     }
 }

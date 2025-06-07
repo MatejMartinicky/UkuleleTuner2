@@ -3,6 +3,8 @@ package com.example.ukuleletuner2.widgets
 import android.content.Context
 import androidx.compose.ui.graphics.Color
 import com.example.ukuleletuner2.R
+import com.example.ukuleletuner2.widgets.UkuleleString.values
+
 enum class UkuleleString(
     val displayNameRes: Int,
     val frequency: Double,

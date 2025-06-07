@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.ukuleletuner2.R
-import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.screens.TunerScreenPackage.UkuleleString
 import com.example.ukuleletuner2.ui.components.buttons.NoteButton
 import com.example.ukuleletuner2.ui.components.images.InstrumentImage
@@ -49,7 +48,7 @@ fun InstrumentLayout(
             sizeY = 400.dp
         )
 
-        val noteC =  strings.find { it.id == 1 }
+        val noteC = strings.find { it.id == 1 }
         val noteG = strings.find { it.id == 2 }
         val noteE = strings.find { it.id == 3 }
         val noteA = strings.find { it.id == 4 }

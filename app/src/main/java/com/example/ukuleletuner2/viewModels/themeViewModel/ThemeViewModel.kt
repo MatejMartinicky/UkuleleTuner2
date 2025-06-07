@@ -10,7 +10,7 @@ import com.example.ukuleletuner2.ui.theme.ColorThemes
 class ThemeViewModel(initialTheme: ColorThemes = ColorThemes.Green) : ViewModel() {
 
     var currentTheme by mutableStateOf(ColorThemes.Green)
-    private set
+        private set
 
     fun updateTheme(theme: ColorThemes) {
         currentTheme = theme

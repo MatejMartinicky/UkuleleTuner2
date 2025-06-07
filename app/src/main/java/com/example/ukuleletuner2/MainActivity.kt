@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Surface
@@ -13,11 +12,10 @@ import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ukuleletuner2.presentation.sign_in.GoogleAuthUiClient
-import com.example.ukuleletuner2.service.FirebaseMessagingService
-import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 import com.example.ukuleletuner2.ui.theme.AppTheme
 import com.example.ukuleletuner2.ui.theme.ColorThemes
 import com.example.ukuleletuner2.utility.LocaleHelper
+import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.firebase.messaging.FirebaseMessaging
 

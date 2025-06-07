@@ -11,7 +11,7 @@ import java.io.FileOutputStream
 //https://www.youtube.com/watch?v=4MJFmhcONfI
 
 class AndroidAudioRecorder(private val context: Context) : AudioRecorder {
-    private var recorder : MediaRecorder? = null;
+    private var recorder: MediaRecorder? = null
     private fun createRecorder(): MediaRecorder {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             MediaRecorder(context)
@@ -21,7 +21,11 @@ class AndroidAudioRecorder(private val context: Context) : AudioRecorder {
     }
 
     private val sampleRate = 44100
-    private val bufferSize = AudioRecord.getMinBufferSize(sampleRate, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT)
+    private val bufferSize = AudioRecord.getMinBufferSize(
+        sampleRate,
+        AudioFormat.CHANNEL_IN_MONO,
+        AudioFormat.ENCODING_PCM_16BIT
+    )
     private var audioRecord: AudioRecord? = null
 
     override fun start(outputFile: File) {
