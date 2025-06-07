@@ -14,13 +14,18 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.ukuleletuner2.R
+import com.example.ukuleletuner2.chords.Chord
+import com.example.ukuleletuner2.screens.TunerScreenPackage.UkuleleString
 import com.example.ukuleletuner2.ui.components.buttons.NoteButton
 import com.example.ukuleletuner2.ui.components.images.InstrumentImage
 
 
 @Composable
 fun InstrumentLayout(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    strings: List<UkuleleString>,
+    playingStringId: Int,
+    onStringPlayed: (UkuleleString) -> Unit
 ) {
     var imageSize by remember { mutableStateOf(IntSize.Zero) }
 
@@ -44,6 +49,11 @@ fun InstrumentLayout(
             sizeY = 400.dp
         )
 
+        val noteC =  strings.find { it.id == 1 }
+        val noteG = strings.find { it.id == 2 }
+        val noteE = strings.find { it.id == 3 }
+        val noteA = strings.find { it.id == 4 }
+
         val imageSizeDp = with(LocalDensity.current) {
             IntSize(imageSize.width.toDp().value.toInt(), imageSize.height.toDp().value.toInt())
         }
@@ -52,9 +62,9 @@ fun InstrumentLayout(
             letter = stringResource(R.string.C_button),
             color = Color(0xFF67999A),
             onClick = {
-
-
-
+                noteC?.let {
+                    onStringPlayed(it)
+                }
             },
             modifier = Modifier.constrainAs(buttonC) {
                 top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
@@ -67,8 +77,9 @@ fun InstrumentLayout(
             letter = stringResource(R.string.G_button),
             color = Color(0xFF509073),
             onClick = {
-
-
+                noteG?.let {
+                    onStringPlayed(it)
+                }
             },
             modifier = Modifier.constrainAs(buttonG) {
                 top.linkTo(buttonC.bottom, margin = (imageSizeDp.height * 0.06f).dp)
@@ -81,9 +92,9 @@ fun InstrumentLayout(
             letter = stringResource(R.string.E_button),
             color = Color(0xFFE78e22),
             onClick = {
-
-
-
+                noteE?.let {
+                    onStringPlayed(it)
+                }
             },
             modifier = Modifier.constrainAs(buttonE) {
                 top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
@@ -96,9 +107,9 @@ fun InstrumentLayout(
             letter = stringResource(R.string.A_button),
             color = Color(0xFFE52625),
             onClick = {
-
-
-
+                noteA?.let {
+                    onStringPlayed(it)
+                }
             },
             modifier = Modifier.constrainAs(buttonA) {
                 top.linkTo(buttonE.bottom, margin = (imageSizeDp.height * 0.06f).dp)

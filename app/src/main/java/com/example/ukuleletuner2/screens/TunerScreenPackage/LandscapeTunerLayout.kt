@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
+import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.customLayouts.InstrumentLayout
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TunerViewModel
 
@@ -29,7 +30,10 @@ internal fun LandscapeTunerLayout(
     viewModel: TunerViewModel,
     isRecording: Boolean,
     frequency: Double,
-    displayStatus: String
+    displayStatus: String,
+    strings: List<UkuleleString>,
+    playingStringId: Int,
+    onStringPlayed: (UkuleleString) -> Unit
 ) {
     TunerWithDrawer(
         onNavigateToSettings = onNavigateToSettings,
@@ -72,7 +76,10 @@ internal fun LandscapeTunerLayout(
                     .fillMaxHeight(),
                 contentAlignment = Alignment.Center
             ) {
-                InstrumentLayout()
+                InstrumentLayout(
+                    strings = strings,
+                    playingStringId = playingStringId,
+                    onStringPlayed = onStringPlayed)
             }
         }
     }

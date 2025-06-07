@@ -62,13 +62,14 @@ internal fun PortraitTunerLayout(
                     centerHorizontallyTo(parent)
                 }
             )
-
+/*
             InstrumentLayout(
                 modifier = Modifier.constrainAs(inst) {
                     bottom.linkTo(parent.bottom)
                     centerHorizontallyTo(parent)
                 }
             )
+            */
         }
     }
 }

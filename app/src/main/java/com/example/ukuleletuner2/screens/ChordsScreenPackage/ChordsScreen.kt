@@ -15,6 +15,7 @@ import com.example.ukuleletuner2.windowInfo.WindowOrientation
 import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 
 //https://www.youtube.com/watch?v=HmXgVBys7BU (screen rotation)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChordsScreen(
@@ -58,7 +59,7 @@ fun ChordsScreen(
         is WindowOrientation.Portrait -> {
             ChordsWithTopBar(
                 onNavigateToSettings = onNavigateToSettings,
-                onNavigateToChords = { /* todo */ },
+                onNavigateToChords = {},
                 onNavigateToHome = onNavigateToTunerScreen
             ){ paddingValues ->
                 ChordsGrid(
@@ -80,7 +81,7 @@ fun ChordsScreen(
         is WindowOrientation.Landscape -> {
             ChordsWithTopBar(
                 onNavigateToSettings = onNavigateToSettings,
-                onNavigateToChords = { /* todo */ },
+                onNavigateToChords = {},
                 onNavigateToHome = onNavigateToTunerScreen
             ) { paddingValues ->
                 ChordsGrid(

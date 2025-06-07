@@ -2,11 +2,18 @@ package com.example.ukuleletuner2.screens.TunerScreenPackage
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ukuleletuner2.R
+import com.example.ukuleletuner2.audioplayer.AndroidAudioPlayer
+import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TunerViewModel
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TuningStatus
 import com.example.ukuleletuner2.windowInfo.WindowOrientation
@@ -28,12 +35,33 @@ fun TunerScreen(
     val frequency by viewModel.frequency.collectAsState()
     val tuneStatus by viewModel.tuneStatus.collectAsState()
 
+    val player = remember { AndroidAudioPlayer(context) }
+    var playingStringId by remember { mutableIntStateOf(-1) } //to view model
+
     val displayStatus = when (tuneStatus.status) {
         TuningStatus.ERROR -> context.getString(R.string.tuning_error)
         TuningStatus.WAITING -> context.getString(R.string.tuning_waiting)
         TuningStatus.NOT_TUNED -> context.getString(R.string.tuning_waiting)
         TuningStatus.TUNED -> context.getString(R.string.tuning_in_tune, tuneStatus.note ?: "")
         else -> {}
+    }
+
+    val strings = remember {
+        listOf(
+            UkuleleString(1, R.string.C_button, R.raw.ukulele_string_c),
+            UkuleleString(2, R.string.G_button, R.raw.ukulele_string_g),
+            UkuleleString(3, R.string.E_button, R.raw.ukulele_string_e),
+            UkuleleString(4, R.string.A_button, R.raw.ukulele_string_a),
+            )
+    }
+
+    DisposableEffect(player) {
+        player.setAfterHook {
+            playingStringId = -1
+        }
+        onDispose {
+            player.stop()
+        }
     }
 
     when (windowInfo.screenOrientation) {
@@ -55,7 +83,17 @@ fun TunerScreen(
                 viewModel = viewModel,
                 isRecording = isRecording,
                 frequency = frequency,
-                displayStatus = displayStatus as String
+                displayStatus = displayStatus as String,
+                strings = strings,
+                playingStringId = playingStringId,
+                onStringPlayed = { string ->
+                    playingStringId = string.id
+                    try {
+                        player.playResource(string.audioFileName)
+                    } catch (e: Exception) {
+                        playingStringId = -1
+                    }
+                }
             )
         }
     }
