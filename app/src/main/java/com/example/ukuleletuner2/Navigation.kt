@@ -14,7 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ukuleletuner2.presentation.sign_in.GoogleAuthUiClient
-import com.example.ukuleletuner2.presentation.sign_in.SignInScreen
+import com.example.ukuleletuner2.presentation.sign_in.SingInScreenPackage.SignInScreen
 import com.example.ukuleletuner2.presentation.sign_in.SignInViewModel
 import com.example.ukuleletuner2.screens.ChordsScreenPackage.ChordsScreen
 import com.example.ukuleletuner2.screens.InstrumentChoiceScreenPackage.InstrumentChoiceScreen
