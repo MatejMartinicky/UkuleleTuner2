@@ -38,7 +38,8 @@ fun NoteButton(
         modifier = modifier
             .size(54.dp)
             .background(Color.Transparent, CircleShape)
-            .border(4.dp,
+            .border(
+                4.dp,
                 if (isPressed)
                     MaterialTheme.colorScheme.outline
                 else

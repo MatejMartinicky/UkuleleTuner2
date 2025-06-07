@@ -1,14 +1,13 @@
 package com.example.ukuleletuner2.widgets
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ukuleletuner2.recorder.TuningRecorder
 import com.example.ukuleletuner2.tuneDetector.TuningDetector
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import com.example.ukuleletuner2.recorder.TuningRecorder
-import kotlinx.coroutines.delay
 
 class TuningWidgetViewModel(
     private val tuningRecorder: TuningRecorder

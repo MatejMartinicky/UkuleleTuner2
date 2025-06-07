@@ -23,7 +23,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,15 +31,15 @@ import androidx.compose.ui.unit.sp
 //https://stackoverflow.com/questions/75950471/how-to-make-rounded-corner-with-shadow-in-jetpack-compose
 @Composable
 fun ChordCard(
-    painter : Painter,
-    contentDescription : String,
-    title : String,
+    painter: Painter,
+    contentDescription: String,
+    title: String,
     isPlaying: Boolean = false,
     onPlayed: () -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
     val shadowColor = MaterialTheme.colorScheme.outline
-    val overlayColor = MaterialTheme.colorScheme.scrim
+    MaterialTheme.colorScheme.scrim
     val onSurfaceColor = MaterialTheme.colorScheme.surfaceContainer
 
     val glowLayers = 6
@@ -56,18 +55,21 @@ fun ChordCard(
 
     val cardHeight = 200.dp
     val contentPadding = 12.dp
-    val textSize = 16.sp
+    16.sp
 
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .clickable{ onPlayed() }
+            .clickable { onPlayed() }
             .drawBehind {
                 if (isPlaying) {
                     for (i in 1..glowLayers) {
                         drawRoundRect(
                             color = shadowColor.copy(alpha = baseAlpha / i),
-                            topLeft = Offset(-(i * glowSpacing.value).dp.toPx(), -(i * glowSpacing.value).dp.toPx()),
+                            topLeft = Offset(
+                                -(i * glowSpacing.value).dp.toPx(),
+                                -(i * glowSpacing.value).dp.toPx()
+                            ),
                             size = Size(
                                 size.width + (i * glowExpansion.value).dp.toPx(),
                                 size.height + (i * glowExpansion.value).dp.toPx()

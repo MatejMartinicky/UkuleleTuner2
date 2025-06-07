@@ -17,10 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.google.android.gms.base.R
+
 @Composable
 fun GoogleLogoButton(
     text: String,
-    onClick:() -> Unit
+    onClick: () -> Unit
 ) {
     Button(
         onClick = onClick,

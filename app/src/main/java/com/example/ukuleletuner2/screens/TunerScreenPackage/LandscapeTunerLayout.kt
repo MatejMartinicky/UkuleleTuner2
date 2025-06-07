@@ -20,7 +20,6 @@ import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.customLayouts.InstrumentLayout
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TunerViewModel
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun LandscapeTunerLayout(
@@ -29,7 +28,10 @@ internal fun LandscapeTunerLayout(
     viewModel: TunerViewModel,
     isRecording: Boolean,
     frequency: Double,
-    displayStatus: String
+    displayStatus: String,
+    strings: List<UkuleleString>,
+    playingStringId: Int,
+    onStringPlayed: (UkuleleString) -> Unit
 ) {
     TunerWithDrawer(
         onNavigateToSettings = onNavigateToSettings,
@@ -72,7 +74,11 @@ internal fun LandscapeTunerLayout(
                     .fillMaxHeight(),
                 contentAlignment = Alignment.Center
             ) {
-                InstrumentLayout()
+                InstrumentLayout(
+                    strings = strings,
+                    playingStringId = playingStringId,
+                    onStringPlayed = onStringPlayed
+                )
             }
         }
     }

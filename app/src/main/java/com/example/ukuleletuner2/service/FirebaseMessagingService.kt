@@ -5,10 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
-import android.util.Log
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.compose.ui.res.stringResource
 import androidx.core.app.NotificationCompat
 import com.example.ukuleletuner2.R
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -26,19 +23,23 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     }
 
     override fun onNewToken(token: String) {
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         initNotificationChannel(notificationManager)
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-        val title = remoteMessage.notification?.title ?: getString(R.string.default_notification_name)
-        val body = remoteMessage.notification?.body ?: getString(R.string.default_notification_message)
+        val title =
+            remoteMessage.notification?.title ?: getString(R.string.default_notification_name)
+        val body =
+            remoteMessage.notification?.body ?: getString(R.string.default_notification_message)
 
         showNotification(title, body)
     }
 
     private fun showNotification(title: String, body: String) {
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         initNotificationChannel(notificationManager)
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)

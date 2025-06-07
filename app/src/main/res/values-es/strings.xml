@@ -110,4 +110,11 @@
     <string name="drawer_chords_description">Navegar a acordes</string>
 
     <string name="drawer_name">Menú</string>
+
+    <!-- InstrumentLayout -->
+    <string name="ukulele_image_description">Cabeza del ukelele</string>
+    <string name="C_button">C</string>
+    <string name="G_button">G</string>
+    <string name="E_button">E</string>
+    <string name="A_button">A</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.ChordsScreenPackage
+package com.example.ukuleletuner2.screens.ChordsScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues

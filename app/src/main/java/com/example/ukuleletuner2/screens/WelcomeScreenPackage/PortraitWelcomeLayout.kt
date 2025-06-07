@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 
 @Composable
 internal fun PortraitWelcomeLayout(
-    onNavigateToLoginScreen: () -> Unit)
-{
+    onNavigateToLoginScreen: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
