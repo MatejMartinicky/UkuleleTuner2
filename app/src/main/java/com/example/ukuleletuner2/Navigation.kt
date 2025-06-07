@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ukuleletuner2.presentation.sign_in.GoogleAuthUiClient
-import com.example.ukuleletuner2.presentation.sign_in.SignIScreen
+import com.example.ukuleletuner2.presentation.sign_in.SignInScreen
 import com.example.ukuleletuner2.presentation.sign_in.SignInViewModel
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
@@ -19,7 +19,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.rememberCoroutineScope
-import com.example.ukuleletuner2.settigsScreen.SettingsScreen
+import com.example.ukuleletuner2.ChordsScreenPackage.ChordsScreen
+import com.example.ukuleletuner2.screens.InstrumentChoiceScreenPackage.InstrumentChoiceScreen
+import com.example.ukuleletuner2.screens.TunerScreenPackage.TunerScreen
+import com.example.ukuleletuner2.screens.SettingsScreenPackage.SettingsScreen
+import com.example.ukuleletuner2.screens.WelcomeScreenPackage.WelcomeScreen
 
 //new way of navigation not so good
 //https://www.youtube.com/watch?v=AIC_OFQ1r3k
@@ -60,25 +64,37 @@ fun Navigation(
         composable<TunerScreen> {
             TunerScreen(
                 onNavigateToSettings = {
-                navController.navigate(route = SettingsScreen)
+                    navController.navigate(route = SettingsScreen)
                 },
                 onNavigateToChords = {
                     navController.navigate(route = ChordsScreen)
                 }
             )
-        } //change when settings done
+        }
 
         composable<ChordsScreen> {
             ChordsScreen(
                 onNavigateToSettings = {
                     navController.navigate(route = SettingsScreen)
+                },
+                onNavigateToTunerScreen = {
+                    navController.navigate(route = TunerScreen)
                 }
             )
         }
 
         composable<SettingsScreen> {
             val settingsViewModel: SettingsViewModel = viewModel()
-            SettingsScreen(themeViewModel, settingsViewModel)
+            SettingsScreen(
+                onNavigateToTuner = {
+                    navController.navigate(route = TunerScreen)
+                },
+                onNavigateToChords = {
+                    navController.navigate(route = ChordsScreen)
+                },
+                themeViewModel =themeViewModel,
+                settingsViewModel = settingsViewModel
+            )
         }
     //these has to be here how I understand it is like this
         //composable<SettingsScreen> matches it as path where SettingsScreen is path defined in screen @Serializable
@@ -110,7 +126,7 @@ fun Navigation(
                 }
             }
 
-            SignIScreen(
+            SignInScreen(
                 state = state,
                 onSignInClick = {
                     scope.launch {

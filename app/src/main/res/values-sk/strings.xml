@@ -99,4 +99,15 @@
     <!-- FirebaseMessagingService -->
     <string name="default_notification_name">Nové upozornenie</string>
     <string name="default_notification_message">Nová správa prijatá</string>
+
+    <!-- NavigationDrawer -->
+    <string name="drawer_home">Domov</string>
+    <string name="drawer_settings">Nastavenia</string>
+    <string name="drawer_chords">Akordy</string>
+
+    <string name="drawer_home_description">Prejsť na domov</string>
+    <string name="drawer_settings_description">Prejsť do nastavení</string>
+    <string name="drawer_chords_description">Prejsť na akordy</string>
+
+    <string name="drawer_name">Ponuka</string>
 </resources>
