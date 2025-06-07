@@ -19,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.rememberCoroutineScope
+import com.example.ukuleletuner2.settigsScreen.SettingsScreen
 
 //new way of navigation not so good
 //https://www.youtube.com/watch?v=AIC_OFQ1r3k
