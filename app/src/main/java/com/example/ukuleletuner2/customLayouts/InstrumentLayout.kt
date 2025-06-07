@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -30,7 +31,7 @@ fun InstrumentLayout(
 
         InstrumentImage(
             painter = painterResource(id = R.drawable.ukulele_head),
-            contentDescription = "Ukulele head",
+            contentDescription = stringResource(R.string.ukulele_image_description),
             modifier = Modifier.constrainAs(image) {
                 bottom.linkTo(parent.bottom)
                 start.linkTo(parent.start)
@@ -48,9 +49,13 @@ fun InstrumentLayout(
         }
 
         NoteButton(
-            letter = "C",
+            letter = stringResource(R.string.C_button),
             color = Color(0xFF67999A),
-            onClick = { println("cat") },
+            onClick = {
+
+
+
+            },
             modifier = Modifier.constrainAs(buttonC) {
                 top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
                 end.linkTo(image.start)
@@ -59,9 +64,12 @@ fun InstrumentLayout(
         )
 
         NoteButton(
-            letter = "G",
+            letter = stringResource(R.string.G_button),
             color = Color(0xFF509073),
-            onClick = { println("cat") },
+            onClick = {
+
+
+            },
             modifier = Modifier.constrainAs(buttonG) {
                 top.linkTo(buttonC.bottom, margin = (imageSizeDp.height * 0.06f).dp)
                 end.linkTo(image.start)
@@ -70,9 +78,13 @@ fun InstrumentLayout(
         )
 
         NoteButton(
-            letter = "E",
+            letter = stringResource(R.string.E_button),
             color = Color(0xFFE78e22),
-            onClick = { println("cat") },
+            onClick = {
+
+
+
+            },
             modifier = Modifier.constrainAs(buttonE) {
                 top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
                 start.linkTo(image.end)
@@ -81,9 +93,13 @@ fun InstrumentLayout(
         )
 
         NoteButton(
-            letter = "A",
+            letter = stringResource(R.string.A_button),
             color = Color(0xFFE52625),
-            onClick = { println("cat") },
+            onClick = {
+
+
+
+            },
             modifier = Modifier.constrainAs(buttonA) {
                 top.linkTo(buttonE.bottom, margin = (imageSizeDp.height * 0.06f).dp)
                 start.linkTo(image.end)

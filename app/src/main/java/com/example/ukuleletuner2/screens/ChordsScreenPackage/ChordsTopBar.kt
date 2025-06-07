@@ -1,4 +1,4 @@
-package com.example.ukuleletuner2.ChordsScreenPackage
+package com.example.ukuleletuner2.screens.ChordsScreenPackage
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu

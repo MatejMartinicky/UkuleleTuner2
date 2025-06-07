@@ -19,7 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.rememberCoroutineScope
-import com.example.ukuleletuner2.ChordsScreenPackage.ChordsScreen
+import com.example.ukuleletuner2.screens.ChordsScreenPackage.ChordsScreen
 import com.example.ukuleletuner2.screens.InstrumentChoiceScreenPackage.InstrumentChoiceScreen
 import com.example.ukuleletuner2.screens.TunerScreenPackage.TunerScreen
 import com.example.ukuleletuner2.screens.SettingsScreenPackage.SettingsScreen

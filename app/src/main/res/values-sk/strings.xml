@@ -110,4 +110,11 @@
     <string name="drawer_chords_description">Prejsť na akordy</string>
 
     <string name="drawer_name">Ponuka</string>
+
+    <!-- InstrumentLayout -->
+    <string name="ukulele_image_description">Hlava ukulele</string>
+    <string name="C_button">C</string>
+    <string name="G_button">G</string>
+    <string name="E_button">E</string>
+    <string name="A_button">A</string>
 </resources>
