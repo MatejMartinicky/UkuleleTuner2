@@ -14,13 +14,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ukuleletuner2.presentation.sign_in.GoogleAuthUiClient
-import com.example.ukuleletuner2.presentation.sign_in.SingInScreenPackage.SignInScreen
 import com.example.ukuleletuner2.presentation.sign_in.SignInViewModel
-import com.example.ukuleletuner2.screens.ChordsScreenPackage.ChordsScreen
-import com.example.ukuleletuner2.screens.InstrumentChoiceScreenPackage.InstrumentChoiceScreen
-import com.example.ukuleletuner2.screens.SettingsScreenPackage.SettingsScreen
-import com.example.ukuleletuner2.screens.TunerScreenPackage.TunerScreen
-import com.example.ukuleletuner2.screens.WelcomeScreenPackage.WelcomeScreen
+import com.example.ukuleletuner2.ui.screens.ChordsScreenPackage.ChordsScreen
+import com.example.ukuleletuner2.ui.screens.InstrumentChoiceScreenPackage.InstrumentChoiceScreen
+import com.example.ukuleletuner2.ui.screens.SettingsScreenPackage.SettingsScreen
+import com.example.ukuleletuner2.ui.screens.SingInScreenPackage.SignInScreen
+import com.example.ukuleletuner2.ui.screens.TunerScreenPackage.TunerScreen
+import com.example.ukuleletuner2.ui.screens.WelcomeScreenPackage.WelcomeScreen
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 import kotlinx.coroutines.launch
@@ -60,7 +60,6 @@ fun Navigation(
             )
         }
 
-        //TODO
         composable<TunerScreen> {
             TunerScreen(
                 onNavigateToSettings = {
