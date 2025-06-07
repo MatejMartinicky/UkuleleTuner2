@@ -31,6 +31,8 @@ import com.example.ukuleletuner2.ui.components.buttons.InstrumentButton
 import com.example.ukuleletuner2.windowInfo.WindowOrientation
 import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 
+//https://www.youtube.com/watch?v=HmXgVBys7BU (screen rotation)
+
 @Composable
 fun InstrumentChoiceScreen(onNavigateToTunerScreen: () -> Unit) {
     val windowInfo = rememberWindowInfo()

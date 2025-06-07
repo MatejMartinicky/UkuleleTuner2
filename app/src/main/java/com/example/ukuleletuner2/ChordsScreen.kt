@@ -40,6 +40,7 @@ import com.example.ukuleletuner2.windowInfo.WindowOrientation
 import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 import java.io.File
 
+//https://www.youtube.com/watch?v=HmXgVBys7BU (screen rotation)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

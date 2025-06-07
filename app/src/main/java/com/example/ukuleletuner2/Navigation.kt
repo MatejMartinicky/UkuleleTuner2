@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ukuleletuner2.presentation.sign_in.GoogleAuthUiClient
-import com.example.ukuleletuner2.presentation.sign_in.SignIScreen
+import com.example.ukuleletuner2.presentation.sign_in.SignInScreen
 import com.example.ukuleletuner2.presentation.sign_in.SignInViewModel
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
@@ -110,7 +110,7 @@ fun Navigation(
                 }
             }
 
-            SignIScreen(
+            SignInScreen(
                 state = state,
                 onSignInClick = {
                     scope.launch {
