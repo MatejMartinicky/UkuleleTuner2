@@ -18,6 +18,8 @@
     <!-- WelcomeScreen -->
     <string name="next_arrow">➡</string>
     <string name="welcome">Welcome!</string>
+    <string name="welcome_image_description">image of a cool man playing ukulele</string>
+
     <!-- TunerScreen-->
     <string name="tuner_screen_title">Tuner</string>
     <string name="chords_navigation_text">Chords</string>

@@ -19,6 +19,7 @@
     <!-- WelcomeScreen -->
     <string name="next_arrow">➡</string>
     <string name="welcome">Vitaj!</string>
+    <string name="welcome_image_description">Obrázok cool muža, ktorý hrá na ukulele</string>
 
     <!-- TunerScreen -->
     <string name="tuner_screen_title">Ladička</string>

@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
@@ -35,77 +36,131 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import com.example.ukuleletuner2.windowInfo.WindowOrientation
+import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 
 
 @Composable
 fun WelcomeScreen(
-    onNavigateToTunerScreen: () -> Unit,
     onNavigateToLoginScreen: () -> Unit
 ) {
-    Surface(modifier = Modifier
-        .fillMaxSize(),
-        color = MaterialTheme.colorScheme.primaryContainer
-    ) {
-        Column{
+    val windowInfo = rememberWindowInfo()
 
-            Box(modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(0.5f)
+    when (windowInfo.screenOrientation) {
+        is WindowOrientation.Portrait -> {
+
+            Surface(
+                modifier = Modifier
+                    .fillMaxSize(),
+                color = MaterialTheme.colorScheme.primaryContainer
             ) {
+                Column {
+
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.5f)
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.man_plaing_ukulele),
+                            contentDescription = stringResource(R.string.welcome_image_description),
+                            contentScale = ContentScale.Fit
+                        )
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(
+                                    brush = Brush.verticalGradient(
+                                        colorStops = arrayOf(
+                                            0.0f to Color.Transparent,
+                                            0.95f to MaterialTheme.colorScheme.primaryContainer,
+                                            1.0f to MaterialTheme.colorScheme.primaryContainer
+                                        )
+                                    )
+                                )
+                        )
+                        {}
+                    }
+
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp)
+                    ) {
+
+                        Text(
+                            text = stringResource(R.string.welcome),
+                            style = TextStyle(
+                                fontSize = 54.sp,
+                                fontWeight = FontWeight.Black
+                            )
+                        )
+
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        Button(
+                            onClick = onNavigateToLoginScreen,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.primary,
+                                contentColor = MaterialTheme.colorScheme.onPrimary
+                            ),
+                            modifier = Modifier
+                                .size(77.dp)
+                                .clip(CircleShape)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.next_arrow),
+                                fontSize = 34.sp
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
+        is WindowOrientation.Landscape -> {
+            //                  0.95f to MaterialTheme.colorScheme.primaryContainer,
+            Row {
                 Image(
                     painter = painterResource(id = R.drawable.man_plaing_ukulele),
                     contentDescription = "image of a cool man playing ukulele",
                     contentScale = ContentScale.Fit
                 )
-                Box(
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(
-                            brush = Brush.verticalGradient(
-                                colorStops = arrayOf(
-                                    0.0f to Color.Transparent,
-                                    0.95f to MaterialTheme.colorScheme.primaryContainer,
-                                    1.0f to MaterialTheme.colorScheme.primaryContainer
-                                )
-                            )
-                        )
-                )
-                {
-                }
-            }
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
-            ) {
-
-                Text(
-                    text = stringResource(R.string.welcome),
-                    style = TextStyle(
-                        fontSize = 54.sp,
-                        fontWeight = FontWeight.Black
-                    )
-                )
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                Button(
-                    onClick = onNavigateToLoginScreen,
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onPrimary
-                    ),
-                    modifier = Modifier
-                        .size(77.dp)
-                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.primaryContainer)
                 ) {
                     Text(
-                        text = stringResource(R.string.next_arrow),
-                        fontSize = 34.sp
+                        text = stringResource(R.string.welcome),
+                        style = TextStyle(
+                            fontSize = 54.sp,
+                            fontWeight = FontWeight.Black,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
                     )
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    Button(
+                        onClick = onNavigateToLoginScreen,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.primary,
+                            contentColor = MaterialTheme.colorScheme.onPrimary
+                        ),
+                        modifier = Modifier
+                            .size(77.dp)
+                            .clip(CircleShape)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.next_arrow),
+                            fontSize = 34.sp
+                        )
+                    }
                 }
             }
         }

@@ -41,9 +41,6 @@ fun Navigation(
     ) {
         composable<WelcomeScreen> {
             WelcomeScreen(
-                onNavigateToTunerScreen = {
-                    navController.navigate(route = InstrumentChoiceScreen)
-                },
                 onNavigateToLoginScreen = {
                     navController.navigate(route = SignInScreen)
                 }
