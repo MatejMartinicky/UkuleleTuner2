@@ -14,9 +14,13 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.ukuleletuner2.R
-import com.example.ukuleletuner2.screens.TunerScreenPackage.UkuleleString
 import com.example.ukuleletuner2.ui.components.buttons.NoteButton
 import com.example.ukuleletuner2.ui.components.images.InstrumentImage
+import com.example.ukuleletuner2.ui.screens.TunerScreenPackage.UkuleleString
+import com.example.ukuleletuner2.ui.theme.ukuleleA4
+import com.example.ukuleletuner2.ui.theme.ukuleleC4
+import com.example.ukuleletuner2.ui.theme.ukuleleE4
+import com.example.ukuleletuner2.ui.theme.ukuleleG4
 
 
 @Composable
@@ -57,16 +61,18 @@ fun InstrumentLayout(
             IntSize(imageSize.width.toDp().value.toInt(), imageSize.height.toDp().value.toInt())
         }
 
+        val MARGIN_FROM_TOP = (imageSizeDp.height * 0.16f).dp
+        val MARGIN_FROM_PREVIOUS = (imageSizeDp.height * 0.06f).dp
         NoteButton(
             letter = stringResource(R.string.C_button),
-            color = Color(0xFF67999A),
+            color = ukuleleC4,
             onClick = {
                 noteC?.let {
                     onStringPlayed(it)
                 }
             },
             modifier = Modifier.constrainAs(buttonC) {
-                top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
+                top.linkTo(image.top, margin = MARGIN_FROM_TOP)
                 end.linkTo(image.start)
                 start.linkTo(parent.start)
             }
@@ -74,14 +80,14 @@ fun InstrumentLayout(
 
         NoteButton(
             letter = stringResource(R.string.G_button),
-            color = Color(0xFF509073),
+            color = ukuleleG4,
             onClick = {
                 noteG?.let {
                     onStringPlayed(it)
                 }
             },
             modifier = Modifier.constrainAs(buttonG) {
-                top.linkTo(buttonC.bottom, margin = (imageSizeDp.height * 0.06f).dp)
+                top.linkTo(buttonC.bottom, margin = MARGIN_FROM_PREVIOUS)
                 end.linkTo(image.start)
                 start.linkTo(parent.start)
             }
@@ -89,14 +95,14 @@ fun InstrumentLayout(
 
         NoteButton(
             letter = stringResource(R.string.E_button),
-            color = Color(0xFFE78e22),
+            color = ukuleleE4,
             onClick = {
                 noteE?.let {
                     onStringPlayed(it)
                 }
             },
             modifier = Modifier.constrainAs(buttonE) {
-                top.linkTo(image.top, margin = (imageSizeDp.height * 0.2f).dp)
+                top.linkTo(image.top, margin = MARGIN_FROM_TOP)
                 start.linkTo(image.end)
                 end.linkTo(parent.end)
             }
@@ -104,14 +110,14 @@ fun InstrumentLayout(
 
         NoteButton(
             letter = stringResource(R.string.A_button),
-            color = Color(0xFFE52625),
+            color = ukuleleA4,
             onClick = {
                 noteA?.let {
                     onStringPlayed(it)
                 }
             },
             modifier = Modifier.constrainAs(buttonA) {
-                top.linkTo(buttonE.bottom, margin = (imageSizeDp.height * 0.06f).dp)
+                top.linkTo(buttonE.bottom, margin = MARGIN_FROM_PREVIOUS)
                 start.linkTo(image.end)
                 end.linkTo(parent.end)
             }
