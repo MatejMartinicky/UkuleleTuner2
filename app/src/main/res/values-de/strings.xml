@@ -19,6 +19,7 @@
     <!-- WelcomeScreen -->
     <string name="next_arrow">➡</string>
     <string name="welcome">Willkommen!</string>
+    <string name="welcome_image_description">Bild eines coolen Mannes, der Ukulele spielt</string>
 
     <!-- TunerScreen-->
     <string name="tuner_screen_title">Stimmgerät</string>

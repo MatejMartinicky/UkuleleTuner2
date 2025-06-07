@@ -19,6 +19,7 @@
     <!-- WelcomeScreen -->
     <string name="next_arrow">➡</string>
     <string name="welcome">¡Bienvenido!</string>
+    <string name="welcome_image_description">Imagen de un hombre genial tocando el ukelele</string>
 
     <!-- TunerScreen -->
     <string name="tuner_screen_title">Afinador</string>

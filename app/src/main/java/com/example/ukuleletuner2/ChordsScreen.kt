@@ -36,15 +36,25 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.audioplayer.AndroidAudioPlayer
+import com.example.ukuleletuner2.windowInfo.WindowOrientation
+import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 import java.io.File
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChordsScreen() {
+fun ChordsScreen(
+    onNavigateToSettings: () -> Unit
+) {
+    val windowInfo = rememberWindowInfo()
+
     val context = LocalContext.current
     val player = remember { AndroidAudioPlayer(context) }
     var playingChordId by remember { mutableIntStateOf(-1) }
+
+    val PORTRAT_CHORD_COUNT = 2
+    val LANDSCAPE_CHORD_COUNT = 4
+
 
     val chords = remember {
         listOf(
@@ -74,77 +84,157 @@ fun ChordsScreen() {
         }
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(stringResource(R.string.chords_screen_title))
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                ),
-                navigationIcon = {
-                    IconButton(onClick = { /* todo */ }) {
-                        Icon(
-                            Icons.Default.Menu,
-                            contentDescription = stringResource(R.string.menu_content_description)
-                        )
-                    }
-                },
+    when(windowInfo.screenOrientation) {
+       is WindowOrientation.Portrait -> {
+           Scaffold(
+               topBar = {
+                   TopAppBar(
+                       title = {
+                           Text(stringResource(R.string.chords_screen_title))
+                       },
+                       colors = TopAppBarDefaults.topAppBarColors(
+                           containerColor = MaterialTheme.colorScheme.primaryContainer,
+                           titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                           navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                           actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                       ),
+                       navigationIcon = {
+                           IconButton(onClick = { /* todo */ }) {
+                               Icon(
+                                   Icons.Default.Menu,
+                                   contentDescription = stringResource(R.string.menu_content_description)
+                               )
+                           }
+                       },
 
-                actions = {
-                    IconButton(onClick = { /*todo*/ }) {
-                        Icon(
-                            Icons.Filled.Settings,
-                            contentDescription = stringResource(R.string.settings_content_description)
-                        )
-                    }
-                }
-            )
-        },
-        content = { paddingValues ->
-            ConstraintLayout(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-            ) {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    contentPadding = PaddingValues(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    items(chords.size) { index ->
-                        val chord = chords[index]
+                       actions = {
+                           IconButton(onClick = onNavigateToSettings) {
+                               Icon(
+                                   Icons.Filled.Settings,
+                                   contentDescription = stringResource(R.string.settings_content_description)
+                               )
+                           }
+                       }
+                   )
+               },
+               content = { paddingValues ->
+                   ConstraintLayout(
+                       modifier = Modifier
+                           .fillMaxSize()
+                           .padding(paddingValues)
+                   ) {
+                       LazyVerticalGrid(
+                           columns = GridCells.Fixed(PORTRAT_CHORD_COUNT),
+                           contentPadding = PaddingValues(8.dp),
+                           verticalArrangement = Arrangement.spacedBy(8.dp),
+                           horizontalArrangement = Arrangement.spacedBy(8.dp)
+                       ) {
+                           items(chords.size) { index ->
+                               val chord = chords[index]
 
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(8.dp)
+                               Box(
+                                   modifier = Modifier
+                                       .fillMaxWidth()
+                                       .padding(8.dp)
+                               ) {
+                                   val chordName = stringResource(id = chord.name)
+                                   ChordCard(
+                                       painter = painterResource(id = chord.image),
+                                       contentDescription = stringResource(R.string.chord_card_content_description),
+                                       title = chordName,
+                                       isPlaying = playingChordId == chord.id,
+                                       onPlayed = {
+                                           playingChordId = chord.id
+                                           try {
+                                               player.playResource(chord.audioFileName)
+                                           } catch (e: Exception) {
+                                               println("Error while playing: ${e.message}")
+                                               playingChordId = -1
+                                           }
+                                       }
+                                   )
+                               }
+                           }
+                       }
+                   }
+               }
+           )
+       }
+        is WindowOrientation.Landscape -> {
+
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        title = {
+                            Text(stringResource(R.string.chords_screen_title))
+                        },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+                            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                        ),
+                        navigationIcon = {
+                            IconButton(onClick = { /* todo */ }) {
+                                Icon(
+                                    Icons.Default.Menu,
+                                    contentDescription = stringResource(R.string.menu_content_description)
+                                )
+                            }
+                        },
+
+                        actions = {
+                            IconButton(onClick = onNavigateToSettings) {
+                                Icon(
+                                    Icons.Filled.Settings,
+                                    contentDescription = stringResource(R.string.settings_content_description)
+                                )
+                            }
+                        }
+                    )
+                },
+                content = { paddingValues ->
+                    ConstraintLayout(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
+                    ) {
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(LANDSCAPE_CHORD_COUNT),
+                            contentPadding = PaddingValues(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            val chordName = stringResource(id = chord.name)
-                            ChordCard(
-                                painter = painterResource(id = chord.image),
-                                contentDescription = stringResource(R.string.chord_card_content_description),
-                                title = chordName,
-                                isPlaying = playingChordId == chord.id,
-                                onPlayed = {
-                                    playingChordId = chord.id
-                                    try {
-                                        player.playResource(chord.audioFileName)
-                                    } catch (e: Exception) {
-                                        println("Error while playing: ${e.message}")
-                                        playingChordId = -1
-                                    }
+                            items(chords.size) { index ->
+                                val chord = chords[index]
+
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(8.dp)
+                                ) {
+                                    val chordName = stringResource(id = chord.name)
+                                    ChordCard(
+                                        painter = painterResource(id = chord.image),
+                                        contentDescription = stringResource(R.string.chord_card_content_description),
+                                        title = chordName,
+                                        isPlaying = playingChordId == chord.id,
+                                        onPlayed = {
+                                            playingChordId = chord.id
+                                            try {
+                                                player.playResource(chord.audioFileName)
+                                            } catch (e: Exception) {
+                                                println("Error while playing: ${e.message}")
+                                                playingChordId = -1
+                                            }
+                                        }
+                                    )
                                 }
-                            )
+                            }
                         }
                     }
                 }
-            }
+            )
         }
-    )
+    }
 }
