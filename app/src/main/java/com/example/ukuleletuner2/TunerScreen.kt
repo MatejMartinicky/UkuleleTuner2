@@ -46,6 +46,7 @@ fun TunerScreen(
     onNavigateToChords: () -> Unit
 ) {
     val windowInfo = rememberWindowInfo()
+
     val context = LocalContext.current
     val viewModel: TunerViewModel = viewModel { TunerViewModel(context) }
     val isRecording by viewModel.isRecording.collectAsState()
