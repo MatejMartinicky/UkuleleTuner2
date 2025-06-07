@@ -1,10 +1,14 @@
 package com.example.ukuleletuner2
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,6 +35,8 @@ import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 
 import com.example.ukuleletuner2.ui.components.cards.ThemeCard
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
+import com.example.ukuleletuner2.windowInfo.WindowOrientation
+import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,151 +44,269 @@ fun SettingsScreen(
     themeViewModel: ThemeViewModel,
     settingsViewModel: SettingsViewModel
 ) {
-val context = LocalContext.current
+    val windowInfo = rememberWindowInfo()
+    val context = LocalContext.current
 
     LaunchedEffect(Unit) {
         settingsViewModel.initializeLanguage(context)
     }
 
-
-    Scaffold(
-        containerColor = MaterialTheme.colorScheme.background,
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(stringResource(R.string.settings_screen_title))
+    when(windowInfo.screenOrientation) {
+        is WindowOrientation.Portrait -> {
+            Scaffold(
+                containerColor = MaterialTheme.colorScheme.background,
+                topBar = {
+                    TopAppBar(
+                        title = {
+                            Text(stringResource(R.string.settings_screen_title))
+                        },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+                            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                        ),
+                        navigationIcon = {
+                            IconButton(onClick = { settingsViewModel.onMenuClick() }) {
+                                Icon(
+                                    Icons.Default.Menu,
+                                    contentDescription = stringResource(R.string.menu_content_description),
+                                )
+                            }
+                        },
+                        actions = { /*todo*/ }
+                    )
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                ),
-                navigationIcon = {
-                    IconButton(onClick = { settingsViewModel.onMenuClick() }) {
-                        Icon(
-                            Icons.Default.Menu,
-                            contentDescription = stringResource(R.string.menu_content_description),
-                        )
-                    }
-                },
-
-                actions = { /*todo*/ }
-            )
-        },
-        content = { paddingValues ->
-            ConstraintLayout(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-            ) {
-
-                Column(
-                    horizontalAlignment = Alignment.Start,
-                    verticalArrangement = Arrangement.Top,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(vertical = 16.dp)
-                        .padding(horizontal = 16.dp)
-                ) {
-
-                    Text(
-                        text = stringResource(R.string.settings_general),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(
-                        text = stringResource(R.string.settings_tuning),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Text(
-                        text = stringResource(R.string.settings_tuning_value),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Thin
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    ThemeCard(themeViewModel = themeViewModel)
-
-                    Spacer(modifier = Modifier.height(16.dp))
-                    //lanuage
-
-                    LanguageSelector(settingsViewModel = settingsViewModel)
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    HorizontalDivider(
+                content = { paddingValues ->
+                    LazyColumn(
                         modifier = Modifier
-                        .padding(horizontal = 4.dp)
-                        .padding(vertical = 16.dp),
-                        color = MaterialTheme.colorScheme.outline
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
+                            .fillMaxSize()
+                            .padding(paddingValues)
+                            .padding(horizontal = 16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        contentPadding = PaddingValues(vertical = 16.dp)
+                    ) {
+                        item {
+                            Text(
+                                text = stringResource(R.string.settings_general),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                        }
 
-                    Text(
-                        text = stringResource(R.string.settings_info),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
+                        item {
+                            ThemeCard(themeViewModel = themeViewModel)
+                        }
 
-                    Text(
-                        text = stringResource(R.string.author),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Text(
-                        text = stringResource(R.string.author_name),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Thin)
+                        item {
+                            LanguageSelector(settingsViewModel = settingsViewModel)
+                        }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                        item {
+                            HorizontalDivider(
+                                modifier = Modifier.padding(horizontal = 4.dp, vertical = 16.dp),
+                                color = MaterialTheme.colorScheme.outline
+                            )
+                        }
 
-                    Text(
-                        text = stringResource(R.string.version),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                    Text(
-                        text = stringResource(R.string.version_version),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Thin
-                    )
+                        item {
+                            Text(
+                                text = stringResource(R.string.settings_info),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                        }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                        item {
+                            Column {
+                                Text(
+                                    text = stringResource(R.string.author),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                Text(
+                                    text = stringResource(R.string.author_name),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    fontWeight = FontWeight.Thin
+                                )
+                            }
+                        }
 
-                    HorizontalDivider(    modifier = Modifier
-                        .padding(horizontal = 4.dp)
-                        .padding(vertical = 16.dp),
-                        color = MaterialTheme.colorScheme.outline
-                    )
+                        item {
+                            Column {
+                                Text(
+                                    text = stringResource(R.string.version),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                Text(
+                                    text = stringResource(R.string.version_version),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    fontWeight = FontWeight.Thin
+                                )
+                            }
+                        }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                        item {
+                            HorizontalDivider(
+                                modifier = Modifier.padding(horizontal = 4.dp, vertical = 16.dp),
+                                color = MaterialTheme.colorScheme.outline
+                            )
+                        }
 
-                    Text(
-                        text = stringResource(R.string.contact),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.titleMedium
+                        item {
+                            Text(
+                                text = stringResource(R.string.contact),
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                        }
 
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(
-                        text = stringResource(R.string.email),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-
-                    Text(
-                        text = stringResource(R.string.email_address),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        fontWeight = FontWeight.Thin
-                    )
+                        item {
+                            Column {
+                                Text(
+                                    text = stringResource(R.string.email),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                Text(
+                                    text = stringResource(R.string.email_address),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    fontWeight = FontWeight.Thin
+                                )
+                            }
+                        }
+                    }
                 }
-            }
+            )
         }
-    )
+
+        is WindowOrientation.Landscape -> {
+            Scaffold(
+                containerColor = MaterialTheme.colorScheme.background,
+                topBar = {
+                    TopAppBar(
+                        title = {
+                            Text(stringResource(R.string.settings_screen_title))
+                        },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer,
+                            titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                        ),
+                        navigationIcon = {
+                            IconButton(onClick = { settingsViewModel.onMenuClick() }) {
+                                Icon(
+                                    Icons.Default.Menu,
+                                    contentDescription = stringResource(R.string.menu_content_description),
+                                )
+                            }
+                        },
+                        actions = { /*todo*/ }
+                    )
+                },
+                content = { paddingValues ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
+                    ) {
+                        LazyColumn(
+                            modifier = Modifier
+                                .weight(1f)
+                                .fillMaxHeight()
+                                .padding(horizontal = 16.dp),
+                            verticalArrangement = Arrangement.spacedBy(16.dp),
+                            contentPadding = PaddingValues(vertical = 16.dp)
+                        ) {
+                            item {
+                                Text(
+                                    text = stringResource(R.string.settings_general),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    fontWeight = FontWeight.Bold,
+                                    style = MaterialTheme.typography.titleMedium
+                                )
+                            }
+
+                            item {
+                                ThemeCard(themeViewModel = themeViewModel)
+                            }
+
+                            item {
+                                LanguageSelector(settingsViewModel = settingsViewModel)
+                            }
+                        }
+
+                        LazyColumn(
+                            modifier = Modifier
+                                .weight(1f)
+                                .fillMaxHeight()
+                                .padding(horizontal = 16.dp),
+                            verticalArrangement = Arrangement.spacedBy(16.dp),
+                            contentPadding = PaddingValues(vertical = 16.dp)
+                        ) {
+                            item {
+                                Text(
+                                    text = stringResource(R.string.settings_info),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    fontWeight = FontWeight.Bold,
+                                    style = MaterialTheme.typography.titleMedium
+                                )
+                            }
+
+                            item {
+                                Column {
+                                    Text(
+                                        text = stringResource(R.string.author),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                    Text(
+                                        text = stringResource(R.string.author_name),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        fontWeight = FontWeight.Thin
+                                    )
+                                }
+                            }
+
+                            item {
+                                Column {
+                                    Text(
+                                        text = stringResource(R.string.version),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                    Text(
+                                        text = stringResource(R.string.version_version),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        fontWeight = FontWeight.Thin
+                                    )
+                                }
+                            }
+
+                            item {
+                                Text(
+                                    text = stringResource(R.string.contact),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    fontWeight = FontWeight.Bold,
+                                    style = MaterialTheme.typography.titleMedium
+                                )
+                            }
+
+                            item {
+                                Column {
+                                    Text(
+                                        text = stringResource(R.string.email),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                    Text(
+                                        text = stringResource(R.string.email_address),
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        fontWeight = FontWeight.Thin
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            )
+        }
+    }
 }
