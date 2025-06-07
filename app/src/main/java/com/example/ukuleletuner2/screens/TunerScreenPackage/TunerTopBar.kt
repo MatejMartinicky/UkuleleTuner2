@@ -43,12 +43,19 @@ internal fun TunerTopBar(
                     .clickable { onNavigateToChords() }
                     .padding(16.dp)
             )
-            IconButton(onClick = onNavigateToSettings) {
-                Icon(Icons.Filled.Settings, contentDescription = null)
+            IconButton(
+                onClick = onNavigateToSettings
+            ) {
+                Icon(
+                    Icons.Filled.Settings,
+                    contentDescription = null
+                )
             }
         },
         navigationIcon = {
-            IconButton(onClick = onOpenDrawer) {
+            IconButton(
+                onClick = onOpenDrawer
+            ) {
                 Icon(
                     Icons.Default.Menu,
                     contentDescription = stringResource(R.string.menu_content_description),

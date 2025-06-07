@@ -17,7 +17,11 @@ import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun SettingsTopBar(settingsViewModel: SettingsViewModel) {
+internal fun SettingsTopBar(
+    nNavigateToTuner: () -> Unit,
+    onNavigateToChords: () -> Unit,
+    onOpenDrawer: () -> Unit
+) {
     TopAppBar(
         title = {
             Text(stringResource(R.string.settings_screen_title))
@@ -25,10 +29,13 @@ internal fun SettingsTopBar(settingsViewModel: SettingsViewModel) {
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+            navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+            actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
         ),
         navigationIcon = {
-            IconButton(onClick = { settingsViewModel.onMenuClick() }) {
+            IconButton(
+                onClick = onOpenDrawer
+            ) {
                 Icon(
                     Icons.Default.Menu,
                     contentDescription = stringResource(R.string.menu_content_description),

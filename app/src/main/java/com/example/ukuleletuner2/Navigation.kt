@@ -70,7 +70,7 @@ fun Navigation(
                     navController.navigate(route = ChordsScreen)
                 }
             )
-        } //change when settings done
+        }
 
         composable<ChordsScreen> {
             ChordsScreen(
@@ -85,7 +85,16 @@ fun Navigation(
 
         composable<SettingsScreen> {
             val settingsViewModel: SettingsViewModel = viewModel()
-            SettingsScreen(themeViewModel, settingsViewModel)
+            SettingsScreen(
+                onNavigateToTuner = {
+                    navController.navigate(route = TunerScreen)
+                },
+                onNavigateToChords = {
+                    navController.navigate(route = ChordsScreen)
+                },
+                themeViewModel =themeViewModel,
+                settingsViewModel = settingsViewModel
+            )
         }
     //these has to be here how I understand it is like this
         //composable<SettingsScreen> matches it as path where SettingsScreen is path defined in screen @Serializable

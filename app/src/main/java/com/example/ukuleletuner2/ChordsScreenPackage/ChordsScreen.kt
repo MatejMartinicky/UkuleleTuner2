@@ -95,7 +95,6 @@ fun ChordsScreen(
                         try {
                             player.playResource(chord.audioFileName)
                         } catch (e: Exception) {
-                            println("Error while playing: ${e.message}")
                             playingChordId = -1
                         }
                     }
@@ -118,7 +117,6 @@ fun ChordsScreen(
                         try {
                             player.playResource(chord.audioFileName)
                         } catch (e: Exception) {
-                            println("Error while playing: ${e.message}")
                             playingChordId = -1
                         }
                     }

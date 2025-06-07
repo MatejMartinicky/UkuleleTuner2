@@ -14,6 +14,8 @@ import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
+    onNavigateToTuner: () -> Unit,
+    onNavigateToChords: () -> Unit,
     themeViewModel: ThemeViewModel,
     settingsViewModel: SettingsViewModel
 ) {
@@ -26,10 +28,20 @@ fun SettingsScreen(
 
     when(windowInfo.screenOrientation) {
         is WindowOrientation.Portrait -> {
-            PortraitSettingsLayout(themeViewModel, settingsViewModel)
+            PortraitSettingsLayout(
+                onNavigateToTuner = onNavigateToTuner,
+            onNavigateToChords = onNavigateToChords,
+                themeViewModel = themeViewModel,
+                settingsViewModel =settingsViewModel
+            )
         }
         is WindowOrientation.Landscape -> {
-            LandscapeSettingsLayout(themeViewModel, settingsViewModel)
+            LandscapeSettingsLayout(
+                onNavigateToTuner,
+                onNavigateToChords,
+                themeViewModel,
+                settingsViewModel
+            )
         }
     }
 }

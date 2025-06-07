@@ -18,41 +18,41 @@ import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 
 @Composable
 internal fun LandscapeSettingsLayout(
+    onNavigateToTuner: () -> Unit,
+    onNavigateToChords: () -> Unit,
     themeViewModel: ThemeViewModel,
     settingsViewModel: SettingsViewModel
 ) {
-    Scaffold(
-        containerColor = MaterialTheme.colorScheme.background,
-        topBar = { SettingsTopBar(settingsViewModel) },
-        content = { paddingValues ->
-            Row(
+    SettingsWithDrawer(
+        onNavigateToTuner = onNavigateToTuner,
+        onNavigateToChords = onNavigateToChords
+    ) { paddingValues ->
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            LazyColumn(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .padding(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(vertical = 16.dp)
             ) {
-                LazyColumn(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .padding(horizontal = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(vertical = 16.dp)
-                ) {
-                    item { General(themeViewModel, settingsViewModel) }
-                }
-
-                LazyColumn(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .padding(horizontal = 16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    contentPadding = PaddingValues(vertical = 16.dp)
-                ) {
-                    item { Info() }
-                    item { Contact() }
-                }
+                item { General(themeViewModel, settingsViewModel) }
+            }
+            LazyColumn(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .padding(horizontal = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(vertical = 16.dp)
+            ) {
+                item { Info() }
+                item { Contact() }
             }
         }
-    )
+    }
 }
