@@ -38,20 +38,45 @@ fun Navigation(
         navController = navController,
         startDestination = WelcomeScreen
     ) {
-        composable<WelcomeScreen> { WelcomeScreen(
-            onNavigateToTunerScreen = { navController.navigate(route = InstrumentChoiceScreen) },
-            onNavigateToLoginScreen = { navController.navigate(route = SignInScreen) }
-        ) }
+        composable<WelcomeScreen> {
+            WelcomeScreen(
+                onNavigateToTunerScreen = {
+                    navController.navigate(route = InstrumentChoiceScreen)
+                },
+                onNavigateToLoginScreen = {
+                    navController.navigate(route = SignInScreen)
+                }
+            )
+        }
 
         //todo route here has to be absolutely changed!!!
-        composable<InstrumentChoiceScreen> { InstrumentChoiceScreen( onNavigateToTunerScreen = { navController.navigate(route = TunerScreen) } ) }
+        composable<InstrumentChoiceScreen> {
+            InstrumentChoiceScreen(
+                onNavigateToTunerScreen = {
+                    navController.navigate(route = TunerScreen)
+                }
+            )
+        }
+
         //TODO
-        composable<TunerScreen> { TunerScreen(onNavigateToSettings = {navController.navigate(route = SettingsScreen) },
-                                                onNavigateToChords = {navController.navigate(route = ChordsScreen) }) } //change when settings done
+        composable<TunerScreen> {
+            TunerScreen(
+                onNavigateToSettings = {
+                navController.navigate(route = SettingsScreen)
+                },
+                onNavigateToChords = {
+                    navController.navigate(route = ChordsScreen)
+                }
+            )
+        } //change when settings done
 
-
-        composable<ChordsScreen> { ChordsScreen() } //change when settings done
-
+        composable<ChordsScreen> {
+            ChordsScreen(
+                onNavigateToSettings = {
+                    navController.navigate(route = SettingsScreen)
+                }
+            )
+        }
 
         composable<SettingsScreen> {
             val settingsViewModel: SettingsViewModel = viewModel()
