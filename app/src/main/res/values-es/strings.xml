@@ -99,4 +99,15 @@
     <!-- FirebaseMessagingService -->
     <string name="default_notification_name">Nueva notificación</string>
     <string name="default_notification_message">Nuevo mensaje recibido</string>
+
+    <!-- NavigationDrawer -->
+    <string name="drawer_home">Inicio</string>
+    <string name="drawer_settings">Configuración</string>
+    <string name="drawer_chords">Acordes</string>
+
+    <string name="drawer_home_description">Navegar a inicio</string>
+    <string name="drawer_settings_description">Navegar a configuración</string>
+    <string name="drawer_chords_description">Navegar a acordes</string>
+
+    <string name="drawer_name">Menú</string>
 </resources>

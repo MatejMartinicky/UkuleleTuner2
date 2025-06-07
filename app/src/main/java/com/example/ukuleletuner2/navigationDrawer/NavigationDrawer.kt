@@ -15,11 +15,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ukuleletuner2.R
 
-//https://www.youtube.com/watch?v=JLICaBEiJS0
+//https://www.youtube.com/watch?v=JLICaBEiJS0 (full)
 
 @Composable
 fun DrawerHeader() {
@@ -30,7 +32,7 @@ fun DrawerHeader() {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "Header",
+            text = stringResource(R.string.drawer_name),
             style = MaterialTheme.typography.titleMedium
         )
     }
