@@ -116,4 +116,10 @@
     <string name="G_button">G</string>
     <string name="E_button">E</string>
     <string name="A_button">A</string>
+
+    <!-- TuningRecorder -->
+    <string name="exception_no_mic_permissions">Audio recording permission not granted</string>
+
+    <!-- FirebaseMessagingService -->
+    <string name="firebase_channal_name">Notifications</string>
 </resources>

@@ -14,7 +14,9 @@ import android.content.pm.PackageManager
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
+import com.example.ukuleletuner2.R
 
 
 /**
@@ -51,7 +53,7 @@ class TuningRecorder(private val context: Context) {
                 Manifest.permission.RECORD_AUDIO
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            throw SecurityException("Audio recording permission not granted")
+            throw SecurityException(context.getString(R.string.exception_no_mic_permissions))
         }
 
         //initialize AudioRecord with tuning-optimized settings
