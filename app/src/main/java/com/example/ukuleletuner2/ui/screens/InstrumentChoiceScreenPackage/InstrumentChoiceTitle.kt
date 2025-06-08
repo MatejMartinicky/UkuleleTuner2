@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.ui.screens.InstrumentChoiceScreenPackage
 
 import androidx.compose.material3.MaterialTheme
@@ -9,7 +13,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.ukuleletuner2.R
 
-
+/**
+ * welcome title text for the instrument choice screen
+ */
 @Composable
 internal fun InstrumentChoiceTitle() {
     Text(

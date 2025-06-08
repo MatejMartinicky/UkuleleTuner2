@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.SingInScreenPackage
 
 import androidx.compose.foundation.layout.Box
@@ -8,7 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
-
+/**
+ * Portrait layout for sign-in screen with overlaid content on background image
+ *
+ * @param onSignInClick callback function triggered when sign-in is attempted
+ */
 @Composable
 internal fun PortraitSignInLayout(onSignInClick: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {

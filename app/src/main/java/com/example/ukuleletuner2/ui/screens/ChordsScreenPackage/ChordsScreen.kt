@@ -1,3 +1,13 @@
+/**
+ * @author based on tutorial
+ *
+ * References:
+ * @see source: Philipp Lackner (YouTube) -
+ * "How to Support All Screen Sizes in Jetpack Compose"
+ *  https://www.youtube.com/watch?v=HmXgVBys7BU
+ *  (screen rotation)
+ */
+
 package com.example.ukuleletuner2.ui.screens.ChordsScreenPackage
 
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -14,8 +24,12 @@ import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.windowInfo.WindowOrientation
 import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 
-//https://www.youtube.com/watch?v=HmXgVBys7BU (screen rotation)
-
+/**
+ * main chords screen component with adaptive layout for different orientations
+ *
+ * @param onNavigateToSettings callback function for navigating to settings screen
+ * @param onNavigateToTunerScreen callback function for navigating back to tuner screen
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChordsScreen(

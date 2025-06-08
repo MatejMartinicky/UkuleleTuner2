@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.ChordsScreenPackage
 
 import androidx.compose.foundation.layout.Box
@@ -12,7 +15,13 @@ import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.chords.Chord
 import com.example.ukuleletuner2.ui.components.cards.ChordCard
 
-
+/**
+ * individual chord card item for the chords grid layout
+ *
+ * @param chord chord object containing name, image, and other chord data
+ * @param isPlaying boolean indicating if this chord is currently playing/selected
+ * @param onPlayed callback function triggered when the chord card is clicked
+ */
 @Composable
 internal fun ChordGridItem(
     chord: Chord,

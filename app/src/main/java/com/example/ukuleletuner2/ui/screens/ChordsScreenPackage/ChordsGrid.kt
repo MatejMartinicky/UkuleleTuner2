@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.ui.screens.ChordsScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.ukuleletuner2.chords.Chord
-
+/**
+ * chord grid layout component displaying chord cards in a responsive grid
+ *
+ * @param chords list of chord objects to display in the grid
+ * @param playingChordId id of the currently playing chord for visual feedback
+ * @param columnCount number of columns for the grid layout
+ * @param paddingValues padding values for the constraint layout container
+ * @param onChordPlayed callback function triggered when a chord is selected/played
+ */
 @Composable
 internal fun ChordsGrid(
     chords: List<Chord>,

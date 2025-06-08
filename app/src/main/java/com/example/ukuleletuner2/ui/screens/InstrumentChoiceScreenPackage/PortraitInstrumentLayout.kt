@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.InstrumentChoiceScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-
+/**
+ * portrait-oriented layout for instrument selection screen
+ *
+ * @param onNavigateToTunerScreen callback function for navigating to tuner screen after instrument selection
+ */
 @Composable
 internal fun PortraitInstrumentLayout(onNavigateToTunerScreen: () -> Unit) {
     Surface(

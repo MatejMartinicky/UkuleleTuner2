@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.InstrumentChoiceScreenPackage
 
 import androidx.compose.foundation.background
@@ -16,7 +19,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-
+/**
+ * landscape-oriented layout for instrument selection screen
+ *
+ * @param onNavigateToTunerScreen callback function for navigating to tuner screen after instrument selection
+ */
 @Composable
 internal fun LandscapeInstrumentLayout(onNavigateToTunerScreen: () -> Unit) {
     Row(
