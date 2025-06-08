@@ -1,3 +1,12 @@
+/**
+ * @author IntelliSense
+ *
+ * This class was automatically suggested by IntelliSense based on the file name,
+ * due to a previous project with a similar structure.
+ *
+ * I had worked on a ukulele tuner project earlier, but due to poor structure and file management
+ * in that project, I decided to create a new, better-organized version.
+ */
 package com.example.ukuleletuner2.fastFurierTransform
 
 import kotlin.math.sqrt
@@ -14,7 +23,7 @@ class FourierTransform(private val sampleRate: Int, private val bufferSize: Int)
             imaginary[i] = 0.0
         }
 
-        // Perform FFT (naïve implementation, use a library like JTransforms for real use)
+        // Perform FFT (naive implementation, use a library like JTransforms for real use)
         fft(real, imaginary)
 
         // Calculate magnitude and find the dominant frequency
@@ -52,8 +61,10 @@ class FourierTransform(private val sampleRate: Int, private val bufferSize: Int)
         fft(oddReal, oddImag)
 
         for (k in 0 until n / 2) {
-            val tReal = oddReal[k] * kotlin.math.cos(2 * Math.PI * k / n) - oddImag[k] * kotlin.math.sin(2 * Math.PI * k / n)
-            val tImag = oddReal[k] * kotlin.math.sin(2 * Math.PI * k / n) + oddImag[k] * kotlin.math.cos(2 * Math.PI * k / n)
+            val tReal =
+                oddReal[k] * kotlin.math.cos(2 * Math.PI * k / n) - oddImag[k] * kotlin.math.sin(2 * Math.PI * k / n)
+            val tImag =
+                oddReal[k] * kotlin.math.sin(2 * Math.PI * k / n) + oddImag[k] * kotlin.math.cos(2 * Math.PI * k / n)
 
             real[k] = evenReal[k] + tReal
             imaginary[k] = evenImag[k] + tImag

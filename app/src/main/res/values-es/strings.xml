@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Transleted by ChatGPT becaus of good language model -->
+<!-- used tutorial: https://www.youtube.com/watch?v=LXbpsBtIIeM -->
+<resources>
+    <string name="app_name">UkuleleTuner2</string>
+
+    <string name="chords_screen_title">Acordes</string>
+    <string name="menu_content_description">Menú</string>
+    <string name="settings_content_description">Configuración</string>
+    <string name="chords_image_content_description">Diagrama de acordes de ukelele</string>
+
+    <!-- ChordsScreen -->
+    <string name="chord_card_content_description">Tarjeta de acorde que reproduce el acorde al hacer clic</string>
+
+    <!-- InstrumentChoiceScreen -->
+    <string name="instrument_choice_continue_button">Continuar</string>
+    <string name="instrument_choice_welcome">¿Qué estás tocando?</string>
+
+    <!-- WelcomeScreen -->
+    <string name="next_arrow">➡</string>
+    <string name="welcome">¡Bienvenido!</string>
+    <string name="welcome_image_description">Imagen de un hombre genial tocando el ukelele</string>
+
+    <!-- TunerScreen -->
+    <string name="tuner_screen_title">Afinador</string>
+    <string name="chords_navigation_text">Acordes</string>
+    <string name="detected_frequency">Frecuencia detectada: %1$s Hz</string>
+    <string name="tuning_status">Afinación: %1$s</string>
+    <string name="start_tuning">Iniciar afinación</string>
+    <string name="stop_tuning">Detener</string>
+    <string name="tuning_waiting">Esperando…</string>
+    <string name="tuning_unknown">Desconocido</string>
+    <string name="tuning_too_low">Demasiado bajo (%1$s)</string>
+    <string name="tuning_too_high">Demasiado alto (%1$s)</string>
+    <string name="tuning_in_tune">Afinado (%1$s)</string>
+    <string name="g4">G4</string>
+    <string name="c4">C4</string>
+    <string name="e4">E4</string>
+    <string name="a4">A4</string>
+    <string name="close_to">cerca de %1$s</string>
+    <string name="tuning_error">error al intentar ajustar</string>
+
+    <!-- SettingsScreen -->
+    <string name="settings_screen_title">Configuración</string>
+    <string name="settings_general">General</string>
+    <string name="settings_tuning">Afinación</string>
+    <string name="settings_tuning_value">G4-C4-E4-A4</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_theme_value">Claro</string>
+    <string name="settings_note_names">Nombres de notas</string>
+    <string name="settings_note_names_value">C-D-E-F-G-A-H</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_language_value">Español</string>
+    <string name="settings_info">Información</string>
+    <string name="author">Autor</string>
+    <string name="author_name">Matej Martinicky</string>
+    <string name="version">Versión</string>
+    <string name="version_version">0.0.8 alfa</string>
+    <string name="contact">Contacto</string>
+    <string name="email">correo electrónico</string>
+    <string name="email_address">martinicky3@stud.uniza.sk</string>
+
+    <!-- InstrumentButton -->
+    <string name="instrument_button_content_description">Botón de selección de instrumento</string>
+
+    <!-- ukulele chords -->
+    <string name="ukulele_c">C</string>
+    <string name="ukulele_f">F</string>
+    <string name="ukulele_g">G</string>
+    <string name="ukulele_e">E</string>
+    <string name="ukulele_a">A</string>
+    <string name="ukulele_b">B</string>
+    <string name="ukulele_am">Am</string>
+    <string name="ukulele_em">Em</string>
+    <string name="ukulele_bm">Bm</string>
+    <string name="ukulele_dm">Dm</string>
+    <string name="ukulele_c7">C7</string>
+    <string name="ukulele_e7">E7</string>
+    <string name="ukulele_a7">A7</string>
+    <string name="ukulele_d7">D7</string>
+
+    <!-- ThemeCard -->
+    <string name="theme_color">Color del tema</string>
+    <string name="theme_white">Blanco</string>
+    <string name="theme_black">Negro</string>
+    <string name="theme_green">Verde</string>
+    <string name="theme_orange">Naranja</string>
+
+    <!-- TuneWidget -->
+    <string name="widget_start">Iniciar</string>
+    <string name="widget_stop">Detener</string>
+    <string name="widget_frequency">%1$s Hz</string>
+
+    <!-- SignInScreen -->
+    <string name="sign_in_prompt">Iniciar sesión en la aplicación</string>
+    <string name="sign_in_disclaimer">Al hacer clic en "Iniciar sesión", aceptas los Términos de servicio y la Política de usuario (por ahora no existen).</string>
+    <string name="login_button">Inicia sesión con tu cuenta de Google</string>
+
+    <!-- FirebaseMessagingService -->
+    <string name="default_notification_name">Nueva notificación</string>
+    <string name="default_notification_message">Nuevo mensaje recibido</string>
+
+    <!-- NavigationDrawer -->
+    <string name="drawer_home">Inicio</string>
+    <string name="drawer_settings">Configuración</string>
+    <string name="drawer_chords">Acordes</string>
+
+    <string name="drawer_home_description">Navegar a inicio</string>
+    <string name="drawer_settings_description">Navegar a configuración</string>
+    <string name="drawer_chords_description">Navegar a acordes</string>
+
+    <string name="drawer_name">Menú</string>
+
+    <!-- InstrumentLayout -->
+    <string name="ukulele_image_description">Cabeza del ukelele</string>
+    <string name="C_button">C</string>
+    <string name="G_button">G</string>
+    <string name="E_button">E</string>
+    <string name="A_button">A</string>
+
+    <!-- TuningRecorder -->
+    <string name="exception_no_mic_permissions">Permiso para grabar audio no concedido</string>
+
+    <!-- FirebaseMessagingService -->
+    <string name="firebase_channal_name">Notificaciones</string>
+
+    <!-- playButton -->
+    <string name="stop_description">Detener</string>
+    <string name="play_description">Reproducir</string>
+
+    <!-- TuneWidgetContent -->
+    <string name="widget_image_description">Imagen de ukelele que muestra la afinación actual</string>
+</resources>
