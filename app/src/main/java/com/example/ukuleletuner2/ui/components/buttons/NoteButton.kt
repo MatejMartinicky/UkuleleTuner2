@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.components.buttons
 
 import androidx.compose.foundation.background
@@ -22,7 +25,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+/**
+ * circular note button component for ukulele string selection and interaction
+ *
+ * @param letter musical note letter to display (e.g., "G", "C", "E", "A")
+ * @param color border color representing the specific ukulele string
+ * @param onClick callback function triggered when the button is pressed
+ * @param modifier optional modifier for customizing button appearance and behavior
+ */
 @Composable
 fun NoteButton(
     letter: String,
@@ -30,8 +40,8 @@ fun NoteButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val interactionSource = remember { MutableInteractionSource() } //to viewModel!!!
-    val isPressed: Boolean by interactionSource.collectIsPressedAsState() //to viewModel!!!
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed: Boolean by interactionSource.collectIsPressedAsState()
 
     Box(
         contentAlignment = Alignment.Center,

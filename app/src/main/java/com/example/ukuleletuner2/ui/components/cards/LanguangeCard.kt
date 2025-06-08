@@ -1,3 +1,12 @@
+/**
+ * @author Matej Martinicky
+ *
+ * References:
+ * @see source: Yanneck Reiß (YouTube) -
+ * "Learn How To Implement The Android Jetpack Compose Lazy Row Centered Snap Fling Behavior"
+ *      https://www.youtube.com/watch?v=6BVPFyms2iE
+ *(but not much [that snapping is not implemented])
+ */
 package com.example.ukuleletuner2.ui.components.cards
 
 import androidx.compose.foundation.layout.Arrangement
@@ -15,16 +24,21 @@ import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.ui.components.images.FlagImage
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
-
+/**
+ * data class representing a language option in the selector
+ *
+ * @param code language code (e.g., "en", "sk", "de", "es")
+ * @param flagResource Drawable resource ID for that country flag
+ */
 data class Language(
     val code: String,
     val flagResource: Int
 )
-
-//https://www.youtube.com/watch?v=6BVPFyms2iE (dor snapping in future )
-
-//https://www.youtube.com/watch?v=6BVPFyms2iE
-
+/**
+ * Language selection component that displays available languages as clickable flag icons
+ *
+ * @param settingsViewModel ViewModel containing available languages and language change logic
+ */
 @Composable
 fun LanguageSelector(settingsViewModel: SettingsViewModel) {
     val context = LocalContext.current

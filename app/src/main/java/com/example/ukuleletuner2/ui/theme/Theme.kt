@@ -256,92 +256,86 @@ enum class ColorThemes {
     Orange
 }
 
-/*
-containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                    actionIconContentColor = MaterialTheme.colorScheme.onPrimaryContainer
- */
 fun getLightColorScheme(theme: ColorThemes) = when (theme) {
     ColorThemes.White -> lightColorScheme(
-        primaryContainer = Color(0xFFA5A5A5),
-        onPrimaryContainer = Color(0xFF31393C),
-        primary = Color(0xFFFFFFFF),
-        onPrimary = Color(0xFF31393C),
-        outline = Color(0xFF31393C)
+        primaryContainer = whitePrimaryContainerColor,
+        onPrimaryContainer = whiteOnPrimaryContainerColor,
+        primary = whitePrimaryColor,
+        onPrimary = whiteOnPrimaryColor,
+        outline = whiteOutlineColor
     )
     ColorThemes.Black -> lightColorScheme(
-        background = Color(0xFF394049),
-        surfaceContainer = Color(0xFF394049),
-        onBackground = Color(0xFFFFFFFF),
-        primaryContainer = Color(0xFF282E31),
-        onPrimaryContainer = Color(0xFFFFFFFF),
-        primary = Color(0xFF282E31),
-        onPrimary = Color(0xFFFFFFFF),
-        onSurfaceVariant = Color(0xFFFFFFFF),
-        outline = Color(0xFFFFFFFF)
+        background = blackBackgroundColor,
+        surfaceContainer = blackSurfaceContainerColor,
+        onBackground = blackOnBackgroundColor,
+        primaryContainer = blackPrimaryContainerColor,
+        onPrimaryContainer = blackOnPrimaryContainerColor,
+        primary = blackPrimaryColor,
+        onPrimary = blackOnPrimaryColor,
+        onSurfaceVariant = blackOnSurfaceVariantColor,
+        outline = blackOutlineColor
     )
     ColorThemes.Green -> lightColorScheme(
-        primaryContainer = Color(0xFF66BB6A),
-        onPrimaryContainer = Color(0xFFFFFFFF),
-        primary = Color(0xFFFFFFFF),
-        onPrimary = Color(0xFF66BB6A),
-        outline = Color(0xFF18FFFF)
+        primaryContainer = greenPrimaryContainerColor,
+        onPrimaryContainer = greenOnPrimaryContainerColor,
+        primary = greenPrimaryColor,
+        onPrimary = greenOnPrimaryColor,
+        outline = greenOutlineColor
     )
     ColorThemes.Orange -> lightColorScheme(
-        primaryContainer = Color(0xFFf68608),
-        onPrimaryContainer = Color(0xFFFFFFFF),
-        primary = Color(0xFFFFFFFF),
-        onPrimary = Color(0xFFf68608),
-        outline = Color(0xFF18FFFF)
-        )
+        primaryContainer = orangePrimaryContainerColor,
+        onPrimaryContainer = orangeOnPrimaryContainerColor,
+        primary = orangePrimaryColor,
+        onPrimary = orangeOnPrimaryColor,
+        outline = orangeOutlineColor
+    )
 }
 
 fun getDarkColorScheme(theme: ColorThemes) = when (theme) {
     ColorThemes.White -> darkColorScheme(
-        background = Color(0xFF9CA0A4),
-        surfaceContainer = Color(0xFF9CA0A4),
-        primaryContainer = Color(0xFF6B7178),
-        onPrimaryContainer = Color(0xFFFFFFFF),
-        primary = Color(0xFF9CA0A4),
-        onPrimary = Color(0xFFFFFFFF),
-        outline = Color(0xFFFFFFFF)
+        background = whiteDarkBackgroundColor,
+        surfaceContainer = whiteDarkSurfaceContainerColor,
+        primaryContainer = whiteDarkPrimaryContainerColor,
+        onPrimaryContainer = whiteDarkOnPrimaryContainerColor,
+        primary = whiteDarkPrimaryColor,
+        onPrimary = whiteDarkOnPrimaryColor,
+        outline = whiteDarkOutlineColor
     )
     ColorThemes.Black -> darkColorScheme(
-        background = Color(0xFF000000),
-        surfaceContainer = Color(0xFF000000),
-        onBackground = Color(0xFFFFFFFF),
-        primaryContainer = Color(0xFF000000),
-        onPrimaryContainer = Color(0xFFFFFFFF),
-        primary = Color(0xFF000000),
-        onPrimary = Color(0xFFFFFFFF),
-        onSurfaceVariant = Color(0xFFFFFFFF),
-        outline = Color(0xFFFFFFFF)
+        background = blackDarkBackgroundColor,
+        surfaceContainer = blackDarkSurfaceContainerColor,
+        onBackground = blackDarkOnBackgroundColor,
+        primaryContainer = blackDarkPrimaryContainerColor,
+        onPrimaryContainer = blackDarkOnPrimaryContainerColor,
+        primary = blackDarkPrimaryColor,
+        onPrimary = blackDarkOnPrimaryColor,
+        onSurfaceVariant = blackDarkOnSurfaceVariantColor,
+        outline = blackDarkOutlineColor
     )
     ColorThemes.Green -> darkColorScheme(
-        background = Color(0xFF4A4A4A),
-        surfaceContainer = Color(0xFF585858),
-        onBackground = Color(0xFFF8F8F8),
-        primaryContainer = Color(0xFF66BB6A),
-        onPrimaryContainer = Color(0xFFFFFFFF),
-        primary = Color(0xFF6A6A6A),
-        onPrimary = Color(0xFFFFFFFF),
-        onSurfaceVariant = Color(0xFFD8D8D8),
-        outline = Color(0xFF18FFFF)
+        background = greenDarkBackgroundColor,
+        surfaceContainer = greenDarkSurfaceContainerColor,
+        onBackground = greenDarkOnBackgroundColor,
+        primaryContainer = greenDarkPrimaryContainerColor,
+        onPrimaryContainer = greenDarkOnPrimaryContainerColor,
+        primary = greenDarkPrimaryColor,
+        onPrimary = greenDarkOnPrimaryColor,
+        onSurfaceVariant = greenDarkOnSurfaceVariantColor,
+        outline = greenDarkOutlineColor
     )
-    ColorThemes.Orange -> lightColorScheme(
-        background = Color(0xFF4A4A4A),
-        surfaceContainer = Color(0xFF585858),
-        onBackground = Color(0xFFF8F8F8),
-        primaryContainer = Color(0xFFf68608),
-        onPrimaryContainer = Color(0xFFFFFFFF),
-        primary = Color(0xFF6A6A6A),
-        onPrimary = Color(0xFFFFFFFF),
-        onSurfaceVariant = Color(0xFFD8D8D8),
-        outline = Color(0xFF18FFFF)
+    ColorThemes.Orange -> darkColorScheme(
+        background = orangeDarkBackgroundColor,
+        surfaceContainer = orangeDarkSurfaceContainerColor,
+        onBackground = orangeDarkOnBackgroundColor,
+        primaryContainer = orangeDarkPrimaryContainerColor,
+        onPrimaryContainer = orangeDarkOnPrimaryContainerColor,
+        primary = orangeDarkPrimaryColor,
+        onPrimary = orangeDarkOnPrimaryColor,
+        onSurfaceVariant = orangeDarkOnSurfaceVariantColor,
+        outline = orangeDarkOutlineColor
     )
 }
-//THIS NEEDS TO BE IMPLEMENTED !!!
+//todo later
 //https://www.youtube.com/watch?v=S61mXlMQkLY
 
 @Composable

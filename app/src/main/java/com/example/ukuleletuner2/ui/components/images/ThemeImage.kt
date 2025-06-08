@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.components.images
 
 import androidx.compose.foundation.Image
@@ -13,7 +16,14 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-
+/**
+ * circular theme preview image component for color theme selection
+ *
+ * @param themePainter image painter for the theme preview
+ * @param contentDescription accessibility description for the theme image
+ * @param size diameter of the circular theme preview (default 60dp)
+ * @param onClick optional callback function triggered when the theme is clicked
+ */
 @Composable
 fun ThemeImage(
     themePainter: Painter,
