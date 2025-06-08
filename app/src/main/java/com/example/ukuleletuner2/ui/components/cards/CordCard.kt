@@ -1,3 +1,17 @@
+/**
+ * @author Matej Martinicky
+ *
+ * References:
+ * @see source: Philipp Lackner (YouTube) -
+ * "Creating an Image Card Composable - Android Jetpack Compose - Part 4"
+ *      https://www.youtube.com/watch?v=KPVoQjwmWX4
+ *
+ * @see source: Thracian (stackoverflow) -
+ * "How to make rounded Corner with shadow in jetpack compose"
+ *      https://stackoverflow.com/questions/75950471/how-to-make-rounded-corner-with-shadow-in-jetpack-compose
+ * (this is that blue [or based on theme color] shadow around chords when they play)
+ */
+
 package com.example.ukuleletuner2.ui.components.cards
 
 import androidx.compose.foundation.Image
@@ -27,8 +41,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-//https://www.youtube.com/watch?v=KPVoQjwmWX4 //creating card
-//https://stackoverflow.com/questions/75950471/how-to-make-rounded-corner-with-shadow-in-jetpack-compose
+/**
+ * Reusable chord card component that displays chord diagrams with interactive glow effects
+ *
+ * @param painter Image painter for the chord diagram background
+ * @param contentDescription Accessibility description for the chord image
+ * @param title Chord name displayed as overlay text
+ * @param isPlaying Boolean state indicating if this chord is currently playing/selected
+ * @param onPlayed Callback function triggered when the card is clicked
+ * @param modifier Optional modifier for customizing the card's appearance and behavior
+ */
 @Composable
 fun ChordCard(
     painter: Painter,
@@ -103,7 +125,7 @@ fun ChordCard(
             ) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.titleMedium, //change
+                    style = MaterialTheme.typography.titleMedium,
                     color = onSurfaceColor,
                     fontWeight = FontWeight.Bold
                 )

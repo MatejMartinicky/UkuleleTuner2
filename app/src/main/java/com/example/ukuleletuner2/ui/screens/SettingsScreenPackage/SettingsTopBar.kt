@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.SettingsScreenPackage
 
 import androidx.compose.material.icons.Icons
@@ -12,8 +15,13 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.example.ukuleletuner2.R
-
-
+/**
+ * Top app bar for settings screen with navigation drawer menu
+ *
+ * @param nNavigateToTuner callback to navigate to tuner screen
+ * @param onNavigateToChords callback to navigate to chords screen
+ * @param onOpenDrawer callback to open navigation drawer
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SettingsTopBar(
@@ -40,7 +48,6 @@ internal fun SettingsTopBar(
                     contentDescription = stringResource(R.string.menu_content_description),
                 )
             }
-        },
-        actions = { /*todo*/ }
+        }
     )
 }

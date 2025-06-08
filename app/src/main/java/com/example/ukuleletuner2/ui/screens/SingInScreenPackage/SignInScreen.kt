@@ -1,3 +1,15 @@
+/**
+ * @author Matej Martinicky but lot from tutorial
+ *
+ * References:
+ * @see source: Philipp Lackner (YouTube) -
+ * "Firebase Google Sign-In With Jetpack Compose & Clean Architecture - Android Studio Tutorial"
+ *      https://www.youtube.com/watch?v=zCIfBbm06QM
+ * @see source: Philipp Lackner (YouTube) -
+ * "How to Support All Screen Sizes in Jetpack Compose"
+ *       https://www.youtube.com/watch?v=HmXgVBys7BU
+ * (screen rotation)
+ */
 @file:OptIn(ExperimentalMaterial3Api::class)
 
 package com.example.ukuleletuner2.ui.screens.SingInScreenPackage
@@ -11,9 +23,12 @@ import com.example.ukuleletuner2.presentation.sign_in.SignInState
 import com.example.ukuleletuner2.windowInfo.WindowOrientation
 import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 
-//https://www.youtube.com/watch?v=zCIfBbm06QM (full)
-//https://www.youtube.com/watch?v=HmXgVBys7BU (screen rotation)
-
+/**
+ * Sign-in screen that adapts layout based on device orientation and handles authentication errors
+ *
+ * @param state current sign-in state including error messages
+ * @param onSignInClick callback function triggered when user attempts to sign in
+ */
 @Composable
 fun SignInScreen(
     state: SignInState,

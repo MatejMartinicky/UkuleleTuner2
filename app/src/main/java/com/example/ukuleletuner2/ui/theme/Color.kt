@@ -218,6 +218,82 @@ val surfaceContainerDarkHighContrast = Color(0xFF2B3133)
 val surfaceContainerHighDarkHighContrast = Color(0xFF363C3E)
 val surfaceContainerHighestDarkHighContrast = Color(0xFF424849)
 
+
+
+// White Theme Colors
+val whitePrimaryContainerColor = Color(0xFFA5A5A5)
+val whiteOnPrimaryContainerColor = Color(0xFF31393C)
+val whitePrimaryColor = Color(0xFFFFFFFF)
+val whiteOnPrimaryColor = Color(0xFF31393C)
+val whiteOutlineColor = Color(0xFF31393C)
+
+// White Theme Dark Colors
+val whiteDarkBackgroundColor = Color(0xFF9CA0A4)
+val whiteDarkSurfaceContainerColor = Color(0xFF9CA0A4)
+val whiteDarkPrimaryContainerColor = Color(0xFF6B7178)
+val whiteDarkOnPrimaryContainerColor = Color(0xFFFFFFFF)
+val whiteDarkPrimaryColor = Color(0xFF9CA0A4)
+val whiteDarkOnPrimaryColor = Color(0xFFFFFFFF)
+val whiteDarkOutlineColor = Color(0xFFFFFFFF)
+
+// Black Theme Colors
+val blackBackgroundColor = Color(0xFF394049)
+val blackSurfaceContainerColor = Color(0xFF394049)
+val blackOnBackgroundColor = Color(0xFFFFFFFF)
+val blackPrimaryContainerColor = Color(0xFF282E31)
+val blackOnPrimaryContainerColor = Color(0xFFFFFFFF)
+val blackPrimaryColor = Color(0xFF282E31)
+val blackOnPrimaryColor = Color(0xFFFFFFFF)
+val blackOnSurfaceVariantColor = Color(0xFFFFFFFF)
+val blackOutlineColor = Color(0xFFFFFFFF)
+
+// Black Theme Dark Colors
+val blackDarkBackgroundColor = Color(0xFF000000)
+val blackDarkSurfaceContainerColor = Color(0xFF000000)
+val blackDarkOnBackgroundColor = Color(0xFFFFFFFF)
+val blackDarkPrimaryContainerColor = Color(0xFF000000)
+val blackDarkOnPrimaryContainerColor = Color(0xFFFFFFFF)
+val blackDarkPrimaryColor = Color(0xFF000000)
+val blackDarkOnPrimaryColor = Color(0xFFFFFFFF)
+val blackDarkOnSurfaceVariantColor = Color(0xFFFFFFFF)
+val blackDarkOutlineColor = Color(0xFFFFFFFF)
+
+// Green Theme Colors
+val greenPrimaryContainerColor = Color(0xFF66BB6A)
+val greenOnPrimaryContainerColor = Color(0xFFFFFFFF)
+val greenPrimaryColor = Color(0xFFFFFFFF)
+val greenOnPrimaryColor = Color(0xFF66BB6A)
+val greenOutlineColor = Color(0xFF18FFFF)
+
+// Green Theme Dark Colors
+val greenDarkBackgroundColor = Color(0xFF4A4A4A)
+val greenDarkSurfaceContainerColor = Color(0xFF585858)
+val greenDarkOnBackgroundColor = Color(0xFFF8F8F8)
+val greenDarkPrimaryContainerColor = Color(0xFF66BB6A)
+val greenDarkOnPrimaryContainerColor = Color(0xFFFFFFFF)
+val greenDarkPrimaryColor = Color(0xFF6A6A6A)
+val greenDarkOnPrimaryColor = Color(0xFFFFFFFF)
+val greenDarkOnSurfaceVariantColor = Color(0xFFD8D8D8)
+val greenDarkOutlineColor = Color(0xFF18FFFF)
+
+// Orange Theme Colors
+val orangePrimaryContainerColor = Color(0xFFf68608)
+val orangeOnPrimaryContainerColor = Color(0xFFFFFFFF)
+val orangePrimaryColor = Color(0xFFFFFFFF)
+val orangeOnPrimaryColor = Color(0xFFf68608)
+val orangeOutlineColor = Color(0xFF18FFFF)
+
+// Orange Theme Dark Colors
+val orangeDarkBackgroundColor = Color(0xFF4A4A4A)
+val orangeDarkSurfaceContainerColor = Color(0xFF585858)
+val orangeDarkOnBackgroundColor = Color(0xFFF8F8F8)
+val orangeDarkPrimaryContainerColor = Color(0xFFf68608)
+val orangeDarkOnPrimaryContainerColor = Color(0xFFFFFFFF)
+val orangeDarkPrimaryColor = Color(0xFF6A6A6A)
+val orangeDarkOnPrimaryColor = Color(0xFFFFFFFF)
+val orangeDarkOnSurfaceVariantColor = Color(0xFFD8D8D8)
+val orangeDarkOutlineColor = Color(0xFF18FFFF)
+
 //node colors
 val ukuleleG4 =Color(0xFF59AB86)
 val ukuleleC4 = Color(0xFF659495)

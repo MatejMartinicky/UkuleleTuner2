@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.TunerScreenPackage
 
 import androidx.compose.foundation.clickable
@@ -18,7 +21,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
-
+/**
+ * Tuner screen top bar with drawer menu, chords navigation, and settings
+ *
+ * @param onNavigateToSettings callback to navigate to settings screen
+ * @param onNavigateToChords callback to navigate to chords screen
+ * @param onOpenDrawer callback to open navigation drawer
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun TunerTopBar(

@@ -1,5 +1,5 @@
 /**
- * Author: Matej Martinicky
+ * @author Matej Martinicky
  *
  * References:
  * @see source: Philipp Lackner (YouTube) - "THIS Is How Easily You Can Record & Play Audio In Android"

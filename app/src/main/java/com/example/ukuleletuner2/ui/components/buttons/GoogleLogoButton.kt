@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.components.buttons
 
 import androidx.compose.foundation.Image
@@ -18,6 +21,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.google.android.gms.base.R
 
+/**
+ * google sign-in button with google logo and custom text
+ *
+ * @param text button text to display next to the google logo
+ * @param onClick callback function triggered when the button is pressed
+ */
 @Composable
 fun GoogleLogoButton(
     text: String,

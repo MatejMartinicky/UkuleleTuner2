@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.ui.components.cards
 
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +21,12 @@ import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.ui.components.images.ThemeImage
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 
+
+/**
+ * theme selection component that displays available color themes as clickable preview images
+ *
+ * @param themeViewModel ViewModel containing available themes and theme change logic
+ */
 @Composable
 fun ThemeCard(themeViewModel: ThemeViewModel) {
     Column {

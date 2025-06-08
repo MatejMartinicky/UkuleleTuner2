@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.widgets
 
 import androidx.compose.runtime.Composable
@@ -5,6 +9,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.glance.GlanceModifier
 import androidx.glance.Image
@@ -23,6 +28,13 @@ import androidx.glance.layout.size
 import androidx.glance.text.Text
 import com.example.ukuleletuner2.R
 
+/**
+ * main content layout for ukulele tuner widget
+ *
+ * displays play/stop button, frequency information, ukulele image with string indicators
+ *
+ * @param viewModel widget viewmodel managing tuning state
+ */
 @Composable
 fun TuneWidgetContent(viewModel: TuningWidgetViewModel) {
     val context = LocalContext.current
@@ -72,7 +84,7 @@ fun TuneWidgetContent(viewModel: TuningWidgetViewModel) {
 
             Image(
                 provider = ImageProvider(R.drawable.ukulele_nack),
-                contentDescription = "Ukulele",
+                contentDescription = stringResource(R.string.widget_image_description),
                 modifier = GlanceModifier
                     .size(imageHeight),
                 contentScale = ContentScale.Fit

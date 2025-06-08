@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.TunerScreenPackage
 
 import androidx.compose.material3.Button
@@ -8,7 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.ukuleletuner2.R
-
+/**
+ * button that toggles tuner recording state with visual feedback
+ *
+ * @param isRecording current recording state of the tuner
+ * @param onToggle callback to toggle recording state
+ * @param modifier optional modifier for styling and layout
+ */
 @Composable
 internal fun TunerButton(
     isRecording: Boolean,

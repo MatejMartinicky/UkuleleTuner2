@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.WelcomeScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
@@ -17,7 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ukuleletuner2.R
 
-
+/**
+ * Welcome screen content with title text and navigation button
+ *
+ * @param onNavigateToLoginScreen callback to navigate to login/sign-in screen
+ * @param modifier optional modifier for styling and layout
+ */
 @Composable
 internal fun WelcomeContent(
     onNavigateToLoginScreen: () -> Unit,

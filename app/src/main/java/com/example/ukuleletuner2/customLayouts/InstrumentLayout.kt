@@ -1,5 +1,5 @@
 /**
- * Author: Matej Martinicky
+ * @author Matej Martinicky
  */
 
 package com.example.ukuleletuner2.customLayouts

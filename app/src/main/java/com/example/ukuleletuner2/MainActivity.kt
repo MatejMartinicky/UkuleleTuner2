@@ -1,3 +1,11 @@
+/**
+ * @author Matej Martinicky
+ *
+ * References:
+ * @see source: kenmaro's prototyping (YouTube) -
+ * "[JetpackCompose] Firebase Cloud Messaging to Send Push Notification"
+ *      https://www.youtube.com/watch?v=tSlE-OfCV40 (this for that notification adding)
+ */
 package com.example.ukuleletuner2
 
 import android.Manifest
@@ -19,8 +27,6 @@ import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.firebase.messaging.FirebaseMessaging
 
-//https://www.youtube.com/watch?v=tSlE-OfCV40 (this for that notification adding)
-
 class MainActivity : ComponentActivity() {
 
     private val googleAuthUiClient by lazy {
@@ -29,11 +35,19 @@ class MainActivity : ComponentActivity() {
             oneTapClient = Identity.getSignInClient(applicationContext)
         )
     }
-
+    /**
+     * applies saved language locale when activity context is created
+     *
+     * @param newBase base context to attach locale to
+     */
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleHelper.setLocale(newBase, LocaleHelper.getLanguage(newBase)))
     }
-
+    /**
+     * initializes app with permissions, firebase topics, and UI setup
+     *
+     * @param savedInstanceState saved activity state
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -71,10 +85,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /**
+     * subscribes to firebase topics based on current language
+     *
+     * enables localized notifications for news and app updates
+     */
     private fun initializeFirebaseTopics() {
         val currentLanguage = LocaleHelper.getLanguage(this)
-        FirebaseMessaging.getInstance().subscribeToTopic("news_$currentLanguage")
-        FirebaseMessaging.getInstance().subscribeToTopic("updates_$currentLanguage")
-        Log.d("FCM", "Subscribed to Firebase topics for language: $currentLanguage")
+        FirebaseMessaging.getInstance().subscribeToTopic(currentLanguage)
     }
 }

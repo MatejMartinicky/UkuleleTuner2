@@ -117,4 +117,17 @@
     <string name="G_button">G</string>
     <string name="E_button">E</string>
     <string name="A_button">A</string>
+
+    <!-- TuningRecorder -->
+    <string name="exception_no_mic_permissions">Mikrofonberechtigung nicht erteilt</string>
+
+    <!-- FirebaseMessagingService -->
+    <string name="firebase_channal_name">Benachrichtigungen</string>
+
+    <!-- playButton -->
+    <string name="stop_description">Stopp</string>
+    <string name="play_description">Wiedergabe</string>
+
+    <!-- TuneWidgetContent -->
+    <string name="widget_image_description">Ukulele-Bild zeigt die aktuelle Stimmung</string>
 </resources>

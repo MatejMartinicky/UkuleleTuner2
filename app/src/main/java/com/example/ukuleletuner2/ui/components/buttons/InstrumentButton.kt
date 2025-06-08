@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.components.buttons
 
 import androidx.compose.foundation.Image
@@ -14,7 +17,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
-
+/**
+ * circular instrument selection button with image icon
+ *
+ * @param onClick callback function triggered when the button is pressed
+ * @param painter image painter for the instrument icon displayed in the button
+ */
 @Composable
 fun InstrumentButton(
     onClick: () -> Unit,

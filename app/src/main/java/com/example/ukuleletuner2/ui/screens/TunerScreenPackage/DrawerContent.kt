@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.ui.screens.TunerScreenPackage
 
 import androidx.compose.material.icons.Icons
@@ -13,6 +17,14 @@ import com.example.ukuleletuner2.navigationDrawer.DrawerHeader
 import com.example.ukuleletuner2.navigationDrawer.MenuItem
 import com.example.ukuleletuner2.navigationDrawer.MenuItems
 
+/**
+ * navigation drawer with header and menu items for app navigation
+ *
+ * @param onNavigateToSettings callback to navigate to settings screen
+ * @param onNavigateToChords callback to navigate to chords screen
+ * @param onNavigateToHome callback to navigate to home/tuner screen
+ * @param onCloseDrawer callback to close the navigation drawer
+ */
 @Composable
 fun DrawerContent(
     onNavigateToSettings: () -> Unit,

@@ -1,3 +1,7 @@
+
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.SettingsScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
@@ -14,7 +18,12 @@ import com.example.ukuleletuner2.ui.components.cards.ThemeCard
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 
-
+/**
+ * general settings section with theme and language options
+ *
+ * @param themeViewModel view model for managing theme selection and changes
+ * @param settingsViewModel view model for managing general settings including language
+ */
 @Composable
 internal fun General(
     themeViewModel: ThemeViewModel,
@@ -31,7 +40,9 @@ internal fun General(
         LanguageSelector(settingsViewModel = settingsViewModel)
     }
 }
-
+/**
+ * info section displaying app information like author and version
+ */
 @Composable
 internal fun Info() {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -68,6 +79,9 @@ internal fun Info() {
     }
 }
 
+/**
+ * contact section displaying contact information like email
+ */
 @Composable
 internal fun Contact() {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
