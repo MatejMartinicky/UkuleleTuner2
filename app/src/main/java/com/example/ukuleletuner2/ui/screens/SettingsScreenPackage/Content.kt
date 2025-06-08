@@ -37,6 +37,7 @@ internal fun General(
             style = MaterialTheme.typography.titleMedium
         )
         ThemeCard(themeViewModel = themeViewModel)
+
         LanguageSelector(settingsViewModel = settingsViewModel)
     }
 }

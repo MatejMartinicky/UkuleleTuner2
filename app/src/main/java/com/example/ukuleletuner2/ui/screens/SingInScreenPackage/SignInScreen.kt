@@ -1,6 +1,9 @@
 /**
  * @author Matej Martinicky but lot from tutorial
  *
+ * Refactor:
+ * refactor into components by Claudie (Anthropic)
+ *
  * References:
  * @see source: Philipp Lackner (YouTube) -
  * "Firebase Google Sign-In With Jetpack Compose & Clean Architecture - Android Studio Tutorial"

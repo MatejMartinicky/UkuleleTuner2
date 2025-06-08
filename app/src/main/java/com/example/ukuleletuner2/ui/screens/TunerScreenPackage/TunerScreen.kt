@@ -1,6 +1,9 @@
 /**
  * @author Matej Martinicky but lot from tutorial
  *
+ * Refactor:
+ * refactor into components by Claudie (Anthropic)
+ *
  * References:
  * @see source: Philipp Lackner (YouTube) -
  * "How to Create a Navigation Drawer With Jetpack Compose - Android Studio Tutorial"
