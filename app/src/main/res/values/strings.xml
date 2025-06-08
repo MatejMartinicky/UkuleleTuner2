@@ -122,4 +122,11 @@
 
     <!-- FirebaseMessagingService -->
     <string name="firebase_channal_name">Notifications</string>
+
+    <!-- playButton -->
+    <string name="stop_description">Stop</string>
+    <string name="play_description">Play</string>
+
+    <!-- TuneWidgetContent -->
+    <string name="widget_image_description">Ukulele image showing current tuning</string>
 </resources>

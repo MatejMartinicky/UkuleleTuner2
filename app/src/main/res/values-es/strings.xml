@@ -123,4 +123,11 @@
 
     <!-- FirebaseMessagingService -->
     <string name="firebase_channal_name">Notificaciones</string>
+
+    <!-- playButton -->
+    <string name="stop_description">Detener</string>
+    <string name="play_description">Reproducir</string>
+
+    <!-- TuneWidgetContent -->
+    <string name="widget_image_description">Imagen de ukelele que muestra la afinación actual</string>
 </resources>

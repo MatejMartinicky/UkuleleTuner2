@@ -123,4 +123,11 @@
 
     <!-- FirebaseMessagingService -->
     <string name="firebase_channal_name">Benachrichtigungen</string>
+
+    <!-- playButton -->
+    <string name="stop_description">Stopp</string>
+    <string name="play_description">Wiedergabe</string>
+
+    <!-- TuneWidgetContent -->
+    <string name="widget_image_description">Ukulele-Bild zeigt die aktuelle Stimmung</string>
 </resources>

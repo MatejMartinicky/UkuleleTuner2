@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.widgets
 
 import androidx.compose.runtime.Composable
@@ -9,6 +13,18 @@ import androidx.glance.layout.Alignment
 import androidx.glance.layout.Box
 import androidx.glance.layout.size
 
+
+/**
+ * visual indicator for ukulele string tuning
+ *
+ * displays a string that widens when in tune
+ *
+ * @param color string color
+ * @param inTune whether string is properly tuned
+ * @param size height of the indicator
+ * @param stringThickness base width of the string indicator
+ * @param modifier optional glance modifier
+ */
 @Composable
 fun StringIndicator(
     color: Color,

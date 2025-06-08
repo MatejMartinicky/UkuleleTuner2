@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.widgets
 
 import androidx.lifecycle.ViewModel
@@ -9,6 +12,13 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
+/**
+ * viewmodel for managing tuning functionality in widget
+ *
+ * handles audio recording and frequency detection for widget interface
+ *
+ * @param tuningRecorder audio recorder instance
+ */
 class TuningWidgetViewModel(
     private val tuningRecorder: TuningRecorder
 ) : ViewModel() {
@@ -19,6 +29,12 @@ class TuningWidgetViewModel(
     var frequency = MutableStateFlow(0.0)
     var tuningStatus = MutableStateFlow<Map<UkuleleString, Boolean>>(emptyMap())
 
+    /**
+     * starts audio recording and frequency analysis
+     *
+     * runs continuous loop to read audio buffer and detect frequencies
+     * operates on IO dispatcher to avoid blocking UI
+     */
     fun startTuning() {
         if (isListening.value) return
 
@@ -41,6 +57,9 @@ class TuningWidgetViewModel(
         }
     }
 
+    /**
+     * stops audio recording and frequency analysis
+     */
     fun stopTuning() {
         isListening.value = false
     }

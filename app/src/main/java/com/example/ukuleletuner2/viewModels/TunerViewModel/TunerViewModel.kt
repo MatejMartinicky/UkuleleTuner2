@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.viewModels.TunerViewModel
 
 import android.content.Context
@@ -12,7 +16,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
+/**
+ * viewModel for managing ukulele tuning functionality and audio processing
+ */
 class TunerViewModel(context: Context) : ViewModel() {
 
     private val recorder = TuningRecorder(context)
@@ -22,6 +28,11 @@ class TunerViewModel(context: Context) : ViewModel() {
     val frequency = MutableStateFlow(0.0)
     val tuneStatus = MutableStateFlow(TuneStatus())
 
+    /**
+     * toggles recording on/off
+     *
+     * starts recording if stopped, stops if currently recording
+     */
     fun toggle() {
         if (isRecording.value) {
             isRecording.value = false
@@ -30,6 +41,12 @@ class TunerViewModel(context: Context) : ViewModel() {
         }
     }
 
+    /**
+     * starts audio recording and frequency detection loop
+     *
+     * runs on IO dispatcher to handle audio processing without blocking UI
+     * continuously reads audio buffer and analyzes frequency until stopped
+     */
     private fun start() {
         isRecording.value = true
 
@@ -54,6 +71,12 @@ class TunerViewModel(context: Context) : ViewModel() {
         }
     }
 
+    /**
+     * converts string tuning analysis to tune status
+     *
+     * @param strings map of ukulele strings and their tuning status
+     * @return tune status indicating if any string is properly tuned
+     */
     private fun getState(strings: Map<UkuleleString, Boolean>): TuneStatus {
         val inTune = strings.entries.find { it.value }?.key
         return if (inTune != null) {

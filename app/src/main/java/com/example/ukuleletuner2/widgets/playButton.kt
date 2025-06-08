@@ -1,8 +1,13 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.widgets
 
 import android.content.Context
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.glance.GlanceModifier
@@ -19,6 +24,18 @@ import androidx.glance.layout.padding
 import androidx.glance.layout.size
 import com.example.ukuleletuner2.R
 
+/**
+ * circular play/stop button for widget interface
+ *
+ * switches between play and stop icons based on listening state
+ * executes actions depending on current state
+ *
+ * @param size button size in dp
+ * @param isListening whether tuner is currently listening
+ * @param context android context for resources
+ * @param onStart action to execute when starting tuner
+ * @param onStop action to execute when stopping tuner
+ */
 @Composable
 fun PlayButton(
     size: Dp,
@@ -49,7 +66,7 @@ fun PlayButton(
                         R.drawable.play_arrow
                     }
                 ),
-                contentDescription = if (isListening) "Stop" else "Play",
+                contentDescription = if (isListening) stringResource(R.string.stop_description) else stringResource(R.string.play_description),
                 modifier = GlanceModifier.size(size - padding * 2)
             )
         }

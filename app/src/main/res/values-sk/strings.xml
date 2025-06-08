@@ -123,4 +123,11 @@
 
     <!-- FirebaseMessagingService -->
     <string name="firebase_channal_name">Upozornenia</string>
+
+    <!-- playButton -->
+    <string name="stop_description">Zastaviť</string>
+    <string name="play_description">Prehrať</string>
+
+    <!-- TuneWidgetContent -->
+    <string name="widget_image_description">Obrázok ukulele zobrazujúci aktuálne ladenie</string>
 </resources>
