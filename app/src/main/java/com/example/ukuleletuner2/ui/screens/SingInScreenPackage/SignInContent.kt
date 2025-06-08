@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.SingInScreenPackage
 
 import androidx.compose.foundation.layout.Column
@@ -7,6 +10,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 
+/**
+ * Vertical layout of sign-in elements with proportional spacing
+ *
+ * @param logoSize size of the app logo
+ * @param onSignInClick callback function triggered when sign-in button is pressed
+ * @param modifier optional modifier for styling and layout
+ */
 @Composable
 internal fun SignInContent(
     logoSize: Dp,

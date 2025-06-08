@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.SingInScreenPackage
 
 import androidx.compose.foundation.layout.Row
@@ -9,7 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
-
+/**
+ * Landscape layout for sign-in screen with side-by-side image and content
+ *
+ * @param onSignInClick callback function triggered when sign-in is attempted
+ */
 @Composable
 internal fun LandscapeSignInLayout(onSignInClick: () -> Unit) {
     Row(modifier = Modifier.fillMaxSize()) {

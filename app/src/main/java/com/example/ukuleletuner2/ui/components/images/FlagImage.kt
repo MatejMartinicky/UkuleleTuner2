@@ -13,7 +13,14 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-
+/**
+ * circular flag image component for language selection
+ *
+ * @param flagPainter image painter for the country flag
+ * @param contentDescription accessibility description for the flag image
+ * @param size diameter of the circular flag image (default 120dp)
+ * @param onClick optional callback function triggered when the flag is clicked
+ */
 @Composable
 fun FlagImage(
     flagPainter: Painter,

@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.TunerScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +22,19 @@ import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.customLayouts.InstrumentLayout
 import com.example.ukuleletuner2.viewModels.TunerViewModel.TunerViewModel
-
+/**
+ * landscape tuner layout with side-by-side controls and instrument display
+ *
+ * @param onNavigateToSettings callback to navigate to settings screen
+ * @param onNavigateToChords callback to navigate to chords screen
+ * @param viewModel tuner view model for audio processing control
+ * @param isRecording current recording state of the tuner
+ * @param frequency detected audio frequency in Hz
+ * @param displayStatus current tuning status message
+ * @param strings list of ukulele strings with their properties
+ * @param playingStringId ID of currently playing/selected string
+ * @param onStringPlayed callback when a string is played/selected
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun LandscapeTunerLayout(

@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.ui.screens.SingInScreenPackage
 
 import androidx.compose.foundation.Image
@@ -14,6 +18,9 @@ import androidx.compose.ui.unit.Dp
 import com.example.ukuleletuner2.R
 import com.example.ukuleletuner2.ui.components.buttons.GoogleLogoButton
 
+/**
+ * App logo image with configurable size
+ */
 @Composable
 internal fun AppLogo(size: Dp) {
     Image(
@@ -22,7 +29,9 @@ internal fun AppLogo(size: Dp) {
         modifier = Modifier.size(size)
     )
 }
-
+/**
+ * Main sign-in prompt text with headline styling
+ */
 @Composable
 internal fun SignInPrompt() {
     Text(
@@ -33,7 +42,9 @@ internal fun SignInPrompt() {
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
 }
-
+/**
+ * Disclaimer text for sign-in process
+ */
 @Composable
 internal fun SignInDisclaimer() {
     Text(
@@ -44,7 +55,9 @@ internal fun SignInDisclaimer() {
         color = MaterialTheme.colorScheme.onSurfaceVariant
     )
 }
-
+/**
+ * Google sign-in button
+ */
 @Composable
 internal fun SignInButton(onSignInClick: () -> Unit) {
     GoogleLogoButton(

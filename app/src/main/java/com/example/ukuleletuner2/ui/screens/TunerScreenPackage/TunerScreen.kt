@@ -1,3 +1,15 @@
+/**
+ * @author Matej Martinicky but lot from tutorial
+ *
+ * References:
+ * @see source: Philipp Lackner (YouTube) -
+ * "How to Create a Navigation Drawer With Jetpack Compose - Android Studio Tutorial"
+ *      https://www.youtube.com/watch?v=JLICaBEiJS0
+ * @see source: Philipp Lackner (YouTube) -
+ * "How to Support All Screen Sizes in Jetpack Compose"
+ *       https://www.youtube.com/watch?v=HmXgVBys7BU
+ * (screen rotation)
+ */
 package com.example.ukuleletuner2.ui.screens.TunerScreenPackage
 
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,9 +29,12 @@ import com.example.ukuleletuner2.viewModels.TunerViewModel.TuningStatus
 import com.example.ukuleletuner2.windowInfo.WindowOrientation
 import com.example.ukuleletuner2.windowInfo.rememberWindowInfo
 
-//https://www.youtube.com/watch?v=HmXgVBys7BU (screen rotation)
-//https://www.youtube.com/watch?v=JLICaBEiJS0 (navigation drawer)
-
+/**
+ * tuner screen that adapts layout based on orientation and handles audio processing
+ *
+ * @param onNavigateToSettings callback to navigate to settings screen
+ * @param onNavigateToChords callback to navigate to chords screen
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TunerScreen(
@@ -34,7 +49,7 @@ fun TunerScreen(
     val tuneStatus by viewModel.tuneStatus.collectAsState()
 
     val player = remember { AndroidAudioPlayer(context) }
-    var playingStringId by remember { mutableIntStateOf(-1) } //to view model
+    var playingStringId by remember { mutableIntStateOf(-1) }
 
     val displayStatus = when (tuneStatus.status) {
         TuningStatus.ERROR -> context.getString(R.string.tuning_error)

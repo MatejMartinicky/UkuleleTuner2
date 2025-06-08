@@ -1,3 +1,20 @@
+/**
+ * @author Matej Martinicky
+ *
+ * References:
+ * @see source: Phillipp Lackner (YouTube) -
+ * "Type-Safe Navigation with the OFFICIAL Compose Navigation Library"
+ *      https://www.youtube.com/watch?v=tSlE-OfCV40
+ * @see source: GoogleTeam (DeveloperAndroid) -
+ * "Type-Safe Navigation with the OFFICIAL Compose Navigation Library"
+ *      https://developer.android.com/guide/navigation/design/activity-destinations
+ * @see source: Phillipp Lackner (YouTube) -
+ * "Full Guide to Nested Navigation Graphs in Jetpack Compose"
+ *      https://www.youtube.com/watch?v=FIEnIBq7Ups
+ * @see source: Phillipp Lackner (YouTube) -
+ * "Firebase Google Sign-In With Jetpack Compose & Clean Architecture - Android Studio Tutorial"
+ *      https://www.youtube.com/watch?v=zCIfBbm06QM
+ */
 package com.example.ukuleletuner2
 
 import android.app.Activity.RESULT_OK
@@ -25,14 +42,17 @@ import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
 import kotlinx.coroutines.launch
 
-//new way of navigation not so good
-//https://www.youtube.com/watch?v=AIC_OFQ1r3k
-//last one good but not all of it needed
-// https://developer.android.com/guide/navigation/design/activity-destinations
-//maybe next
-//https://www.youtube.com/watch?v=FIEnIBq7Ups
-//for Sign in screen
-//https://www.youtube.com/watch?v=zCIfBbm06QM
+/**
+ * Main navigation composable that defines the app's navigation graph
+ * This function sets up all the routes and navigation logic for the ukulele tuner app
+ *
+ * Type-safe navigation: composable<SettingsScreen> matches the @Serializable object SettingsScreen
+ * as the route path, which then renders the SettingsScreen() composable function.
+ * The route object and composable function don't need to have the same name.
+ *
+ * @param themeViewModel ViewModel for managing app theme settings
+ * @param googleAuthUiClient Client for handling Google authentication
+ */
 @Composable
 fun Navigation(
     themeViewModel: ThemeViewModel,
@@ -51,7 +71,6 @@ fun Navigation(
             )
         }
 
-        //todo route here has to be absolutely changed!!!
         composable<InstrumentChoiceScreen> {
             InstrumentChoiceScreen(
                 onNavigateToTunerScreen = {
@@ -95,9 +114,6 @@ fun Navigation(
                 settingsViewModel = settingsViewModel
             )
         }
-        //these has to be here how I understand it is like this
-        //composable<SettingsScreen> matches it as path where SettingsScreen is path defined in screen @Serializable
-        //object SettingsScreen and this matches it to settings composable SettingsScreen() they don't even have to have same name
 
         composable<SignInScreen> {
             val viewModel: SignInViewModel = viewModel()

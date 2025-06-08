@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.SettingsScreenPackage
 
 import androidx.compose.foundation.layout.Arrangement
@@ -12,8 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.ukuleletuner2.viewModels.SettingsViewModel.SettingsViewModel
 import com.example.ukuleletuner2.viewModels.themeViewModel.ThemeViewModel
-
-
+/**
+ * landscape-oriented layout for settings screen with two-column arrangement
+ *
+ * @param onNavigateToTuner callback function for navigating to tuner screen
+ * @param onNavigateToChords callback function for navigating to chords screen
+ * @param themeViewModel view model for managing theme selection and changes
+ * @param settingsViewModel view model for managing general settings including language
+ */
 @Composable
 internal fun LandscapeSettingsLayout(
     onNavigateToTuner: () -> Unit,

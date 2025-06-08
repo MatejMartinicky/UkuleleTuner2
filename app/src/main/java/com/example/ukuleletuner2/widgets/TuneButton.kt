@@ -1,3 +1,7 @@
+/**
+ * @author Matej Martinicky
+ */
+
 package com.example.ukuleletuner2.widgets
 
 import androidx.compose.runtime.Composable
@@ -13,6 +17,19 @@ import androidx.glance.layout.size
 import androidx.glance.text.Text
 
 
+/**
+ * circular button with tuning status indicator for ukulele strings
+ *
+ * displays note name with colored ring indicating tuning status
+ * green ring when in tune, red when out of tune
+ *
+ * @param tone note name to display (C, G, E, A)
+ * @param inTune whether string is properly tuned
+ * @param buttonSize size of the main button in dp
+ * @param buttonColor color of the main button
+ * @param modifier optional glance modifier
+ * @param onClick action to execute when button is pressed
+ */
 @Composable
 fun TuneButton(
     tone: String,

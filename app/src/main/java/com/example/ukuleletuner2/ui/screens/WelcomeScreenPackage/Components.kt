@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.WelcomeScreenPackage
 
 import androidx.compose.foundation.Image
@@ -23,7 +26,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ukuleletuner2.R
-
+/**
+ * Welcome image with gradient overlay for smooth content transition
+ */
 @Composable
 internal fun WelcomeImageWithGradient() {
     Box(

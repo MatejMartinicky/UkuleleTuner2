@@ -1,5 +1,17 @@
+/**
+ * @author Matej Martinicky
+ *
+ * References:
+ * @see source: Philipp Lackner (YouTube) -
+ * "How to Create a Navigation Drawer With Jetpack Compose - Android Studio Tutorial"
+ *      https://www.youtube.com/watch?v=JLICaBEiJS0
+ */
+
 package com.example.ukuleletuner2.navigationDrawer
 
+/**
+ * Navigation Drawer is split to two parts (as in tutorial)
+ */
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -21,8 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ukuleletuner2.R
 
-//https://www.youtube.com/watch?v=JLICaBEiJS0 (full)
-
+/**
+ * Header part displays only head of navigation drawer
+ */
 @Composable
 fun DrawerHeader() {
     Box(
@@ -38,6 +51,14 @@ fun DrawerHeader() {
     }
 }
 
+/**
+ * Body part displays body of navigation drawer
+ *
+ * @param items list of items to be displayed
+ * @param modifier modifier that is applied
+ * @param itemTextStyle style of text for items
+ * @param onItemClick what happens when item is clicked (where to navigate)
+ */
 @Composable
 fun DrawerBody(
     items: List<MenuItem>,
@@ -64,8 +85,7 @@ fun DrawerBody(
 
                 Text(
                     text = item.title,
-                    style = itemTextStyle,
-                    modifier = Modifier.weight(1f)
+                    style = itemTextStyle
                 )
             }
         }

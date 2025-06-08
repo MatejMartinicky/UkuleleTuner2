@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.ChordsScreenPackage
 
 import androidx.compose.material.icons.Icons
@@ -14,7 +17,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.example.ukuleletuner2.R
 
-
+/**
+ * top app bar for the chords screen with navigation and settings access
+ *
+ * @param onNavigateToSettings callback function for navigating to settings screen
+ * @param onOpenDrawer callback function for opening the navigation drawer
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun ChordsTopBar(

@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.TunerScreenPackage
 
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,8 +13,13 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.launch
-
-//https://stackoverflow.com/questions/70209466/what-is-the-purpose-of-the-paddingvalues-parameter-in-a-scaffold
+/**
+ * Scaffold wrapper for tuner screen with navigation drawer
+ *
+ * @param onNavigateToSettings callback to navigate to settings screen
+ * @param onNavigateToChords callback to navigate to chords screen
+ * @param content composable content to display in the main area
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun TunerWithDrawer(

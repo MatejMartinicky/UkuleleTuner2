@@ -1,3 +1,6 @@
+/**
+ * @author Matej Martinicky
+ */
 package com.example.ukuleletuner2.ui.screens.SettingsScreenPackage
 
 import androidx.compose.foundation.layout.PaddingValues
@@ -11,7 +14,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import com.example.ukuleletuner2.ui.screens.TunerScreenPackage.DrawerContent
 import kotlinx.coroutines.launch
-
+/**
+ * Scaffold wrapper for settings screen with navigation drawer
+ *
+ * @param onNavigateToTuner callback to navigate to tuner screen
+ * @param onNavigateToChords callback to navigate to chords screen
+ * @param content composable content to display in the main area
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun SettingsWithDrawer(
